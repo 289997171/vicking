@@ -12,7 +12,7 @@ public static class MethodExtension
     /// <returns>The or add component.</returns>
     /// <param name="go">Go.</param>
     /// <typeparam name="T">The 1st type parameter.</typeparam>
-    public static T GetOrAddComponent<T>(this GameObject go) where T : Component
+    public static T getOrAddComponent<T>(this GameObject go) where T : Component
     {
         T ret = go.GetComponent<T>();
         if (null == ret)
@@ -27,7 +27,7 @@ public static class MethodExtension
     /// <param name="transform"></param>
     /// <param name="nodeName"></param>
     /// <returns></returns>
-    public static Transform FindInChildrens(this Transform transform, string nodeName)
+    public static Transform findInChildrens(this Transform transform, string nodeName)
     {
         if (transform.name.Equals(nodeName)) return transform;
 
@@ -40,7 +40,7 @@ public static class MethodExtension
             {
                 return node;
             }
-            Transform ret = node.FindInChildrens(nodeName);
+            Transform ret = node.findInChildrens(nodeName);
             if (ret != null)
             {
                 return ret;

@@ -8,8 +8,12 @@ public class PlayerMount : PersonMount
     protected Transform BindLeftHand;       // 左手
     protected Transform BindRightHand;      // 右手
 
-    protected void Start()
+
+    public override void initMount()
     {
-        Debug.Log("PlayerMount");
+        base.initMount();
+
+        BindLeftHand = transform.FindInChildrens("BindLeftHand");
+        BindRightHand = transform.FindInChildrens("BindRightHand");
     }
 }

@@ -10,8 +10,11 @@ public abstract class PersonMount : MonoBehaviour
     protected Transform BindChest;      // 胸部
     protected Transform BindDown;       // 底部
 
-    public void initMount()
+    public virtual void initMount()
     {
+        BindUp = transform.FindInChildrens("BindUp");
+        BindChest = transform.FindInChildrens("BindChest");
+        BindChest = transform.FindInChildrens("BindDown");
     }
 
 }

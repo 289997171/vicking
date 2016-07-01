@@ -8,7 +8,7 @@ public class TimeUtil
     /// </summary>
     /// <param name="d">double 型数字</param>
     /// <returns>DateTime</returns>
-    public static System.DateTime ConvertIntDateTime(double d)
+    public static System.DateTime convertIntDateTime(double d)
     {
         System.DateTime time = System.DateTime.MinValue;
         System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
@@ -21,7 +21,7 @@ public class TimeUtil
     /// </summary>
     /// <param name="time">时间</param>
     /// <returns>double</returns>
-    public static double ConvertDateTimeInt(System.DateTime time)
+    public static double convertDateTimeInt(System.DateTime time)
     {
         double intResult = 0;
         System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
