@@ -13,7 +13,7 @@ public class PlayerMount : PersonMount
     {
         base.initMount();
 
-        BindLeftHand = transform.FindInChildrens("BindLeftHand");
-        BindRightHand = transform.FindInChildrens("BindRightHand");
+        BindLeftHand = transform.findInChildrens("BindLeftHand");
+        BindRightHand = transform.findInChildrens("BindRightHand");
     }
 }

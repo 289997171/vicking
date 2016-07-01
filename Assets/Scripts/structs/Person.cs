@@ -6,6 +6,7 @@ using UnityEngine;
 /// <summary>
 /// 角色基础信息
 /// </summary>
+[DisallowMultipleComponent]
 public abstract class Person : MonoBehaviour, IMapObject
 {
     // 类型
@@ -15,70 +16,73 @@ public abstract class Person : MonoBehaviour, IMapObject
     public const byte PERSON_PET = 4;     // 宠物
 
     //创建时间
-    protected DateTime createTime = DateTime.Now;
+    public DateTime createTime = DateTime.Now;
 
     //对象类型
-    protected byte personType;
+    public byte personType;
 
     //名字
-    protected String personName;
+    public String personName;
 
     //资源
-    protected String res;
+    public String res;
 
     //头像
-    protected String icon;
+    public String icon;
 
     //模板Id
-    protected int modelId;
+    public int modelId;
 
     //老旧的
-    protected int oldModelID;
+    public int oldModelID;
 
     //时装模板Id
-    protected int fashionModelID;
+    public int fashionModelID;
 
     //等级
-    protected int level;
+    public int level;
 
     //经验
-    protected long exp;
+    public long exp;
 
     //当前生命
-    protected int hp;
+    public int hp;
 
     //当前魔法
-    protected int mp;
+    public int mp;
 
     //地图
-    protected long mapId;
+    public long mapId;
 
     //地图模板id
-    protected int mapModelId;
+    public int mapModelId;
 
     //所在线服务器
-    protected int line;
-
-    //方向
-    protected Vector3 direction = Vector3.zero;
+    public int line;
 
     //BUFF列表
-    protected List<Buff> buffs = new List<Buff>();
+    public List<Buff> buffs = new List<Buff>();
 
     //冷却列表
-    protected Dictionary<string, Cooldown> cooldowns = new Dictionary<string, Cooldown>();
+    public Dictionary<string, Cooldown> cooldowns = new Dictionary<string, Cooldown>();
 
     //战斗状态
-    protected long fightState;
+    public long fightState;
 
     //最终计算属性
-    protected BaseAbility finalAbility = new BaseAbility();
+    public BaseAbility finalAbility = new BaseAbility();
 
     //属性部分
-    protected Dictionary<int, BaseAbility> attributes = new Dictionary<int, BaseAbility>();
+    public Dictionary<int, BaseAbility> attributes = new Dictionary<int, BaseAbility>();
 
-    // 模型半径,一般用于体形巨大的怪物上,如炎魔
-    protected float modelRadius;
+    //模型高度
+    public float height = 2f;
+
+    //模型半径
+    public float radius = 0.5f;
+
+    //模型中心点
+    public Vector3 center = Vector3.up;
 
     public long getMapId()
     {

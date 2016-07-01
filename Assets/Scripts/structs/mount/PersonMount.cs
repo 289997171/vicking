@@ -12,9 +12,9 @@ public abstract class PersonMount : MonoBehaviour
 
     public virtual void initMount()
     {
-        BindUp = transform.FindInChildrens("BindUp");
-        BindChest = transform.FindInChildrens("BindChest");
-        BindChest = transform.FindInChildrens("BindDown");
+        BindUp = transform.findInChildrens("BindUp");
+        BindChest = transform.findInChildrens("BindChest");
+        BindChest = transform.findInChildrens("BindDown");
     }
 
 }

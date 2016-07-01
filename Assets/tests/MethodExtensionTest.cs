@@ -15,7 +15,7 @@ public class MethodExtensionTest : MonoBehaviour
             find = GetTransformTest.FindChild("XXXX");
             Debug.Log("find = " + find);
 
-            find = GetTransformTest.FindInChildrens("XXXX");
+            find = GetTransformTest.findInChildrens("XXXX");
             Debug.Log("find = " + find);
         }
     }
