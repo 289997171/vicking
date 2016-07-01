@@ -1,5 +1,5 @@
 ﻿public class BaseAbility
 {
     //移动速度
-    public int speed;
+    public float speed;
 }
