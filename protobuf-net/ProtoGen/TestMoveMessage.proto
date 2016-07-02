@@ -1,0 +1,55 @@
+package com.game.proto;
+
+
+enum Protos_TestMove { 
+
+	ReqEnterMap = 5815;
+	ResEnterMap = 5816;
+
+	ReqSyncPosRot				= 5817;//客户端移动时不停的同步坐标
+	ResSyncPosRot     			= 5818;//服务器广播玩家移动
+
+}
+
+
+message ReqEnterMapMessage {
+	optional Protos_TestMove msgID = 1 [default = ReqEnterMap]; 
+}
+
+message ResEnterMapMessage {
+	optional Protos_TestMove msgID = 1 [default = ResEnterMap]; 
+	required int64 playerId = 2;
+	required PosRot pr 		= 3;
+	optional bool isLocalPlayer = 4;
+}
+
+
+message ReqSyncPosRotMessage {
+	optional Protos_TestMove msgID = 1 [default = ReqSyncPosRot]; 
+	optional PosRot  pr	= 2;  //坐标
+}
+
+message ResSyncPosRotMessage  {
+	optional Protos_TestMove msgID = 1 [default = ResSyncPosRot]; 
+
+	optional int32 personType = 2[default = 1]; // 1:玩家 2:怪物 3：NPC 4：宠物
+    optional int64 personID = 3;
+
+	optional PosRot  pr	= 4;  //坐标
+	
+	optional float time = 5;  //改变坐标耗时,0的情况下，表示正常移动速度移动过去 -1，表示立刻马上位移
+	optional float speed = 6; //移动速度，0的情况下，表示正常的移动速度，（客户端缓存的速度）， > 0 如，闪现等特殊情况，使用特殊速度移动
+}
+
+
+// 坐标以及朝向
+message PosRot {
+	
+	optional float  posX 						= 1;  //坐标 x
+	optional float  posY 						= 2;  //坐标 y
+	optional float  posZ 						= 3;  //坐标 z
+
+	optional float  rotX		     		= 4;  //朝向 x
+	optional float  rotY 					= 5;  //朝向 y
+	optional float  rotZ 					= 6;  //朝向 z
+}

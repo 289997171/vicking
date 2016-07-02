@@ -1,0 +1,33 @@
+200xxx     Http服务器登录相关  
+110xxx     LoginServer与GameServer通信相关
+100  201  前三位 100表示大模块  后三位 2表示客户端发送（1表示服务器发）  01 表示具体子模块
+消息定义 必须是ResXXXXXXMessage，以Res/Req开头，以Message结尾
+
+
+	GLRegisterLogin = 110101; // GameServer 2 LoginServer 注册请求
+	LGRegisterLogin = 110201; // LoginServer 2 GameServer 注册响应
+
+	ReqUserVersion = 100201;// 100  201  100表示大模块  2 表示客户端发送  01 表示具体子模块
+	ResUserVersion = 100101;
+	
+	ReqUserLoginBase = 100202;//客户端请求登陆	
+	ReqLoginServer = 100203;//客户端选择一个服务器登陆                   
+        ReqLoginSelectUserCmd = 100204; //选定角色后向服务器发入场景请求
+        ReqCheckNameSelectUser = 100205;//请求检查角色、家庭、帮会名称
+
+	ResUserLoginReturn = 100102;//服务端登陆返回
+	ResReturnLoginOK = 100103;//服务器返回选择的服务器具体IP和端口
+	ResGateWayOk = 100104;
+	ResReturnLoginFailed = 100105;//登陆失败的返回信息
+        ResReturnUserInformations = 100106;//服务器返回用户信息 
+        ResMSGS2C_RGNENTER=100107;//服务器返回的角色进入场景消息
+        //ResBASEPROPERTY=100108;//服务器发的玩家基础属性信息
+        ResCheckNameSelectUser = 100109;//接收检查角色、家庭、帮会名称
+
+
+        ResRoleBaseproperty  =  111101;//S2C初始化角色时的角色属性              
+        ResRoleEquipentList  =  111102;//S2C初始化角色时的装备列表
+
+
+
+800xxx    ChatMessage
