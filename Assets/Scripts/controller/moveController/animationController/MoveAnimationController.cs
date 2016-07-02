@@ -14,6 +14,13 @@ public abstract class MoveAnimationController : MonoBehaviour
     /// </summary>
     public abstract void OnIdle();
 
+
+    /// <summary>
+    /// 原地朝向改变
+    /// </summary>
+    /// <param name="dir"></param>
+    public abstract void OnTurn(Quaternion rot);
+
     /// <summary>
     /// 奔跑
     /// </summary>

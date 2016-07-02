@@ -1,7 +1,13 @@
 ﻿
+using UnityEngine;
+
 public class PlayerFemaleMoveAnimationController : MoveAnimationController
 {
     public override void OnIdle()
+    {
+    }
+
+    public override void OnTurn(Quaternion rot)
     {
     }
 

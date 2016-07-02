@@ -26,7 +26,7 @@ public class MoveController : Moveable, IPersonController
 
     // 是否移动中
     private bool moveing = false;
-    
+
     // 是否在地面上
     public bool onGround = false;
 
@@ -37,6 +37,12 @@ public class MoveController : Moveable, IPersonController
 
     // 移动终点
     private Vector3 endPos;
+
+    // 是否在旋转中
+    private bool turning = false;
+
+    // 最终朝向
+    private Vector3 endDir = Vector3.zero;
 
     void Start()
     {
@@ -64,6 +70,21 @@ public class MoveController : Moveable, IPersonController
             moveDirection.y -= gravity * Time.deltaTime;
             flags = characterController.Move(moveDirection * Time.deltaTime);
             onGround = (flags & CollisionFlags.Below) != 0;
+            return;
+        }
+
+        // 朝向改变
+        if (turning)
+        {
+            Vector3 eulerAngles = transform.rotation.eulerAngles;
+            if (Vector3.Distance(eulerAngles, endDir) < 0.1f)
+            {
+                turning = false;
+                return;
+            }
+            Quaternion newQuaternion = Quaternion.LookRotation(endDir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion, 0.2f);
+            moveAnimationController.OnTurn(newQuaternion);
             return;
         }
 
@@ -124,5 +145,30 @@ public class MoveController : Moveable, IPersonController
 
     }
 
-    
+    public override bool isMoving()
+    {
+        return moveing;
+    }
+
+    public override bool turn(Vector3 direction)
+    {
+        turning = true;
+        endDir = direction;
+        return true;
+    }
+
+    public override bool stopTrun()
+    {
+        if (turning)
+        {
+            turning = false;
+            return true;
+        }
+        return false;
+    }
+
+    public override bool isTurning()
+    {
+        return turning;
+    }
 }

@@ -18,4 +18,28 @@ public abstract class Moveable : MonoBehaviour
     /// 停止移动
     /// </summary>
     public abstract bool stopMove();
+
+    /// <summary>
+    /// 是否处于移动中
+    /// </summary>
+    /// <returns></returns>
+    public abstract bool isMoving();
+
+    /// <summary>
+    /// 处理转向
+    /// </summary>
+    /// <param name="direction"></param>
+    public abstract bool turn(Vector3 direction);
+
+    /// <summary>
+    /// 停止转向
+    /// </summary>
+    /// <returns></returns>
+    public abstract bool stopTrun();
+
+    /// <summary>
+    /// 是否转向中
+    /// </summary>
+    /// <returns></returns>
+    public abstract bool isTurning();
 }

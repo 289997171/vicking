@@ -6,53 +6,17 @@ using UnityEngine;
 public class MoveTest : MonoBehaviour
 {
 
-    void Start()
+
+    void OnGUI()
     {
-        StartCoroutine(createPlayer(1));
+        if (GUI.Button(new Rect(10, 10, 100, 30), "创建主角"))
+        {
+            PlayerManager.Instance.createPlayer("Vicky", 1, true);
+        }
+        if (GUI.Button(new Rect(10, 40, 100, 30), "创建其他角色"))
+        {
+            PlayerManager.Instance.createPlayer("Lily", 1, false);
+        }
     }
 
-
-    private IEnumerator createPlayer(int job)
-    {
-        string modelPath = "";
-        if (job == 1)
-        {
-            modelPath = "person/player/female/Female";
-        }
-        Object model = Resources.Load(modelPath);
-        GameObject player = Instantiate(model) as GameObject;
-        yield return 1;
-
-        Player person = player.getOrAddComponent<Player>();
-        person.height = 2f;
-        person.radius = 0.5f;
-        person.center = Vector3.up;
-        person.finalAbility.speed = 6f;
-
-        player.getOrAddComponent<PCWASDController>();
-        yield return 1;
-
-        player.getOrAddComponent<PlayerSyncPosRotController>();
-        yield return 1;
-
-        player.getOrAddComponent<PlayerAreaController>();
-        yield return 1;
-
-        if (job == 1)
-        {
-            player.getOrAddComponent<PlayerFemaleMoveAnimationController>();
-            yield return 1;
-        }
-
-        player.getOrAddComponent<PlayerMoveController>();
-        yield return 1;
-
-
-        // 设置相机
-        {
-            WowMainCamera mainCamera = Camera.main.gameObject.getOrAddComponent<WowMainCamera>();
-            mainCamera.target = player.transform;
-        }
-        
-    }
 }

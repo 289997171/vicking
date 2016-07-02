@@ -4,7 +4,6 @@
 /// 控制角色的移动，包含了WASD移动和寻路移动
 /// </summary>
 [RequireComponent(typeof(WASDController))]
-[RequireComponent(typeof(SyncPosRotController))]
 [RequireComponent(typeof(AreaController))]
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMoveController : Moveable, IPersonController
@@ -24,8 +23,6 @@ public class PlayerMoveController : Moveable, IPersonController
 
     private MoveAnimationController moveAnimationController;
 
-    private SyncPosRotController syncPosRotController;
-
     private AreaController areaController;
 
     // 重力加速度
@@ -40,10 +37,7 @@ public class PlayerMoveController : Moveable, IPersonController
     // 场景资源动态加载
     private Vector3 oldPos = Vector3.zero;
 
-    // 上次同步给服务器的坐标
-    private Vector3 serverPos = Vector3.zero;
-
-    private Vector3 serverRot = Vector3.zero;
+    
 
     // 是否处于飞行状态
     private bool isFly = false;
@@ -63,8 +57,6 @@ public class PlayerMoveController : Moveable, IPersonController
 
         this.moveAnimationController = GetComponent<MoveAnimationController>();
 
-        this.syncPosRotController = GetComponent<SyncPosRotController>();
-
         this.areaController = GetComponent<AreaController>();
 
         this.navMeshPath = new NavMeshPath();
@@ -75,6 +67,13 @@ public class PlayerMoveController : Moveable, IPersonController
     private float v = 0;
     private bool wasd = false;
 
+
+    // 是否在旋转中
+    private bool turning = false;
+
+    // 最终朝向
+    private Vector3 endDir = Vector3.zero;
+
     void Update()
     {
         if (!onGround && !isFly)
@@ -82,6 +81,21 @@ public class PlayerMoveController : Moveable, IPersonController
             moveDirection.y -= gravity * Time.deltaTime;
             flags = characterController.Move(moveDirection * Time.deltaTime);
             onGround = (flags & CollisionFlags.Below) != 0;
+            return;
+        }
+
+        // 朝向改变
+        if (turning)
+        {
+            Vector3 eulerAngles = transform.rotation.eulerAngles;
+            if (Vector3.Distance(eulerAngles, endDir) < 0.1f)
+            {
+                turning = false;
+                return;
+            }
+            Quaternion newQuaternion = Quaternion.LookRotation(endDir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion, 0.2f);
+            moveAnimationController.OnTurn(newQuaternion);
             return;
         }
 
@@ -189,31 +203,7 @@ public class PlayerMoveController : Moveable, IPersonController
 
     }
 
-    void OnEnable()
-    {
-        InvokeRepeating("SyncPosRot", 0.5f, 0.1f);
-    }
-
-    void OnDisable()
-    {
-        CancelInvoke("SyncPosRot");
-    }
-
-    #region 同步坐标
-    void SyncPosRot()
-    {
-        if (Vector3.Distance(serverPos, transform.position) > 0.1f)
-        {
-            this.syncPosRotController.syncPostion(transform.position);
-            this.serverPos = transform.position;
-        }
-        else if (Vector3.Distance(serverRot, moveDirection) > 0.1f)
-        {
-            this.syncPosRotController.syncDiection(moveDirection);
-            this.serverRot = moveDirection;
-        }
-    }
-    #endregion
+    
 
     #region 点击移动/寻路
     /// <summary>
@@ -289,6 +279,36 @@ public class PlayerMoveController : Moveable, IPersonController
         return false;
     }
 
+    /// <summary>
+    /// 是否移动中
+    /// </summary>
+    /// <returns></returns>
+    public override bool isMoving()
+    {
+        return navMoveing;
+    }
+
+    public override bool turn(Vector3 direction)
+    {
+        turning = true;
+        endDir = direction;
+        return true;
+    }
+
+    public override bool stopTrun()
+    {
+        if (turning)
+        {
+            turning = false;
+            return true;
+        }
+        return false;
+    }
+
+    public override bool isTurning()
+    {
+        return turning;
+    }
 
     /// <summary>
     /// 是否还有未走完的点

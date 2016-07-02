@@ -59,6 +59,21 @@ public class NavMoveController : Moveable, IPersonController
             return;
         }
 
+        // 朝向改变
+        if (turning)
+        {
+            Vector3 eulerAngles = transform.rotation.eulerAngles;
+            if (Vector3.Distance(eulerAngles, endDir) < 0.1f)
+            {
+                turning = false;
+                return;
+            }
+            Quaternion newQuaternion = Quaternion.LookRotation(endDir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion, 0.2f);
+            moveAnimationController.OnTurn(newQuaternion);
+            return;
+        }
+
         if (!navMoveing)
         {
             //animator.SetBool("run", false);
@@ -121,6 +136,12 @@ public class NavMoveController : Moveable, IPersonController
 
     private int nextPointIndex = 0;
 
+    // 是否在旋转中
+    private bool turning = false;
+
+    // 最终朝向
+    private Vector3 endDir = Vector3.zero;
+
     /// <summary>
     /// 自动寻路
     /// </summary>
@@ -173,6 +194,32 @@ public class NavMoveController : Moveable, IPersonController
         return false;
     }
 
+    public override bool isMoving()
+    {
+        return navMoveing;
+    }
+
+    public override bool turn(Vector3 direction)
+    {
+        turning = true;
+        endDir = direction;
+        return true;
+    }
+
+    public override bool stopTrun()
+    {
+        if (turning)
+        {
+            turning = false;
+            return true;
+        }
+        return false;
+    }
+
+    public override bool isTurning()
+    {
+        return turning;
+    }
 
     /// <summary>
     /// 是否还有未走完的点
