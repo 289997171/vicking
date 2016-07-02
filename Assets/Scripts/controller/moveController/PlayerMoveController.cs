@@ -27,17 +27,16 @@ public class PlayerMoveController : Moveable, IPersonController
 
     // 重力加速度
     private float gravity = 20;
+    
     // 是否在地面上
     private bool onGround = false;
+    private CollisionFlags flags;
+    
     // 移动朝向
     private Vector3 moveDirection = Vector3.zero;
 
-    private CollisionFlags flags;
-
     // 场景资源动态加载
     private Vector3 oldPos = Vector3.zero;
-
-    
 
     // 是否处于飞行状态
     private bool isFly = false;
@@ -52,6 +51,7 @@ public class PlayerMoveController : Moveable, IPersonController
         this.characterController.height = this.person.height;
         this.characterController.radius = this.person.radius;
         this.characterController.center = this.person.center;
+        this.characterController.skinWidth = this.person.skinWidth;
 
         this.wasdController = GetComponent<WASDController>();
 
@@ -145,8 +145,8 @@ public class PlayerMoveController : Moveable, IPersonController
 
             // 目标点朝向
             moveDirection = curAutoPos - transform.position;
-            moveDirection.Normalize();
             moveDirection.y = 0f;
+            moveDirection.Normalize();
             moveDirection *= this.person.finalAbility.speed;
         }
 

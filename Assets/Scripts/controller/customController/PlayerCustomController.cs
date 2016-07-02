@@ -9,7 +9,7 @@ public class PlayerCustomController : CustomController, IPersonController
     private Transform playerTra;
     private Player player;
 
-#region 保存所有部位的所有装备
+    #region 保存所有部位的所有装备
     private Dictionary<string, SkinnedMeshRenderer> heads = new Dictionary<string, SkinnedMeshRenderer>();
     private Dictionary<string, SkinnedMeshRenderer> bodys = new Dictionary<string, SkinnedMeshRenderer>();
     private Dictionary<string, SkinnedMeshRenderer> clavicles = new Dictionary<string, SkinnedMeshRenderer>();
@@ -19,7 +19,7 @@ public class PlayerCustomController : CustomController, IPersonController
     private Dictionary<string, SkinnedMeshRenderer> capes = new Dictionary<string, SkinnedMeshRenderer>();
     #endregion
 
-#region 当前角色装备
+    #region 当前角色装备
     private SkinnedMeshRenderer headRenderer;
     private SkinnedMeshRenderer bodyRenderer;
     private SkinnedMeshRenderer clavicleRenderer;
@@ -27,7 +27,7 @@ public class PlayerCustomController : CustomController, IPersonController
     private SkinnedMeshRenderer skirtRenderer;
     private SkinnedMeshRenderer footRenderer;
     private SkinnedMeshRenderer capeRenderer;
-#endregion
+    #endregion
 
     public void updated()
     {
@@ -45,41 +45,35 @@ public class PlayerCustomController : CustomController, IPersonController
         string rname = "";
         foreach (SkinnedMeshRenderer renderer in renderers)
         {
+            renderer.gameObject.SetActive(false);
+            //renderer.enabled = false;
             rname = renderer.name;
             if (rname.StartsWith(Head + "_"))
             {
-
-                renderer.enabled = false;
                 heads.Add(rname, renderer);
             }
             else if (rname.StartsWith(Body + "_"))
             {
-                renderer.enabled = false;
                 bodys.Add(rname, renderer);
             }
             else if (rname.StartsWith(Clavicle + "_"))
             {
-                renderer.enabled = false;
                 clavicles.Add(rname, renderer);
             }
             else if (rname.StartsWith(Hand + "_"))
             {
-                renderer.enabled = false;
                 hands.Add(rname, renderer);
             }
             else if (rname.StartsWith(Skirt + "_"))
             {
-                renderer.enabled = false;
                 skirts.Add(rname, renderer);
             }
             else if (rname.StartsWith(Foot + "_"))
             {
-                renderer.enabled = false;
                 foots.Add(rname, renderer);
             }
             else if (rname.StartsWith(Cape + "_"))
             {
-                renderer.enabled = false;
                 capes.Add(rname, renderer);
             }
         }
@@ -92,9 +86,11 @@ public class PlayerCustomController : CustomController, IPersonController
         {
             if (headRenderer != null && headRenderer != skinnedMeshRenderer)
             {
-               headRenderer.enabled = false;
+                //skinnedMeshRenderer.enabled = false;
+                headRenderer.gameObject.SetActive(false);
             }
-            skinnedMeshRenderer.enabled = true;
+            //skinnedMeshRenderer.enabled = true;
+            skinnedMeshRenderer.gameObject.SetActive(true);
             headRenderer = skinnedMeshRenderer;
         }
     }
@@ -106,9 +102,11 @@ public class PlayerCustomController : CustomController, IPersonController
         {
             if (bodyRenderer != null && bodyRenderer != skinnedMeshRenderer)
             {
-                bodyRenderer.enabled = false;
+                //bodyRenderer.enabled = false;
+                bodyRenderer.gameObject.SetActive(false);
             }
-            skinnedMeshRenderer.enabled = true;
+            //skinnedMeshRenderer.enabled = true;
+            skinnedMeshRenderer.gameObject.SetActive(true);
             bodyRenderer = skinnedMeshRenderer;
         }
     }
@@ -120,9 +118,11 @@ public class PlayerCustomController : CustomController, IPersonController
         {
             if (clavicleRenderer != null && clavicleRenderer != skinnedMeshRenderer)
             {
-                clavicleRenderer.enabled = false;
+                //clavicleRenderer.enabled = false;
+                clavicleRenderer.gameObject.SetActive(false);
             }
-            skinnedMeshRenderer.enabled = true;
+            //skinnedMeshRenderer.enabled = true;
+            skinnedMeshRenderer.gameObject.SetActive(true);
             clavicleRenderer = skinnedMeshRenderer;
         }
     }
@@ -134,9 +134,11 @@ public class PlayerCustomController : CustomController, IPersonController
         {
             if (handRenderer != null && handRenderer != skinnedMeshRenderer)
             {
-                handRenderer.enabled = false;
+                //handRenderer.enabled = false;
+                handRenderer.gameObject.SetActive(false);
             }
-            skinnedMeshRenderer.enabled = true;
+            //skinnedMeshRenderer.enabled = true;
+            skinnedMeshRenderer.gameObject.SetActive(true);
             handRenderer = skinnedMeshRenderer;
         }
     }
@@ -148,9 +150,11 @@ public class PlayerCustomController : CustomController, IPersonController
         {
             if (skirtRenderer != null && skirtRenderer != skinnedMeshRenderer)
             {
-                skirtRenderer.enabled = false;
+                //skirtRenderer.enabled = false;
+                skirtRenderer.gameObject.SetActive(false);
             }
-            skinnedMeshRenderer.enabled = true;
+            //skinnedMeshRenderer.enabled = true;
+            skinnedMeshRenderer.gameObject.SetActive(true);
             skirtRenderer = skinnedMeshRenderer;
         }
     }
@@ -162,9 +166,11 @@ public class PlayerCustomController : CustomController, IPersonController
         {
             if (footRenderer != null && footRenderer != skinnedMeshRenderer)
             {
-                footRenderer.enabled = false;
+                //footRenderer.enabled = false;
+                footRenderer.gameObject.SetActive(false);
             }
-            skinnedMeshRenderer.enabled = true;
+            //skinnedMeshRenderer.enabled = true;
+            skinnedMeshRenderer.gameObject.SetActive(true);
             footRenderer = skinnedMeshRenderer;
         }
     }
@@ -176,12 +182,31 @@ public class PlayerCustomController : CustomController, IPersonController
         {
             if (capeRenderer != null && capeRenderer != skinnedMeshRenderer)
             {
-                capeRenderer.enabled = false;
+                //capeRenderer.enabled = false;
+                capeRenderer.gameObject.SetActive(false);
             }
-            skinnedMeshRenderer.enabled = true;
+            //skinnedMeshRenderer.enabled = true;
+            skinnedMeshRenderer.gameObject.SetActive(true);
             capeRenderer = skinnedMeshRenderer;
         }
     }
 
-    
+
+    void OnGUI()
+    {
+        if (GUI.Button(new Rect(Screen.width - 110, 10, 100, 30), "初始装备"))
+        {
+            // 初始化默认装备
+            {
+                string defaultEqitem = "LV100";
+                changeHead(CustomController.Head + "_" + defaultEqitem);
+                changeBody(CustomController.Body + "_" + defaultEqitem);
+                changeClavicle(CustomController.Clavicle + "_" + defaultEqitem);
+                changeSkirt(CustomController.Skirt + "_" + defaultEqitem);
+                changeCape(CustomController.Cape + "_" + defaultEqitem);
+                changeFoot(CustomController.Foot + "_" + defaultEqitem);
+                changeHand(CustomController.Hand + "_" + defaultEqitem);
+            }
+        }
+    }
 }

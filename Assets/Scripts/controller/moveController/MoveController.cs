@@ -54,7 +54,7 @@ public class MoveController : Moveable, IPersonController
         this.characterController.height = this.person.height;
         this.characterController.radius = this.person.radius;
         this.characterController.center = this.person.center;
-
+        this.characterController.skinWidth = this.person.skinWidth;
         // 设置移动动画控制器
         this.moveAnimationController = GetComponent<MoveAnimationController>();
     }

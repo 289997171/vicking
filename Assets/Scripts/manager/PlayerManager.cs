@@ -23,6 +23,8 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         }
         Object model = Resources.Load(modelPath);
         GameObject player = Instantiate(model) as GameObject;
+        player.transform.position = Vector3.zero;
+        player.transform.rotation = Quaternion.identity;
         yield return 1;
 
         Player person = player.getOrAddComponent<Player>();
@@ -31,10 +33,10 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         person.height = 2f;
         person.radius = 0.5f;
         person.center = Vector3.up;
+        person.skinWidth = 0.001f;
         person.finalAbility.speed = 6f;
 
-        // 添加角色换装
-        player.getOrAddComponent<PlayerCustomController>();
+        PlayerCustomController customController = player.getOrAddComponent<PlayerCustomController>();
 
         if (isLocalPlayer)
         {
@@ -77,6 +79,9 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
             player.getOrAddComponent<MoveController>();
         }
         yield return 1;
+
+
+        
 
         // 设置相机
         if (isLocalPlayer)

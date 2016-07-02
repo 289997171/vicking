@@ -1,0 +1,1435 @@
+fileFormatVersion: 2
+guid: be6173cdc60cf73469285df7fb968759
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Back_Hair_00
+    100002: Back_Hair_01
+    100004: Back_Hair_02
+    100006: Body_LV00
+    100008: Body_LV10
+    100010: Body_LV100
+    100012: Body_LV20
+    100014: Body_LV30
+    100016: Body_LV40
+    100018: BodyRig
+    100020: Chest
+    100022: Clavicle_LV10
+    100024: Clavicle_LV100
+    100026: Clavicle_LV20
+    100028: Clavicle_LV30
+    100030: Clavicle_LV40
+    100032: Down
+    100034: //RootNode
+    100036: Foot_LV00
+    100038: Foot_LV10
+    100040: Foot_LV100
+    100042: Foot_LV20
+    100044: Foot_LV30
+    100046: Foot_LV40
+    100048: Hand_LV00
+    100050: Hand_LV10
+    100052: Hand_LV100
+    100054: Hand_LV20
+    100056: Hand_LV30
+    100058: Hand_LV40
+    100060: Head
+    100062: Head_LV00
+    100064: Head_LV10
+    100066: Head_LV100
+    100068: Head_LV20
+    100070: Head_LV30
+    100072: Head_LV40
+    100074: Hips
+    100076: L_Foot
+    100078: L_Hand
+    100080: L_Lower_Arm
+    100082: L_Lower_Leg
+    100084: L_Shoulder
+    100086: L_Toes
+    100088: L_Upper_Arm
+    100090: L_Upper_Leg
+    100092: L_Weapon
+    100094: Medium
+    100096: Neck
+    100098: R_Foot
+    100100: R_Hand
+    100102: R_Lower_Arm
+    100104: R_Lower_Leg
+    100106: R_Shoulder
+    100108: R_Toes
+    100110: R_Upper_Arm
+    100112: R_Upper_Leg
+    100114: R_Weapon
+    100116: Spine
+    100118: Up
+    100120: Body_RobinHood
+    100122: Foot_RobinHood
+    100124: Hand_RobinHood
+    100126: Head_RobinHood
+    100128: Body_Magician
+    100130: Foot_Magician
+    100132: Hand_Magician
+    100134: Head_Magician
+    100136: Body_ViKing
+    100138: Foot_ViKing
+    100140: Hand_ViKing
+    100142: Head_ViKing
+    100144: Body_Pirate
+    100146: Foot_Pirate
+    100148: Hand_Pirate
+    100150: Head_Pirate
+    100152: Body_Strem
+    100154: EF_F_Strem
+    100156: Foot_Strem
+    100158: Hand_Strem
+    100160: Head_LV50
+    100162: Head_Strem
+    100164: Wing
+    100166: Body_LV70
+    100168: Clavicle_LV70
+    100170: Foot_LV70
+    100172: Hand_LV70
+    100174: Head_LV70
+    100176: Body_robe
+    100178: Foot_robe
+    100180: Hand_robe
+    100182: Head_robe
+    100184: Body_robe2
+    100186: Foot_robe2
+    100188: Hand_robe2
+    100190: Head_robe2
+    100192: Body_Vampire
+    100194: Foot_Vampire
+    100196: Hand_Vampire
+    100198: Head_Vampire
+    100200: Body_hawaii
+    100202: Foot_hawii
+    100204: Hand_hawaii
+    100206: Head_hawaii
+    100208: Foot_hawaii
+    100210: Body_servant
+    100212: BodyRig 1
+    100214: Foot_servant
+    100216: Hand_servant
+    100218: Head_servant
+    100220: Body_hanbok
+    100222: Foot_hanbok
+    100224: Hand_hanbok
+    100226: Head_hanbok
+    100228: Body_LV80
+    100230: Clavicle_LV80
+    100232: Foot_LV80
+    100234: Hand_LV80
+    100236: Head_LV80
+    100238: Body_gold
+    100240: Foot_gold
+    100242: Hand_gold
+    100244: Head_gold
+    100246: Body_corsair
+    100248: Body_ghost
+    100250: Body_pumpkin
+    100252: Foot_corsair
+    100254: Foot_pumpkin
+    100256: Hand_corsair
+    100258: Hand_ghost
+    100260: Hand_pumpkin
+    100262: Head_corsair
+    100264: Head_ghost
+    100266: Head_pumpkin
+    100268: Foot_ghost
+    100270: Body_gunner
+    100272: Foot_gunner
+    100274: Hand_gunner
+    100276: Head_gunner
+    100278: Body_turkey
+    100280: Foot_turkey
+    100282: Hand_turkey
+    100284: Head_turkey
+    100286: Body_holy
+    100288: Foot_holy
+    100290: Hand_holy
+    100292: Head_holy
+    100294: Body_LV65
+    100296: Clavicle_LV65
+    100298: Foot_LV65
+    100300: Hand_LV65
+    100302: Head_LV65
+    100304: Body_chmas
+    100306: Foot_chmas
+    100308: Hand_chmas
+    100310: Head_chmas
+    100312: Body_ice
+    100314: Foot_ice
+    100316: Hand_ice
+    100318: Head_ice
+    100320: Body_blood
+    100322: Foot_blood
+    100324: Hand_blood
+    100326: Head_blood
+    100328: Body_newyear
+    100330: Foot_newyear
+    100332: Hand_newyear
+    100334: Head_newyear
+    100336: Body_LV90
+    100338: Clavicle_LV90
+    100340: Foot_LV90
+    100342: Hand_LV90
+    100344: Head_LV90
+    100346: Body_wday
+    100348: Foot_wday
+    100350: Hand_wday
+    100352: Head_wday
+    100354: Body_wedding
+    100356: Foot_wedding
+    100358: Hand_wedding
+    100360: Head_wedding
+    100362: Body_samurai
+    100364: Foot_samurai
+    100366: Hand_samurai
+    100368: Head_samurai
+    100370: Body_marry
+    100372: Body_marry02
+    100374: Foot_marry
+    100376: Foot_marry02
+    100378: Hand_marry
+    100380: Hand_marry02
+    100382: Head_marry
+    100384: Head_marry02
+    100386: body_commemorate
+    100388: foot_commemorate
+    100390: hand_commemorate
+    100392: head_commemorate
+    100394: Body_dream
+    100396: Foot_dream
+    100398: Hand_dream
+    100400: Head_dream
+    100402: Body_XiaoFuNv01
+    100404: Body_XiaoFuNv02
+    100406: Body_XiaoFuNv03
+    100408: Foot_XiaoFuNv01
+    100410: Foot_XiaoFuNv02
+    100412: Foot_XiaoFuNv03
+    100414: Hand_XiaoFuNv01
+    100416: Hand_XiaoFuNv02
+    100418: Hand_XiaoFuNv03
+    100420: Head_XiaoFuNv01
+    100422: Head_XiaoFuNv02
+    100424: Head_XiaoFuNv03
+    100426: Body_xiaofunv01
+    100428: Body_xiaofunv02
+    100430: Body_xiaofunv03
+    100432: Foot_xiaofunv01
+    100434: Foot_xiaofunv02
+    100436: Foot_xiaofunv03
+    100438: Hand_xiaofunv01
+    100440: Hand_xiaofunv02
+    100442: Hand_xiaofunv03
+    100444: Head_xiaofunv01
+    100446: Head_xiaofunv02
+    100448: Head_xiaofunv03
+    100450: Body_yupao01
+    100452: Body_yupao02
+    100454: Foot_yupao01
+    100456: Foot_yupao02
+    100458: Hand_yupao01
+    100460: Hand_yupao02
+    100462: Head_yupao01
+    100464: Head_yupao02
+    100466: Head_nvzhanshi01
+    100468: Head_nvzhanshi02
+    100470: Head_nvzhanshi03
+    100472: Body_longjia
+    100474: Clavicle_longjia
+    100476: Foot_longjia
+    100478: Hand_longjia
+    100480: Body_geju
+    100482: Foot_geju
+    100484: Hand_geju
+    100486: Head_geju
+    100488: Body_zhongqiu
+    100490: Foot_zhongqiu
+    100492: Hand_zhongqiu
+    100494: Head_zhongqiu
+    100496: Body_feather
+    100498: Clavicle_feather
+    100500: Foot_feather
+    100502: Haed_feather
+    100504: Hand_feather
+    100506: Head_feather
+    100508: Body_halloween
+    100510: Foot_halloween
+    100512: Hand_halloween
+    100514: Head_halloween
+    100516: Body_halikunxiaochou1
+    100518: Body_halikunxiaochou2
+    100520: Foot_halikunxiaochou1
+    100522: Foot_halikunxiaochou2
+    100524: Hand_halikunxiaochou1
+    100526: Hand_halikunxiaochou2
+    100528: Head_halikunxiaochou1
+    100530: Head_halikunxiaochou2
+    100532: Body_blackQQ
+    100534: Body_blueQQ
+    100536: Foot_blackQQ
+    100538: Foot_blueQQ
+    100540: Hand_blackQQ
+    100542: Hand_blueQQ
+    100544: Head_blackQQ
+    100546: Head_blueQQ
+    100548: Body_bmcandy
+    100550: Body_bmchocolate
+    100552: Foot_bmcandy
+    100554: Foot_bmchocolate
+    100556: Hand_bmcandy
+    100558: Hand_bmchocolate
+    100560: Head_bmcandy
+    100562: Head_bmchocolate
+    400000: Back_Hair_00
+    400002: Back_Hair_01
+    400004: Back_Hair_02
+    400006: Body_LV00
+    400008: Body_LV10
+    400010: Body_LV100
+    400012: Body_LV20
+    400014: Body_LV30
+    400016: Body_LV40
+    400018: BodyRig
+    400020: Chest
+    400022: Clavicle_LV10
+    400024: Clavicle_LV100
+    400026: Clavicle_LV20
+    400028: Clavicle_LV30
+    400030: Clavicle_LV40
+    400032: Down
+    400034: //RootNode
+    400036: Foot_LV00
+    400038: Foot_LV10
+    400040: Foot_LV100
+    400042: Foot_LV20
+    400044: Foot_LV30
+    400046: Foot_LV40
+    400048: Hand_LV00
+    400050: Hand_LV10
+    400052: Hand_LV100
+    400054: Hand_LV20
+    400056: Hand_LV30
+    400058: Hand_LV40
+    400060: Head
+    400062: Head_LV00
+    400064: Head_LV10
+    400066: Head_LV100
+    400068: Head_LV20
+    400070: Head_LV30
+    400072: Head_LV40
+    400074: Hips
+    400076: L_Foot
+    400078: L_Hand
+    400080: L_Lower_Arm
+    400082: L_Lower_Leg
+    400084: L_Shoulder
+    400086: L_Toes
+    400088: L_Upper_Arm
+    400090: L_Upper_Leg
+    400092: L_Weapon
+    400094: Medium
+    400096: Neck
+    400098: R_Foot
+    400100: R_Hand
+    400102: R_Lower_Arm
+    400104: R_Lower_Leg
+    400106: R_Shoulder
+    400108: R_Toes
+    400110: R_Upper_Arm
+    400112: R_Upper_Leg
+    400114: R_Weapon
+    400116: Spine
+    400118: Up
+    400120: Body_RobinHood
+    400122: Foot_RobinHood
+    400124: Hand_RobinHood
+    400126: Head_RobinHood
+    400128: Body_Magician
+    400130: Foot_Magician
+    400132: Hand_Magician
+    400134: Head_Magician
+    400136: Body_ViKing
+    400138: Foot_ViKing
+    400140: Hand_ViKing
+    400142: Head_ViKing
+    400144: Body_Pirate
+    400146: Foot_Pirate
+    400148: Hand_Pirate
+    400150: Head_Pirate
+    400152: Body_Strem
+    400154: EF_F_Strem
+    400156: Foot_Strem
+    400158: Hand_Strem
+    400160: Head_LV50
+    400162: Head_Strem
+    400164: Wing
+    400166: Body_LV70
+    400168: Clavicle_LV70
+    400170: Foot_LV70
+    400172: Hand_LV70
+    400174: Head_LV70
+    400176: Body_robe
+    400178: Foot_robe
+    400180: Hand_robe
+    400182: Head_robe
+    400184: Body_robe2
+    400186: Foot_robe2
+    400188: Hand_robe2
+    400190: Head_robe2
+    400192: Body_Vampire
+    400194: Foot_Vampire
+    400196: Hand_Vampire
+    400198: Head_Vampire
+    400200: Body_hawaii
+    400202: Foot_hawii
+    400204: Hand_hawaii
+    400206: Head_hawaii
+    400208: Foot_hawaii
+    400210: Body_servant
+    400212: BodyRig 1
+    400214: Foot_servant
+    400216: Hand_servant
+    400218: Head_servant
+    400220: Body_hanbok
+    400222: Foot_hanbok
+    400224: Hand_hanbok
+    400226: Head_hanbok
+    400228: Body_LV80
+    400230: Clavicle_LV80
+    400232: Foot_LV80
+    400234: Hand_LV80
+    400236: Head_LV80
+    400238: Body_gold
+    400240: Foot_gold
+    400242: Hand_gold
+    400244: Head_gold
+    400246: Body_corsair
+    400248: Body_ghost
+    400250: Body_pumpkin
+    400252: Foot_corsair
+    400254: Foot_pumpkin
+    400256: Hand_corsair
+    400258: Hand_ghost
+    400260: Hand_pumpkin
+    400262: Head_corsair
+    400264: Head_ghost
+    400266: Head_pumpkin
+    400268: Foot_ghost
+    400270: Body_gunner
+    400272: Foot_gunner
+    400274: Hand_gunner
+    400276: Head_gunner
+    400278: Body_turkey
+    400280: Foot_turkey
+    400282: Hand_turkey
+    400284: Head_turkey
+    400286: Body_holy
+    400288: Foot_holy
+    400290: Hand_holy
+    400292: Head_holy
+    400294: Body_LV65
+    400296: Clavicle_LV65
+    400298: Foot_LV65
+    400300: Hand_LV65
+    400302: Head_LV65
+    400304: Body_chmas
+    400306: Foot_chmas
+    400308: Hand_chmas
+    400310: Head_chmas
+    400312: Body_ice
+    400314: Foot_ice
+    400316: Hand_ice
+    400318: Head_ice
+    400320: Body_blood
+    400322: Foot_blood
+    400324: Hand_blood
+    400326: Head_blood
+    400328: Body_newyear
+    400330: Foot_newyear
+    400332: Hand_newyear
+    400334: Head_newyear
+    400336: Body_LV90
+    400338: Clavicle_LV90
+    400340: Foot_LV90
+    400342: Hand_LV90
+    400344: Head_LV90
+    400346: Body_wday
+    400348: Foot_wday
+    400350: Hand_wday
+    400352: Head_wday
+    400354: Body_wedding
+    400356: Foot_wedding
+    400358: Hand_wedding
+    400360: Head_wedding
+    400362: Body_samurai
+    400364: Foot_samurai
+    400366: Hand_samurai
+    400368: Head_samurai
+    400370: Body_marry
+    400372: Body_marry02
+    400374: Foot_marry
+    400376: Foot_marry02
+    400378: Hand_marry
+    400380: Hand_marry02
+    400382: Head_marry
+    400384: Head_marry02
+    400386: body_commemorate
+    400388: foot_commemorate
+    400390: hand_commemorate
+    400392: head_commemorate
+    400394: Body_dream
+    400396: Foot_dream
+    400398: Hand_dream
+    400400: Head_dream
+    400402: Body_XiaoFuNv01
+    400404: Body_XiaoFuNv02
+    400406: Body_XiaoFuNv03
+    400408: Foot_XiaoFuNv01
+    400410: Foot_XiaoFuNv02
+    400412: Foot_XiaoFuNv03
+    400414: Hand_XiaoFuNv01
+    400416: Hand_XiaoFuNv02
+    400418: Hand_XiaoFuNv03
+    400420: Head_XiaoFuNv01
+    400422: Head_XiaoFuNv02
+    400424: Head_XiaoFuNv03
+    400426: Body_xiaofunv01
+    400428: Body_xiaofunv02
+    400430: Body_xiaofunv03
+    400432: Foot_xiaofunv01
+    400434: Foot_xiaofunv02
+    400436: Foot_xiaofunv03
+    400438: Hand_xiaofunv01
+    400440: Hand_xiaofunv02
+    400442: Hand_xiaofunv03
+    400444: Head_xiaofunv01
+    400446: Head_xiaofunv02
+    400448: Head_xiaofunv03
+    400450: Body_yupao01
+    400452: Body_yupao02
+    400454: Foot_yupao01
+    400456: Foot_yupao02
+    400458: Hand_yupao01
+    400460: Hand_yupao02
+    400462: Head_yupao01
+    400464: Head_yupao02
+    400466: Head_nvzhanshi01
+    400468: Head_nvzhanshi02
+    400470: Head_nvzhanshi03
+    400472: Body_longjia
+    400474: Clavicle_longjia
+    400476: Foot_longjia
+    400478: Hand_longjia
+    400480: Body_geju
+    400482: Foot_geju
+    400484: Hand_geju
+    400486: Head_geju
+    400488: Body_zhongqiu
+    400490: Foot_zhongqiu
+    400492: Hand_zhongqiu
+    400494: Head_zhongqiu
+    400496: Body_feather
+    400498: Clavicle_feather
+    400500: Foot_feather
+    400502: Haed_feather
+    400504: Hand_feather
+    400506: Head_feather
+    400508: Body_halloween
+    400510: Foot_halloween
+    400512: Hand_halloween
+    400514: Head_halloween
+    400516: Body_halikunxiaochou1
+    400518: Body_halikunxiaochou2
+    400520: Foot_halikunxiaochou1
+    400522: Foot_halikunxiaochou2
+    400524: Hand_halikunxiaochou1
+    400526: Hand_halikunxiaochou2
+    400528: Head_halikunxiaochou1
+    400530: Head_halikunxiaochou2
+    400532: Body_blackQQ
+    400534: Body_blueQQ
+    400536: Foot_blackQQ
+    400538: Foot_blueQQ
+    400540: Hand_blackQQ
+    400542: Hand_blueQQ
+    400544: Head_blackQQ
+    400546: Head_blueQQ
+    400548: Body_bmcandy
+    400550: Body_bmchocolate
+    400552: Foot_bmcandy
+    400554: Foot_bmchocolate
+    400556: Hand_bmcandy
+    400558: Hand_bmchocolate
+    400560: Head_bmcandy
+    400562: Head_bmchocolate
+    4300000: Foot_LV20
+    4300002: Body_LV20
+    4300004: Hand_LV20
+    4300006: Body_LV00
+    4300008: Foot_LV00
+    4300010: Hand_LV00
+    4300012: Clavicle_LV20
+    4300014: Foot_LV100
+    4300016: Body_LV100
+    4300018: Hand_LV100
+    4300020: Clavicle_LV100
+    4300022: Body_LV10
+    4300024: Hand_LV10
+    4300026: Foot_LV10
+    4300028: Clavicle_LV10
+    4300030: Clavicle_LV30
+    4300032: Hand_LV30
+    4300034: Body_LV30
+    4300036: Foot_LV30
+    4300038: Body_LV40
+    4300040: Clavicle_LV40
+    4300042: Hand_LV40
+    4300044: Foot_LV40
+    4300046: Head_LV30
+    4300048: Head_LV00
+    4300050: Head_LV100
+    4300052: Head_LV10
+    4300054: Head_LV40
+    4300056: Head_LV20
+    4300058: Head_RobinHood
+    4300060: Foot_RobinHood
+    4300062: Body_RobinHood
+    4300064: Hand_RobinHood
+    4300066: Body_Magician
+    4300068: Head_Magician
+    4300070: Hand_Magician
+    4300072: Foot_Magician
+    4300074: Head_ViKing
+    4300076: Hand_ViKing
+    4300078: Body_ViKing
+    4300080: Foot_ViKing
+    4300082: Body_Pirate
+    4300084: Head_Pirate
+    4300086: Foot_Pirate
+    4300088: Hand_Pirate
+    4300090: Head_Strem
+    4300092: Hand_Strem
+    4300094: Foot_Strem
+    4300096: Body_Strem
+    4300098: EF_F_Strem
+    4300100: Head_LV50
+    4300102: Body_LV70
+    4300104: Clavicle_LV70
+    4300106: Hand_LV70
+    4300108: Foot_LV70
+    4300110: Head_robe
+    4300112: Body_robe
+    4300114: Hand_robe
+    4300116: Foot_robe
+    4300118: Head_LV70
+    4300120: Head_robe2
+    4300122: Body_robe2
+    4300124: Hand_robe2
+    4300126: Foot_robe2
+    4300128: Body_Vampire
+    4300130: Head_Vampire
+    4300132: Foot_Vampire
+    4300134: Hand_Vampire
+    4300136: Head_hawaii
+    4300138: Body_hawaii
+    4300140: Hand_hawaii
+    4300142: Foot_hawii
+    4300144: Foot_hawaii
+    4300146: Head_servant
+    4300148: Body_servant
+    4300150: Hand_servant
+    4300152: Foot_servant
+    4300154: Head_hanbok
+    4300156: Body_hanbok
+    4300158: Hand_hanbok
+    4300160: Foot_hanbok
+    4300162: Hand_LV80
+    4300164: Body_LV80
+    4300166: Clavicle_LV80
+    4300168: Foot_LV80
+    4300170: Head_LV80
+    4300172: Body_gold
+    4300174: Head_gold
+    4300176: Hand_gold
+    4300178: Foot_gold
+    4300180: Head_corsair
+    4300182: Hand_corsair
+    4300184: Foot_corsair
+    4300186: Body_corsair
+    4300188: Body_pumpkin
+    4300190: Head_pumpkin
+    4300192: Hand_pumpkin
+    4300194: Foot_pumpkin
+    4300196: Body_ghost
+    4300198: Hand_ghost
+    4300200: Head_ghost
+    4300202: Hand_gunner
+    4300204: Body_gunner
+    4300206: Foot_gunner
+    4300208: Head_gunner
+    4300210: Hand_turkey
+    4300212: Head_turkey
+    4300214: Body_turkey
+    4300216: Foot_turkey
+    4300218: Head_holy
+    4300220: Body_holy
+    4300222: Hand_holy
+    4300224: Body_LV65
+    4300226: Hand_LV65
+    4300228: Foot_LV65
+    4300230: Clavicle_LV65
+    4300232: Head_LV65
+    4300234: Hand_chmas
+    4300236: Head_chmas
+    4300238: Body_chmas
+    4300240: Foot_chmas
+    4300242: Head_ice
+    4300244: Body_ice
+    4300246: Foot_ice
+    4300248: Hand_ice
+    4300250: Hand_blood
+    4300252: Body_blood
+    4300254: Foot_blood
+    4300256: Head_blood
+    4300258: Hand_newyear
+    4300260: Head_newyear
+    4300262: Body_newyear
+    4300264: Foot_newyear
+    4300266: Hand_LV90
+    4300268: Clavicle_LV90
+    4300270: Body_LV90
+    4300272: Foot_LV90
+    4300274: Head_LV90
+    4300276: Head_wday
+    4300278: Body_wday
+    4300280: Hand_wday
+    4300282: Foot_wday
+    4300284: Head_wedding
+    4300286: Body_wedding
+    4300288: Hand_wedding
+    4300290: Foot_wedding
+    4300292: Head_samurai
+    4300294: Hand_samurai
+    4300296: Foot_samurai
+    4300298: Body_samurai
+    4300300: Head_marry
+    4300302: Hand_marry
+    4300304: Body_marry
+    4300306: Head_marry02
+    4300308: Hand_marry02
+    4300310: Body_marry02
+    4300312: head_commemorate
+    4300314: body_commemorate
+    4300316: hand_commemorate
+    4300318: foot_commemorate
+    4300320: Body_dream
+    4300322: Head_dream
+    4300324: Hand_dream
+    4300326: Foot_dream
+    4300328: Head_XiaoFuNv01
+    4300330: Body_XiaoFuNv01
+    4300332: Hand_XiaoFuNv01
+    4300334: Foot_XiaoFuNv01
+    4300336: Head_XiaoFuNv02
+    4300338: Body_XiaoFuNv02
+    4300340: Hand_XiaoFuNv02
+    4300342: Foot_XiaoFuNv02
+    4300344: Body_XiaoFuNv03
+    4300346: Hand_XiaoFuNv03
+    4300348: Foot_XiaoFuNv03
+    4300350: Head_XiaoFuNv03
+    4300352: Head_xiaofunv01
+    4300354: Body_xiaofunv01
+    4300356: Hand_xiaofunv01
+    4300358: Foot_xiaofunv01
+    4300360: Head_xiaofunv02
+    4300362: Body_xiaofunv02
+    4300364: Hand_xiaofunv02
+    4300366: Foot_xiaofunv02
+    4300368: Body_xiaofunv03
+    4300370: Hand_xiaofunv03
+    4300372: Foot_xiaofunv03
+    4300374: Head_xiaofunv03
+    4300376: Foot_yupao01
+    4300378: Head_yupao01
+    4300380: Body_yupao01
+    4300382: Hand_yupao01
+    4300384: Foot_yupao02
+    4300386: Head_yupao02
+    4300388: Body_yupao02
+    4300390: Hand_yupao02
+    4300392: Head_nvzhanshi01
+    4300394: Head_nvzhanshi02
+    4300396: Head_nvzhanshi03
+    4300398: Body_longjia
+    4300400: Clavicle_longjia
+    4300402: Hand_longjia
+    4300404: Foot_longjia
+    4300406: Body_geju
+    4300408: Hand_geju
+    4300410: Foot_geju
+    4300412: Head_geju
+    4300414: Head_zhongqiu
+    4300416: Body_zhongqiu
+    4300418: Hand_zhongqiu
+    4300420: Foot_zhongqiu
+    4300422: Body_feather
+    4300424: Haed_feather
+    4300426: Clavicle_feather
+    4300428: Hand_feather
+    4300430: Foot_feather
+    4300432: Head_feather
+    4300434: Head_halloween
+    4300436: Body_halloween
+    4300438: Hand_halloween
+    4300440: Foot_halloween
+    4300442: Body_halikunxiaochou1
+    4300444: Head_halikunxiaochou1
+    4300446: Hand_halikunxiaochou1
+    4300448: Foot_halikunxiaochou1
+    4300450: Head_halikunxiaochou2
+    4300452: Body_halikunxiaochou2
+    4300454: Hand_halikunxiaochou2
+    4300456: Foot_halikunxiaochou2
+    4300458: Body_blackQQ
+    4300460: Head_blackQQ
+    4300462: Hand_blackQQ
+    4300464: Foot_blackQQ
+    4300466: Body_blueQQ
+    4300468: Hand_blueQQ
+    4300470: Foot_blueQQ
+    4300472: Head_blueQQ
+    4300474: Body_bmcandy
+    4300476: Foot_bmcandy
+    4300478: Hand_bmcandy
+    4300480: Head_bmcandy
+    4300482: Body_bmchocolate
+    4300484: Head_bmchocolate
+    4300486: Hand_bmchocolate
+    4300488: Foot_bmchocolate
+    9500000: //RootNode
+    13700000: Body_LV00
+    13700002: Body_LV10
+    13700004: Body_LV100
+    13700006: Body_LV20
+    13700008: Body_LV30
+    13700010: Body_LV40
+    13700012: Clavicle_LV10
+    13700014: Clavicle_LV100
+    13700016: Clavicle_LV20
+    13700018: Clavicle_LV30
+    13700020: Clavicle_LV40
+    13700022: Foot_LV00
+    13700024: Foot_LV10
+    13700026: Foot_LV100
+    13700028: Foot_LV20
+    13700030: Foot_LV30
+    13700032: Foot_LV40
+    13700034: Hand_LV00
+    13700036: Hand_LV10
+    13700038: Hand_LV100
+    13700040: Hand_LV20
+    13700042: Hand_LV30
+    13700044: Hand_LV40
+    13700046: Head_LV00
+    13700048: Head_LV10
+    13700050: Head_LV100
+    13700052: Head_LV20
+    13700054: Head_LV30
+    13700056: Head_LV40
+    13700058: Body_RobinHood
+    13700060: Foot_RobinHood
+    13700062: Hand_RobinHood
+    13700064: Head_RobinHood
+    13700066: Body_Magician
+    13700068: Foot_Magician
+    13700070: Hand_Magician
+    13700072: Head_Magician
+    13700074: Body_ViKing
+    13700076: Foot_ViKing
+    13700078: Hand_ViKing
+    13700080: Head_ViKing
+    13700082: Body_Pirate
+    13700084: Foot_Pirate
+    13700086: Hand_Pirate
+    13700088: Head_Pirate
+    13700090: Body_Strem
+    13700092: EF_F_Strem
+    13700094: Foot_Strem
+    13700096: Hand_Strem
+    13700098: Head_LV50
+    13700100: Head_Strem
+    13700102: Body_LV70
+    13700104: Clavicle_LV70
+    13700106: Foot_LV70
+    13700108: Hand_LV70
+    13700110: Head_LV70
+    13700112: Body_robe
+    13700114: Foot_robe
+    13700116: Hand_robe
+    13700118: Head_robe
+    13700120: Body_robe2
+    13700122: Foot_robe2
+    13700124: Hand_robe2
+    13700126: Head_robe2
+    13700128: Body_Vampire
+    13700130: Foot_Vampire
+    13700132: Hand_Vampire
+    13700134: Head_Vampire
+    13700136: Body_hawaii
+    13700138: Foot_hawii
+    13700140: Hand_hawaii
+    13700142: Head_hawaii
+    13700144: Foot_hawaii
+    13700146: Body_servant
+    13700148: Foot_servant
+    13700150: Hand_servant
+    13700152: Head_servant
+    13700154: Body_hanbok
+    13700156: Foot_hanbok
+    13700158: Hand_hanbok
+    13700160: Head_hanbok
+    13700162: Body_LV80
+    13700164: Clavicle_LV80
+    13700166: Foot_LV80
+    13700168: Hand_LV80
+    13700170: Head_LV80
+    13700172: Body_gold
+    13700174: Foot_gold
+    13700176: Hand_gold
+    13700178: Head_gold
+    13700180: Body_corsair
+    13700182: Body_ghost
+    13700184: Body_pumpkin
+    13700186: Foot_corsair
+    13700188: Foot_pumpkin
+    13700190: Hand_corsair
+    13700192: Hand_ghost
+    13700194: Hand_pumpkin
+    13700196: Head_corsair
+    13700198: Head_ghost
+    13700200: Head_pumpkin
+    13700202: Body_gunner
+    13700204: Foot_gunner
+    13700206: Hand_gunner
+    13700208: Head_gunner
+    13700210: Body_turkey
+    13700212: Foot_turkey
+    13700214: Hand_turkey
+    13700216: Head_turkey
+    13700218: Body_holy
+    13700220: Hand_holy
+    13700222: Head_holy
+    13700224: Body_LV65
+    13700226: Clavicle_LV65
+    13700228: Foot_LV65
+    13700230: Hand_LV65
+    13700232: Head_LV65
+    13700234: Body_chmas
+    13700236: Foot_chmas
+    13700238: Hand_chmas
+    13700240: Head_chmas
+    13700242: Body_ice
+    13700244: Foot_ice
+    13700246: Hand_ice
+    13700248: Head_ice
+    13700250: Body_blood
+    13700252: Foot_blood
+    13700254: Hand_blood
+    13700256: Head_blood
+    13700258: Body_newyear
+    13700260: Foot_newyear
+    13700262: Hand_newyear
+    13700264: Head_newyear
+    13700266: Body_LV90
+    13700268: Clavicle_LV90
+    13700270: Foot_LV90
+    13700272: Hand_LV90
+    13700274: Head_LV90
+    13700276: Body_wday
+    13700278: Foot_wday
+    13700280: Hand_wday
+    13700282: Head_wday
+    13700284: Body_wedding
+    13700286: Foot_wedding
+    13700288: Hand_wedding
+    13700290: Head_wedding
+    13700292: Body_samurai
+    13700294: Foot_samurai
+    13700296: Hand_samurai
+    13700298: Head_samurai
+    13700300: Body_marry
+    13700302: Body_marry02
+    13700304: Hand_marry
+    13700306: Hand_marry02
+    13700308: Head_marry
+    13700310: Head_marry02
+    13700312: body_commemorate
+    13700314: foot_commemorate
+    13700316: hand_commemorate
+    13700318: head_commemorate
+    13700320: Body_dream
+    13700322: Foot_dream
+    13700324: Hand_dream
+    13700326: Head_dream
+    13700328: Body_XiaoFuNv01
+    13700330: Body_XiaoFuNv02
+    13700332: Body_XiaoFuNv03
+    13700334: Foot_XiaoFuNv01
+    13700336: Foot_XiaoFuNv02
+    13700338: Foot_XiaoFuNv03
+    13700340: Hand_XiaoFuNv01
+    13700342: Hand_XiaoFuNv02
+    13700344: Hand_XiaoFuNv03
+    13700346: Head_XiaoFuNv01
+    13700348: Head_XiaoFuNv02
+    13700350: Head_XiaoFuNv03
+    13700352: Body_xiaofunv01
+    13700354: Body_xiaofunv02
+    13700356: Body_xiaofunv03
+    13700358: Foot_xiaofunv01
+    13700360: Foot_xiaofunv02
+    13700362: Foot_xiaofunv03
+    13700364: Hand_xiaofunv01
+    13700366: Hand_xiaofunv02
+    13700368: Hand_xiaofunv03
+    13700370: Head_xiaofunv01
+    13700372: Head_xiaofunv02
+    13700374: Head_xiaofunv03
+    13700376: Body_yupao01
+    13700378: Body_yupao02
+    13700380: Foot_yupao01
+    13700382: Foot_yupao02
+    13700384: Hand_yupao01
+    13700386: Hand_yupao02
+    13700388: Head_yupao01
+    13700390: Head_yupao02
+    13700392: Head_nvzhanshi01
+    13700394: Head_nvzhanshi02
+    13700396: Head_nvzhanshi03
+    13700398: Body_longjia
+    13700400: Clavicle_longjia
+    13700402: Foot_longjia
+    13700404: Hand_longjia
+    13700406: Body_geju
+    13700408: Foot_geju
+    13700410: Hand_geju
+    13700412: Head_geju
+    13700414: Body_zhongqiu
+    13700416: Foot_zhongqiu
+    13700418: Hand_zhongqiu
+    13700420: Head_zhongqiu
+    13700422: Body_feather
+    13700424: Clavicle_feather
+    13700426: Foot_feather
+    13700428: Haed_feather
+    13700430: Hand_feather
+    13700432: Head_feather
+    13700434: Body_halloween
+    13700436: Foot_halloween
+    13700438: Hand_halloween
+    13700440: Head_halloween
+    13700442: Body_halikunxiaochou1
+    13700444: Body_halikunxiaochou2
+    13700446: Foot_halikunxiaochou1
+    13700448: Foot_halikunxiaochou2
+    13700450: Hand_halikunxiaochou1
+    13700452: Hand_halikunxiaochou2
+    13700454: Head_halikunxiaochou1
+    13700456: Head_halikunxiaochou2
+    13700458: Body_blackQQ
+    13700460: Body_blueQQ
+    13700462: Foot_blackQQ
+    13700464: Foot_blueQQ
+    13700466: Hand_blackQQ
+    13700468: Hand_blueQQ
+    13700470: Head_blackQQ
+    13700472: Head_blueQQ
+    13700474: Body_bmcandy
+    13700476: Body_bmchocolate
+    13700478: Foot_bmcandy
+    13700480: Foot_bmchocolate
+    13700482: Hand_bmcandy
+    13700484: Hand_bmchocolate
+    13700486: Head_bmcandy
+    13700488: Head_bmchocolate
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: Hips
+      humanName: Hips
+      limit:
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
+        value: {x: .0895641893, y: 0, z: .0447820947}
+        length: .11195527
+        modified: 1
+    - boneName: L_Upper_Leg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: -60.0000038, y: -60.0000038, z: -90}
+        max: {x: 60.0000038, y: 60.0000038, z: 50}
+        value: {x: .355459452, y: 0, z: .177729726}
+        length: .444324464
+        modified: 1
+    - boneName: R_Upper_Leg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: -60.0000038, y: -60.0000038, z: -90}
+        max: {x: 60.0000038, y: 60.0000038, z: 50}
+        value: {x: .355460614, y: 0, z: .177730307}
+        length: .444325924
+        modified: 1
+    - boneName: L_Lower_Leg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
+        value: {x: .310629487, y: 0, z: .155314744}
+        length: .388287008
+        modified: 1
+    - boneName: R_Lower_Leg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
+        value: {x: .310629517, y: 0, z: .155314758}
+        length: .388287038
+        modified: 1
+    - boneName: L_Foot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: -30.0000019, z: -50}
+        max: {x: 0, y: 30.0000019, z: 50}
+        value: {x: .0924460813, y: 0, z: .0462230407}
+        length: .115557641
+        modified: 1
+    - boneName: R_Foot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: -30.0000019, z: -50}
+        max: {x: 0, y: 30.0000019, z: 50}
+        value: {x: .0924459398, y: 0, z: .0462229699}
+        length: .115557462
+        modified: 1
+    - boneName: Spine
+      humanName: Spine
+      limit:
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
+        value: {x: .0978785083, y: 0, z: .0489392541}
+        length: .122348167
+        modified: 1
+    - boneName: Chest
+      humanName: Chest
+      limit:
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
+        value: {x: .19254829, y: 0, z: .0962741449}
+        length: .240685433
+        modified: 1
+    - boneName: Neck
+      humanName: Neck
+      limit:
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
+        value: {x: .0565973483, y: 0, z: .0282986742}
+        length: .0707467049
+        modified: 1
+    - boneName: Head
+      humanName: Head
+      limit:
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
+        value: {x: .0565973483, y: 0, z: .0282986742}
+        length: .0707467049
+        modified: 1
+    - boneName: L_Shoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: -15.000001, z: -15.000001}
+        max: {x: 0, y: 15.000001, z: 30.0000019}
+        value: {x: .0815311223, y: 0, z: .0407655612}
+        length: .101913936
+        modified: 1
+    - boneName: R_Shoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: -15.000001, z: -15.000001}
+        max: {x: 0, y: 15.000001, z: 30.0000019}
+        value: {x: .0815312117, y: 0, z: .0407656059}
+        length: .101914048
+        modified: 1
+    - boneName: L_Upper_Arm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: -90, y: -100, z: -60.0000038}
+        max: {x: 90, y: 100, z: 100}
+        value: {x: .220446989, y: 0, z: .110223494}
+        length: .2755588
+        modified: 1
+    - boneName: R_Upper_Arm
+      humanName: RightUpperArm
+      limit:
+        min: {x: -90, y: -100, z: -60.0000038}
+        max: {x: 90, y: 100, z: 100}
+        value: {x: .220446408, y: 0, z: .110223204}
+        length: .275558084
+        modified: 1
+    - boneName: L_Lower_Arm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
+        value: {x: .176731348, y: 0, z: .088365674}
+        length: .22091426
+        modified: 1
+    - boneName: R_Lower_Arm
+      humanName: RightLowerArm
+      limit:
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
+        value: {x: .176731303, y: 0, z: .0883656517}
+        length: .2209142
+        modified: 1
+    - boneName: L_Hand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: -40, z: -80}
+        max: {x: 0, y: 40, z: 80}
+        value: {x: .088365674, y: 0, z: .044182837}
+        length: .11045713
+        modified: 1
+    - boneName: R_Hand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: -40, z: -80}
+        max: {x: 0, y: 40, z: 80}
+        value: {x: .0883656517, y: 0, z: .0441828258}
+        length: .1104571
+        modified: 1
+    - boneName: L_Toes
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: -50}
+        max: {x: 0, y: 0, z: 50}
+        value: {x: .069587402, y: 0, z: .034793701}
+        length: .0869842842
+        modified: 1
+    - boneName: R_Toes
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: -50}
+        max: {x: 0, y: 0, z: 50}
+        value: {x: .0695873126, y: 0, z: .0347936563}
+        length: .0869841725
+        modified: 1
+    - boneName: Back_Hair_00
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: -20, z: -10}
+        max: {x: 0, y: 20, z: 15.000001}
+        value: {x: .0799999759, y: 0, z: .0399999879}
+        length: .100000001
+        modified: 1
+    skeleton:
+    - name: Female
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: .99999994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: BodyRig
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -.707106769, y: 0, z: -0, w: .707106769}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Hips
+      position: {x: -1.26826201e-14, y: -1.12340899e-07, z: .938056648}
+      rotation: {x: .707106769, y: -9.27230701e-07, z: -.707106769, w: -9.27230701e-07}
+      scale: {x: 1.00000048, y: 1.00000036, z: 1.00000036}
+      transformModified: 1
+    - name: L_Upper_Leg
+      position: {x: 1.91669437e-06, y: 1.38093057e-07, z: .0783951283}
+      rotation: {x: -.00726655452, y: .996947646, z: .0608540475, w: .0483659059}
+      scale: {x: .999998629, y: .999998689, z: .999998093}
+      transformModified: 1
+    - name: L_Lower_Leg
+      position: {x: -.44432494, y: 5.46514229e-08, z: 2.16633296e-07}
+      rotation: {x: 1.50241078e-06, y: 7.65762298e-09, z: .0998336077, w: .995004117}
+      scale: {x: 1.0000006, y: 1.00000179, z: .99999994}
+      transformModified: 1
+    - name: L_Foot
+      position: {x: -.388287097, y: 5.23554391e-08, z: -9.05993716e-08}
+      rotation: {x: -.0102924509, y: .0489452891, z: -.0888342634, w: .994789839}
+      scale: {x: 1.00000048, y: 1.00000048, z: .999999881}
+      transformModified: 1
+    - name: L_Toes
+      position: {x: -.105634794, y: .138225541, z: -4.23023359e-08}
+      rotation: {x: 1.06475348e-07, y: -5.15753555e-08, z: -.707106769, w: .707106709}
+      scale: {x: .999999404, y: 1.00000036, z: 1.00000048}
+      transformModified: 1
+    - name: R_Upper_Leg
+      position: {x: 5.86700935e-07, y: -5.71363437e-08, z: -.0783952698}
+      rotation: {x: -.00726636779, y: .996947706, z: -.060853947, w: -.0483656861}
+      scale: {x: 1, y: .999999583, z: .999999285}
+      transformModified: 1
+    - name: R_Lower_Leg
+      position: {x: -.444325864, y: 1.53729943e-07, z: -3.47330058e-08}
+      rotation: {x: -7.91640844e-07, y: 7.06748082e-08, z: .0998333693, w: .995004117}
+      scale: {x: .999997914, y: 1.00000024, z: .999999702}
+      transformModified: 1
+    - name: R_Foot
+      position: {x: -.388287663, y: 2.58341064e-08, z: 1.16284141e-07}
+      rotation: {x: .0102930563, y: -.0489452668, z: -.0888341442, w: .994789839}
+      scale: {x: .999999702, y: 1.00000024, z: .99999994}
+      transformModified: 1
+    - name: R_Toes
+      position: {x: -.105634741, y: .138225645, z: -4.87739875e-08}
+      rotation: {x: -1.30445812e-07, y: -2.35812905e-07, z: -.707106709, w: .707106769}
+      scale: {x: 1.00000072, y: 1.0000006, z: .99999994}
+      transformModified: 1
+    - name: Spine
+      position: {x: -.11137253, y: .0114074042, z: -2.99170928e-08}
+      rotation: {x: -1.14573015e-06, y: -1.27770477e-07, z: .0502894036, w: .998734653}
+      scale: {x: 1.0000006, y: .999999523, z: .999999881}
+      transformModified: 1
+    - name: Chest
+      position: {x: -.122347929, y: -.000189108556, z: 2.16305551e-08}
+      rotation: {x: -3.58223673e-07, y: -4.53720723e-08, z: .0794258863, w: .996840715}
+      scale: {x: 1.00000036, y: 1.00000083, z: .999999881}
+      transformModified: 1
+    - name: L_Shoulder
+      position: {x: -.231215537, y: -.0025083581, z: .0273580942}
+      rotation: {x: -.581665039, y: -.000232542254, z: .813428223, w: -.00032320834}
+      scale: {x: .999999881, y: .999999285, z: .999999344}
+      transformModified: 1
+    - name: L_Upper_Arm
+      position: {x: -.101913802, y: -1.05363149e-07, z: 2.16337938e-07}
+      rotation: {x: .153451994, y: .148288593, z: -.0285855923, w: .976547897}
+      scale: {x: .999998987, y: 1.00000036, z: 1.00000048}
+      transformModified: 1
+    - name: L_Lower_Arm
+      position: {x: -.27555877, y: 6.88295714e-08, z: 2.17093387e-07}
+      rotation: {x: -.00219330704, y: .0115246251, z: .0349446014, w: .999320328}
+      scale: {x: 1.00000012, y: .999999464, z: .999999881}
+      transformModified: 1
+    - name: L_Hand
+      position: {x: -.22091426, y: 1.83235215e-07, z: -2.84139965e-08}
+      rotation: {x: .673597455, y: .0581957363, z: .056282457, w: -.73465091}
+      scale: {x: 1, y: .99999994, z: .999999583}
+      transformModified: 1
+    - name: L_Weapon
+      position: {x: -.0886242688, y: -.000327758782, z: 5.71823111e-05}
+      rotation: {x: -.0675206855, y: .711341321, z: -.699568689, w: .00616097823}
+      scale: {x: .999999046, y: 1.00000072, z: 1.0000006}
+      transformModified: 1
+    - name: Neck
+      position: {x: -.24068512, y: -4.87666766e-05, z: -6.46553175e-08}
+      rotation: {x: 1.05294612e-06, y: -7.42685984e-07, z: .262763709, w: -.964860141}
+      scale: {x: .999998868, y: 1.00000012, z: .999999106}
+      transformModified: 1
+    - name: Head
+      position: {x: -.0707467049, y: -3.9633764e-07, z: -1.18584582e-08}
+      rotation: {x: -2.11606348e-07, y: -2.45000678e-07, z: .0627790689, w: .998027384}
+      scale: {x: 1.00000131, y: 1.00000131, z: 1.00000131}
+      transformModified: 1
+    - name: Back_Hair_00
+      position: {x: -.105666362, y: -.108734585, z: 2.72420209e-07}
+      rotation: {x: .0198752787, y: -.999802411, z: 7.11966493e-07, w: 1.92080938e-06}
+      scale: {x: 1, y: 1.00000012, z: .999999642}
+      transformModified: 1
+    - name: Back_Hair_01
+      position: {x: -.0833177343, y: -3.29095897e-08, z: -4.17581525e-08}
+      rotation: {x: -1.23491952e-06, y: -1.35445717e-08, z: .00492531806, w: .999987841}
+      scale: {x: .999999523, y: .999998808, z: .999999642}
+      transformModified: 1
+    - name: Back_Hair_02
+      position: {x: -.11022035, y: -3.53180297e-07, z: -2.04820225e-07}
+      rotation: {x: 2.04873413e-06, y: -1.51618138e-07, z: -.0420274287, w: .999116421}
+      scale: {x: 1.0000006, y: 1.00000095, z: 1.00000072}
+      transformModified: 1
+    - name: R_Shoulder
+      position: {x: -.231216311, y: -.00250794366, z: -.0273583662}
+      rotation: {x: .581666231, y: .000230622682, z: .813427389, w: -.000324370834}
+      scale: {x: 1.00000024, y: 1.00000072, z: .999999821}
+      transformModified: 1
+    - name: R_Upper_Arm
+      position: {x: -.101913884, y: 1.18027067e-07, z: 5.87046713e-08}
+      rotation: {x: .153450921, y: .148286864, z: .0285854246, w: -.976548314}
+      scale: {x: .999998331, y: .999999702, z: .999999881}
+      transformModified: 1
+    - name: R_Lower_Arm
+      position: {x: -.275558084, y: 1.40881838e-07, z: -3.69050554e-07}
+      rotation: {x: -.00219252799, y: .0115242535, z: -.0349437967, w: -.999320388}
+      scale: {x: 1.00000024, y: .999999821, z: 1.00000036}
+      transformModified: 1
+    - name: R_Hand
+      position: {x: -.220914125, y: -3.87172356e-08, z: -1.31073762e-07}
+      rotation: {x: .673712671, y: .0566851757, z: -.055024907, w: .734758615}
+      scale: {x: .999999642, y: .999998927, z: .999999285}
+      transformModified: 1
+    - name: R_Weapon
+      position: {x: -.0886325836, y: -9.5367426e-08, z: -9.15527323e-07}
+      rotation: {x: .521445692, y: -.480354637, z: -.492261738, w: .505007029}
+      scale: {x: 1.00000048, y: 1.00000036, z: .999999642}
+      transformModified: 1
+    - name: Wing
+      position: {x: -.193241566, y: -.0756283179, z: 1.10460672e-08}
+      rotation: {x: -.43081677, y: .560711026, z: .43081677, w: .560711026}
+      scale: {x: 1.00000012, y: .999999523, z: .999999881}
+      transformModified: 1
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  additionalBone: 1
+  userData: 

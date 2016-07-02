@@ -75,6 +75,7 @@ public abstract class Person : MonoBehaviour, IMapObject
     //属性部分
     public Dictionary<int, BaseAbility> attributes = new Dictionary<int, BaseAbility>();
 
+#region CharacterController needs
     //模型高度
     public float height = 2f;
 
@@ -83,6 +84,10 @@ public abstract class Person : MonoBehaviour, IMapObject
 
     //模型中心点
     public Vector3 center = Vector3.up;
+    
+    // 皮肤材质宽度（如果值太大，会影响人物的Y坐标，导致悬空的情况）
+    public float skinWidth = 0.001f;
+#endregion
 
     public long getMapId()
     {
