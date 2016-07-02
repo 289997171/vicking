@@ -10,23 +10,23 @@ public class PlayerCustomController : CustomController, IPersonController
     private Player player;
 
     #region 保存所有部位的所有装备
-    private Dictionary<string, SkinnedMeshRenderer> heads = new Dictionary<string, SkinnedMeshRenderer>();
-    private Dictionary<string, SkinnedMeshRenderer> bodys = new Dictionary<string, SkinnedMeshRenderer>();
-    private Dictionary<string, SkinnedMeshRenderer> clavicles = new Dictionary<string, SkinnedMeshRenderer>();
-    private Dictionary<string, SkinnedMeshRenderer> hands = new Dictionary<string, SkinnedMeshRenderer>();
-    private Dictionary<string, SkinnedMeshRenderer> skirts = new Dictionary<string, SkinnedMeshRenderer>();
-    private Dictionary<string, SkinnedMeshRenderer> foots = new Dictionary<string, SkinnedMeshRenderer>();
-    private Dictionary<string, SkinnedMeshRenderer> capes = new Dictionary<string, SkinnedMeshRenderer>();
+    public Dictionary<string, SkinnedMeshRenderer> heads = new Dictionary<string, SkinnedMeshRenderer>();
+    public Dictionary<string, SkinnedMeshRenderer> bodys = new Dictionary<string, SkinnedMeshRenderer>();
+    public Dictionary<string, SkinnedMeshRenderer> clavicles = new Dictionary<string, SkinnedMeshRenderer>();
+    public Dictionary<string, SkinnedMeshRenderer> hands = new Dictionary<string, SkinnedMeshRenderer>();
+    public Dictionary<string, SkinnedMeshRenderer> skirts = new Dictionary<string, SkinnedMeshRenderer>();
+    public Dictionary<string, SkinnedMeshRenderer> foots = new Dictionary<string, SkinnedMeshRenderer>();
+    public Dictionary<string, SkinnedMeshRenderer> capes = new Dictionary<string, SkinnedMeshRenderer>();
     #endregion
 
     #region 当前角色装备
-    private SkinnedMeshRenderer headRenderer;
-    private SkinnedMeshRenderer bodyRenderer;
-    private SkinnedMeshRenderer clavicleRenderer;
-    private SkinnedMeshRenderer handRenderer;
-    private SkinnedMeshRenderer skirtRenderer;
-    private SkinnedMeshRenderer footRenderer;
-    private SkinnedMeshRenderer capeRenderer;
+    public SkinnedMeshRenderer headRenderer;
+    public SkinnedMeshRenderer bodyRenderer;
+    public SkinnedMeshRenderer clavicleRenderer;
+    public SkinnedMeshRenderer handRenderer;
+    public SkinnedMeshRenderer skirtRenderer;
+    public SkinnedMeshRenderer footRenderer;
+    public SkinnedMeshRenderer capeRenderer;
     #endregion
 
     public void updated()
@@ -207,6 +207,11 @@ public class PlayerCustomController : CustomController, IPersonController
                 changeFoot(CustomController.Foot + "_" + defaultEqitem);
                 changeHand(CustomController.Hand + "_" + defaultEqitem);
             }
+        }
+
+        if (GUI.Button(new Rect(Screen.width - 110, 50, 100, 30), "自定义换装"))
+        {
+            this.playerObj.getOrAddComponent<CustomControllerTest>();
         }
     }
 }
