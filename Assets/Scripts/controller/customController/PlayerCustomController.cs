@@ -48,6 +48,7 @@ public class PlayerCustomController : CustomController, IPersonController
             rname = renderer.name;
             if (rname.StartsWith(Head + "_"))
             {
+
                 renderer.enabled = false;
                 heads.Add(rname, renderer);
             }

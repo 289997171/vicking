@@ -33,6 +33,9 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         person.center = Vector3.up;
         person.finalAbility.speed = 6f;
 
+        // 添加角色换装
+        player.getOrAddComponent<PlayerCustomController>();
+
         if (isLocalPlayer)
         {
             player.getOrAddComponent<PCWASDController>();
