@@ -13,7 +13,7 @@ public class NetMessageHandler
         {
                 #region 例子
 
-                //                case (int)Protos_Login.ResServerInfos:// 返回服务器列表
+            //                case (int)Protos_Login.ResServerInfos:// 返回服务器列表
             //                    var ResServerInfos = NetMessageBuilder.Decode<ResServerInfosMessage>( netMessage);
             //                    ResServerInfosHandler.Execute(ResServerInfos);
             //                    break;

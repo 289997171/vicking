@@ -9,6 +9,8 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public abstract class Person : MonoBehaviour, IMapObject
 {
+    private FigtAnimationController figtAnimationController;
+
     // 类型
     public const byte PERSON_PLAYER = 1;  // 玩家
     public const byte PERSON_MONSTER = 2; // 怪物
