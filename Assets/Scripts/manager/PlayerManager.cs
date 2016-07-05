@@ -65,9 +65,11 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
             // 只有主角才需要添加向服务器同步坐标请求
             person.SyncPosRotController = player.getOrAddComponent<SyncPosRotController>();
         }
-
-        // 主角，非主角，都需要添加坐标改变控制器（主角用于如，因为恐惧等情况导致的位移）
-        person.UpdateSyncPosRotController = player.getOrAddComponent<UpdateSyncPosRotController>();
+        else
+        {
+            // 主角，非主角，都需要添加坐标改变控制器（主角用于如，因为恐惧等情况导致的位移）
+            person.UpdateSyncPosRotController = player.getOrAddComponent<UpdateSyncPosRotController>();
+        }
 
         yield return 1;
 
@@ -76,6 +78,16 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
             player.getOrAddComponent<PlayerAreaController>();
             yield return 1;
         }
+
+        if (isLocalPlayer)
+        {
+            player.getOrAddComponent<SyncAnimationController>();
+        }
+        else
+        {
+            player.getOrAddComponent<UpdateSyncAnimationController>();
+        }
+        yield return 1;
 
         if (job == 1)
         {

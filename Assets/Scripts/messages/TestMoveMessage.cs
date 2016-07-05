@@ -115,17 +115,15 @@ namespace com.game.proto
       get { return _personType; }
       set { _personType = value; }
     }
-    private long _personID = default(long);
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"personID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(long))]
+    private long _personID;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"personID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public long personID
     {
       get { return _personID; }
       set { _personID = value; }
     }
-    private com.game.proto.PosRot _pr = null;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"pr", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
+    private com.game.proto.PosRot _pr;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"pr", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public com.game.proto.PosRot pr
     {
       get { return _pr; }
@@ -194,6 +192,113 @@ namespace com.game.proto
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ReqSyncAnimatorMessage")]
+  public partial class ReqSyncAnimatorMessage : global::ProtoBuf.IExtensible
+  {
+    public ReqSyncAnimatorMessage() {}
+    
+    private com.game.proto.Protos_TestMove _msgID = com.game.proto.Protos_TestMove.ReqSyncAnimator;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"msgID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(com.game.proto.Protos_TestMove.ReqSyncAnimator)]
+    public com.game.proto.Protos_TestMove msgID
+    {
+      get { return _msgID; }
+      set { _msgID = value; }
+    }
+    private com.game.proto.AnimatorInfo _animatorInfo;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"animatorInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public com.game.proto.AnimatorInfo animatorInfo
+    {
+      get { return _animatorInfo; }
+      set { _animatorInfo = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResSyncAnimatorMessage")]
+  public partial class ResSyncAnimatorMessage : global::ProtoBuf.IExtensible
+  {
+    public ResSyncAnimatorMessage() {}
+    
+    private com.game.proto.Protos_TestMove _msgID = com.game.proto.Protos_TestMove.ResSyncAnimator;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"msgID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(com.game.proto.Protos_TestMove.ResSyncAnimator)]
+    public com.game.proto.Protos_TestMove msgID
+    {
+      get { return _msgID; }
+      set { _msgID = value; }
+    }
+    private long _playerID;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"playerID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long playerID
+    {
+      get { return _playerID; }
+      set { _playerID = value; }
+    }
+    private com.game.proto.AnimatorInfo _animatorInfo;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"animatorInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public com.game.proto.AnimatorInfo animatorInfo
+    {
+      get { return _animatorInfo; }
+      set { _animatorInfo = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AnimatorInfo")]
+  public partial class AnimatorInfo : global::ProtoBuf.IExtensible
+  {
+    public AnimatorInfo() {}
+    
+    private float _h = default(float);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"h", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue(default(float))]
+    public float h
+    {
+      get { return _h; }
+      set { _h = value; }
+    }
+    private float _v = default(float);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"v", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue(default(float))]
+    public float v
+    {
+      get { return _v; }
+      set { _v = value; }
+    }
+    private bool _runing = default(bool);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"runing", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(default(bool))]
+    public bool runing
+    {
+      get { return _runing; }
+      set { _runing = value; }
+    }
+    private bool _inAttack = default(bool);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"inAttack", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(default(bool))]
+    public bool inAttack
+    {
+      get { return _inAttack; }
+      set { _inAttack = value; }
+    }
+    private bool _havaTarget = default(bool);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"havaTarget", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(default(bool))]
+    public bool havaTarget
+    {
+      get { return _havaTarget; }
+      set { _havaTarget = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"Protos_TestMove")]
     public enum Protos_TestMove
     {
@@ -208,7 +313,13 @@ namespace com.game.proto
       ReqSyncPosRot = 5817,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ResSyncPosRot", Value=5818)]
-      ResSyncPosRot = 5818
+      ResSyncPosRot = 5818,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ReqSyncAnimator", Value=5819)]
+      ReqSyncAnimator = 5819,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResSyncAnimator", Value=5820)]
+      ResSyncAnimator = 5820
     }
   
 }

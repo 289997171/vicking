@@ -24,6 +24,11 @@ public class NetMessageHandler
                 ResSyncPosRotHandler.Execute(resSyncPosRot);
                 break;
 
+            case (int)Protos_TestMove.ResSyncAnimator:// 返回服务器列表
+                var resSyncAnimator = NetMessageBuilder.Decode<ResSyncAnimatorMessage>(netMessage);
+                ResSyncAnimatorHandler.Execute(resSyncAnimator);
+                break;
+
             #endregion
 
             default:

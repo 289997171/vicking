@@ -109,14 +109,10 @@ public class PlayerMoveController : Moveable, IPersonController
         if (wasd && navMoveing) stopMove();
         else if (!wasd && !navMoveing)
         {
-            //animator.SetBool("run", false);
-            //animator.SetFloat("speed", 0f);
             moveAnimationController.OnIdle();
             return;
         }
 
-        //animator.SetBool("run", true);
-        //animator.SetFloat("speed", h * h + v * v);
         moveAnimationController.OnRun(h, v);
 
         if (wasd)

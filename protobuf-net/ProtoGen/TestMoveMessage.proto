@@ -9,8 +9,8 @@ enum Protos_TestMove {
 	ReqSyncPosRot				= 5817;//客户端移动时不停的同步坐标
 	ResSyncPosRot     			= 5818;//服务器广播玩家移动
 
-	ReqPing						= 5819;
-	ResPing						= 5820;
+	ReqSyncAnimator				= 5819;
+	ResSyncAnimator				= 5820;
 }
 
 
@@ -35,9 +35,9 @@ message ResSyncPosRotMessage  {
 	optional Protos_TestMove msgID = 1 [default = ResSyncPosRot]; 
 
 	optional int32 personType = 2[default = 1]; // 1:玩家 2:怪物 3：NPC 4：宠物
-    optional int64 personID = 3;
+    required int64 personID = 3;
 
-	optional PosRot  pr	= 4;  //坐标
+	required PosRot  pr	= 4;  //坐标
 	
 	optional float time = 5;  //改变坐标耗时,0的情况下，表示正常移动速度移动过去 -1，表示立刻马上位移
 	optional float speed = 6; //移动速度，0的情况下，表示正常的移动速度，（客户端缓存的速度）， > 0 如，闪现等特殊情况，使用特殊速度移动
@@ -54,10 +54,25 @@ message PosRot {
 	optional float  rotY 						= 4;  //朝向 y (transform.localEulerAngles.y，只需要考虑水平朝向)
 }
 
-message ReqPingMessage {
 
+message ReqSyncAnimatorMessage {
+	optional Protos_TestMove msgID = 1 [default = ReqSyncAnimator]; 
+
+    required AnimatorInfo animatorInfo = 3;
 }
 
-message ResPingMessage {
-	
+message ResSyncAnimatorMessage {
+	optional Protos_TestMove msgID = 1 [default = ResSyncAnimator]; 
+
+    required int64 playerID = 2;
+
+    required AnimatorInfo animatorInfo = 3;
+}
+
+message AnimatorInfo {
+	optional float h = 1;
+    optional float v = 2;
+    optional bool runing = 3;
+    optional bool inAttack = 4;
+    optional bool haveTarget = 5;
 }

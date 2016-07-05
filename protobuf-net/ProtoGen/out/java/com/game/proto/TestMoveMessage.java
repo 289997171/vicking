@@ -37,6 +37,14 @@ public final class TestMoveMessage {
      * </pre>
      */
     ResSyncPosRot(3, 5818),
+    /**
+     * <code>ReqSyncAnimator = 5819;</code>
+     */
+    ReqSyncAnimator(4, 5819),
+    /**
+     * <code>ResSyncAnimator = 5820;</code>
+     */
+    ResSyncAnimator(5, 5820),
     ;
 
     /**
@@ -63,6 +71,14 @@ public final class TestMoveMessage {
      * </pre>
      */
     public static final int ResSyncPosRot_VALUE = 5818;
+    /**
+     * <code>ReqSyncAnimator = 5819;</code>
+     */
+    public static final int ReqSyncAnimator_VALUE = 5819;
+    /**
+     * <code>ResSyncAnimator = 5820;</code>
+     */
+    public static final int ResSyncAnimator_VALUE = 5820;
 
 
     public final int getNumber() { return value; }
@@ -73,6 +89,8 @@ public final class TestMoveMessage {
         case 5816: return ResEnterMap;
         case 5817: return ReqSyncPosRot;
         case 5818: return ResSyncPosRot;
+        case 5819: return ReqSyncAnimator;
+        case 5820: return ResSyncAnimator;
         default: return null;
       }
     }
@@ -1992,19 +2010,19 @@ public final class TestMoveMessage {
      */
     int getPersonType();
 
-    // optional int64 personID = 3;
+    // required int64 personID = 3;
     /**
-     * <code>optional int64 personID = 3;</code>
+     * <code>required int64 personID = 3;</code>
      */
     boolean hasPersonID();
     /**
-     * <code>optional int64 personID = 3;</code>
+     * <code>required int64 personID = 3;</code>
      */
     long getPersonID();
 
-    // optional .com.game.proto.PosRot pr = 4;
+    // required .com.game.proto.PosRot pr = 4;
     /**
-     * <code>optional .com.game.proto.PosRot pr = 4;</code>
+     * <code>required .com.game.proto.PosRot pr = 4;</code>
      *
      * <pre>
      *坐标
@@ -2012,7 +2030,7 @@ public final class TestMoveMessage {
      */
     boolean hasPr();
     /**
-     * <code>optional .com.game.proto.PosRot pr = 4;</code>
+     * <code>required .com.game.proto.PosRot pr = 4;</code>
      *
      * <pre>
      *坐标
@@ -2020,7 +2038,7 @@ public final class TestMoveMessage {
      */
     com.game.proto.TestMoveMessage.PosRot getPr();
     /**
-     * <code>optional .com.game.proto.PosRot pr = 4;</code>
+     * <code>required .com.game.proto.PosRot pr = 4;</code>
      *
      * <pre>
      *坐标
@@ -2239,27 +2257,27 @@ public final class TestMoveMessage {
       return personType_;
     }
 
-    // optional int64 personID = 3;
+    // required int64 personID = 3;
     public static final int PERSONID_FIELD_NUMBER = 3;
     private long personID_;
     /**
-     * <code>optional int64 personID = 3;</code>
+     * <code>required int64 personID = 3;</code>
      */
     public boolean hasPersonID() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional int64 personID = 3;</code>
+     * <code>required int64 personID = 3;</code>
      */
     public long getPersonID() {
       return personID_;
     }
 
-    // optional .com.game.proto.PosRot pr = 4;
+    // required .com.game.proto.PosRot pr = 4;
     public static final int PR_FIELD_NUMBER = 4;
     private com.game.proto.TestMoveMessage.PosRot pr_;
     /**
-     * <code>optional .com.game.proto.PosRot pr = 4;</code>
+     * <code>required .com.game.proto.PosRot pr = 4;</code>
      *
      * <pre>
      *坐标
@@ -2269,7 +2287,7 @@ public final class TestMoveMessage {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional .com.game.proto.PosRot pr = 4;</code>
+     * <code>required .com.game.proto.PosRot pr = 4;</code>
      *
      * <pre>
      *坐标
@@ -2279,7 +2297,7 @@ public final class TestMoveMessage {
       return pr_;
     }
     /**
-     * <code>optional .com.game.proto.PosRot pr = 4;</code>
+     * <code>required .com.game.proto.PosRot pr = 4;</code>
      *
      * <pre>
      *坐标
@@ -2350,6 +2368,14 @@ public final class TestMoveMessage {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasPersonID()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPr()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -2636,6 +2662,14 @@ public final class TestMoveMessage {
       }
 
       public final boolean isInitialized() {
+        if (!hasPersonID()) {
+          
+          return false;
+        }
+        if (!hasPr()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -2743,22 +2777,22 @@ public final class TestMoveMessage {
         return this;
       }
 
-      // optional int64 personID = 3;
+      // required int64 personID = 3;
       private long personID_ ;
       /**
-       * <code>optional int64 personID = 3;</code>
+       * <code>required int64 personID = 3;</code>
        */
       public boolean hasPersonID() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional int64 personID = 3;</code>
+       * <code>required int64 personID = 3;</code>
        */
       public long getPersonID() {
         return personID_;
       }
       /**
-       * <code>optional int64 personID = 3;</code>
+       * <code>required int64 personID = 3;</code>
        */
       public Builder setPersonID(long value) {
         bitField0_ |= 0x00000004;
@@ -2767,7 +2801,7 @@ public final class TestMoveMessage {
         return this;
       }
       /**
-       * <code>optional int64 personID = 3;</code>
+       * <code>required int64 personID = 3;</code>
        */
       public Builder clearPersonID() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -2776,12 +2810,12 @@ public final class TestMoveMessage {
         return this;
       }
 
-      // optional .com.game.proto.PosRot pr = 4;
+      // required .com.game.proto.PosRot pr = 4;
       private com.game.proto.TestMoveMessage.PosRot pr_ = com.game.proto.TestMoveMessage.PosRot.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.game.proto.TestMoveMessage.PosRot, com.game.proto.TestMoveMessage.PosRot.Builder, com.game.proto.TestMoveMessage.PosRotOrBuilder> prBuilder_;
       /**
-       * <code>optional .com.game.proto.PosRot pr = 4;</code>
+       * <code>required .com.game.proto.PosRot pr = 4;</code>
        *
        * <pre>
        *坐标
@@ -2791,7 +2825,7 @@ public final class TestMoveMessage {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional .com.game.proto.PosRot pr = 4;</code>
+       * <code>required .com.game.proto.PosRot pr = 4;</code>
        *
        * <pre>
        *坐标
@@ -2805,7 +2839,7 @@ public final class TestMoveMessage {
         }
       }
       /**
-       * <code>optional .com.game.proto.PosRot pr = 4;</code>
+       * <code>required .com.game.proto.PosRot pr = 4;</code>
        *
        * <pre>
        *坐标
@@ -2825,7 +2859,7 @@ public final class TestMoveMessage {
         return this;
       }
       /**
-       * <code>optional .com.game.proto.PosRot pr = 4;</code>
+       * <code>required .com.game.proto.PosRot pr = 4;</code>
        *
        * <pre>
        *坐标
@@ -2843,7 +2877,7 @@ public final class TestMoveMessage {
         return this;
       }
       /**
-       * <code>optional .com.game.proto.PosRot pr = 4;</code>
+       * <code>required .com.game.proto.PosRot pr = 4;</code>
        *
        * <pre>
        *坐标
@@ -2866,7 +2900,7 @@ public final class TestMoveMessage {
         return this;
       }
       /**
-       * <code>optional .com.game.proto.PosRot pr = 4;</code>
+       * <code>required .com.game.proto.PosRot pr = 4;</code>
        *
        * <pre>
        *坐标
@@ -2883,7 +2917,7 @@ public final class TestMoveMessage {
         return this;
       }
       /**
-       * <code>optional .com.game.proto.PosRot pr = 4;</code>
+       * <code>required .com.game.proto.PosRot pr = 4;</code>
        *
        * <pre>
        *坐标
@@ -2895,7 +2929,7 @@ public final class TestMoveMessage {
         return getPrFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .com.game.proto.PosRot pr = 4;</code>
+       * <code>required .com.game.proto.PosRot pr = 4;</code>
        *
        * <pre>
        *坐标
@@ -2909,7 +2943,7 @@ public final class TestMoveMessage {
         }
       }
       /**
-       * <code>optional .com.game.proto.PosRot pr = 4;</code>
+       * <code>required .com.game.proto.PosRot pr = 4;</code>
        *
        * <pre>
        *坐标
@@ -3813,6 +3847,2025 @@ public final class TestMoveMessage {
     // @@protoc_insertion_point(class_scope:com.game.proto.PosRot)
   }
 
+  public interface ReqSyncAnimatorMessageOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqSyncAnimator];
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqSyncAnimator];</code>
+     */
+    boolean hasMsgID();
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqSyncAnimator];</code>
+     */
+    com.game.proto.TestMoveMessage.Protos_TestMove getMsgID();
+
+    // required .com.game.proto.AnimatorInfo animatorInfo = 3;
+    /**
+     * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+     */
+    boolean hasAnimatorInfo();
+    /**
+     * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+     */
+    com.game.proto.TestMoveMessage.AnimatorInfo getAnimatorInfo();
+    /**
+     * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+     */
+    com.game.proto.TestMoveMessage.AnimatorInfoOrBuilder getAnimatorInfoOrBuilder();
+  }
+  /**
+   * Protobuf type {@code com.game.proto.ReqSyncAnimatorMessage}
+   */
+  public static final class ReqSyncAnimatorMessage extends
+      com.google.protobuf.GeneratedMessage
+      implements ReqSyncAnimatorMessageOrBuilder {
+    // Use ReqSyncAnimatorMessage.newBuilder() to construct.
+    private ReqSyncAnimatorMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ReqSyncAnimatorMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ReqSyncAnimatorMessage defaultInstance;
+    public static ReqSyncAnimatorMessage getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ReqSyncAnimatorMessage getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ReqSyncAnimatorMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              int rawValue = input.readEnum();
+              com.game.proto.TestMoveMessage.Protos_TestMove value = com.game.proto.TestMoveMessage.Protos_TestMove.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                msgID_ = value;
+              }
+              break;
+            }
+            case 26: {
+              com.game.proto.TestMoveMessage.AnimatorInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = animatorInfo_.toBuilder();
+              }
+              animatorInfo_ = input.readMessage(com.game.proto.TestMoveMessage.AnimatorInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(animatorInfo_);
+                animatorInfo_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ReqSyncAnimatorMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ReqSyncAnimatorMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage.class, com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ReqSyncAnimatorMessage> PARSER =
+        new com.google.protobuf.AbstractParser<ReqSyncAnimatorMessage>() {
+      public ReqSyncAnimatorMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ReqSyncAnimatorMessage(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ReqSyncAnimatorMessage> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqSyncAnimator];
+    public static final int MSGID_FIELD_NUMBER = 1;
+    private com.game.proto.TestMoveMessage.Protos_TestMove msgID_;
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqSyncAnimator];</code>
+     */
+    public boolean hasMsgID() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqSyncAnimator];</code>
+     */
+    public com.game.proto.TestMoveMessage.Protos_TestMove getMsgID() {
+      return msgID_;
+    }
+
+    // required .com.game.proto.AnimatorInfo animatorInfo = 3;
+    public static final int ANIMATORINFO_FIELD_NUMBER = 3;
+    private com.game.proto.TestMoveMessage.AnimatorInfo animatorInfo_;
+    /**
+     * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+     */
+    public boolean hasAnimatorInfo() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+     */
+    public com.game.proto.TestMoveMessage.AnimatorInfo getAnimatorInfo() {
+      return animatorInfo_;
+    }
+    /**
+     * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+     */
+    public com.game.proto.TestMoveMessage.AnimatorInfoOrBuilder getAnimatorInfoOrBuilder() {
+      return animatorInfo_;
+    }
+
+    private void initFields() {
+      msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ReqSyncAnimator;
+      animatorInfo_ = com.game.proto.TestMoveMessage.AnimatorInfo.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasAnimatorInfo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(1, msgID_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(3, animatorInfo_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, msgID_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, animatorInfo_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.game.proto.ReqSyncAnimatorMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.game.proto.TestMoveMessage.ReqSyncAnimatorMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ReqSyncAnimatorMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ReqSyncAnimatorMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage.class, com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage.Builder.class);
+      }
+
+      // Construct using com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getAnimatorInfoFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ReqSyncAnimator;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (animatorInfoBuilder_ == null) {
+          animatorInfo_ = com.game.proto.TestMoveMessage.AnimatorInfo.getDefaultInstance();
+        } else {
+          animatorInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ReqSyncAnimatorMessage_descriptor;
+      }
+
+      public com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage getDefaultInstanceForType() {
+        return com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage.getDefaultInstance();
+      }
+
+      public com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage build() {
+        com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage buildPartial() {
+        com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage result = new com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.msgID_ = msgID_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (animatorInfoBuilder_ == null) {
+          result.animatorInfo_ = animatorInfo_;
+        } else {
+          result.animatorInfo_ = animatorInfoBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage) {
+          return mergeFrom((com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage other) {
+        if (other == com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage.getDefaultInstance()) return this;
+        if (other.hasMsgID()) {
+          setMsgID(other.getMsgID());
+        }
+        if (other.hasAnimatorInfo()) {
+          mergeAnimatorInfo(other.getAnimatorInfo());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasAnimatorInfo()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.game.proto.TestMoveMessage.ReqSyncAnimatorMessage) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqSyncAnimator];
+      private com.game.proto.TestMoveMessage.Protos_TestMove msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ReqSyncAnimator;
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqSyncAnimator];</code>
+       */
+      public boolean hasMsgID() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqSyncAnimator];</code>
+       */
+      public com.game.proto.TestMoveMessage.Protos_TestMove getMsgID() {
+        return msgID_;
+      }
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqSyncAnimator];</code>
+       */
+      public Builder setMsgID(com.game.proto.TestMoveMessage.Protos_TestMove value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        msgID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqSyncAnimator];</code>
+       */
+      public Builder clearMsgID() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ReqSyncAnimator;
+        onChanged();
+        return this;
+      }
+
+      // required .com.game.proto.AnimatorInfo animatorInfo = 3;
+      private com.game.proto.TestMoveMessage.AnimatorInfo animatorInfo_ = com.game.proto.TestMoveMessage.AnimatorInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.game.proto.TestMoveMessage.AnimatorInfo, com.game.proto.TestMoveMessage.AnimatorInfo.Builder, com.game.proto.TestMoveMessage.AnimatorInfoOrBuilder> animatorInfoBuilder_;
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public boolean hasAnimatorInfo() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public com.game.proto.TestMoveMessage.AnimatorInfo getAnimatorInfo() {
+        if (animatorInfoBuilder_ == null) {
+          return animatorInfo_;
+        } else {
+          return animatorInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public Builder setAnimatorInfo(com.game.proto.TestMoveMessage.AnimatorInfo value) {
+        if (animatorInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          animatorInfo_ = value;
+          onChanged();
+        } else {
+          animatorInfoBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public Builder setAnimatorInfo(
+          com.game.proto.TestMoveMessage.AnimatorInfo.Builder builderForValue) {
+        if (animatorInfoBuilder_ == null) {
+          animatorInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          animatorInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public Builder mergeAnimatorInfo(com.game.proto.TestMoveMessage.AnimatorInfo value) {
+        if (animatorInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              animatorInfo_ != com.game.proto.TestMoveMessage.AnimatorInfo.getDefaultInstance()) {
+            animatorInfo_ =
+              com.game.proto.TestMoveMessage.AnimatorInfo.newBuilder(animatorInfo_).mergeFrom(value).buildPartial();
+          } else {
+            animatorInfo_ = value;
+          }
+          onChanged();
+        } else {
+          animatorInfoBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public Builder clearAnimatorInfo() {
+        if (animatorInfoBuilder_ == null) {
+          animatorInfo_ = com.game.proto.TestMoveMessage.AnimatorInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          animatorInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public com.game.proto.TestMoveMessage.AnimatorInfo.Builder getAnimatorInfoBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getAnimatorInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public com.game.proto.TestMoveMessage.AnimatorInfoOrBuilder getAnimatorInfoOrBuilder() {
+        if (animatorInfoBuilder_ != null) {
+          return animatorInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return animatorInfo_;
+        }
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.game.proto.TestMoveMessage.AnimatorInfo, com.game.proto.TestMoveMessage.AnimatorInfo.Builder, com.game.proto.TestMoveMessage.AnimatorInfoOrBuilder> 
+          getAnimatorInfoFieldBuilder() {
+        if (animatorInfoBuilder_ == null) {
+          animatorInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.game.proto.TestMoveMessage.AnimatorInfo, com.game.proto.TestMoveMessage.AnimatorInfo.Builder, com.game.proto.TestMoveMessage.AnimatorInfoOrBuilder>(
+                  animatorInfo_,
+                  getParentForChildren(),
+                  isClean());
+          animatorInfo_ = null;
+        }
+        return animatorInfoBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.game.proto.ReqSyncAnimatorMessage)
+    }
+
+    static {
+      defaultInstance = new ReqSyncAnimatorMessage(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.game.proto.ReqSyncAnimatorMessage)
+  }
+
+  public interface ResSyncAnimatorMessageOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResSyncAnimator];
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResSyncAnimator];</code>
+     */
+    boolean hasMsgID();
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResSyncAnimator];</code>
+     */
+    com.game.proto.TestMoveMessage.Protos_TestMove getMsgID();
+
+    // required int64 playerID = 2;
+    /**
+     * <code>required int64 playerID = 2;</code>
+     */
+    boolean hasPlayerID();
+    /**
+     * <code>required int64 playerID = 2;</code>
+     */
+    long getPlayerID();
+
+    // required .com.game.proto.AnimatorInfo animatorInfo = 3;
+    /**
+     * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+     */
+    boolean hasAnimatorInfo();
+    /**
+     * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+     */
+    com.game.proto.TestMoveMessage.AnimatorInfo getAnimatorInfo();
+    /**
+     * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+     */
+    com.game.proto.TestMoveMessage.AnimatorInfoOrBuilder getAnimatorInfoOrBuilder();
+  }
+  /**
+   * Protobuf type {@code com.game.proto.ResSyncAnimatorMessage}
+   */
+  public static final class ResSyncAnimatorMessage extends
+      com.google.protobuf.GeneratedMessage
+      implements ResSyncAnimatorMessageOrBuilder {
+    // Use ResSyncAnimatorMessage.newBuilder() to construct.
+    private ResSyncAnimatorMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ResSyncAnimatorMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ResSyncAnimatorMessage defaultInstance;
+    public static ResSyncAnimatorMessage getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ResSyncAnimatorMessage getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ResSyncAnimatorMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              int rawValue = input.readEnum();
+              com.game.proto.TestMoveMessage.Protos_TestMove value = com.game.proto.TestMoveMessage.Protos_TestMove.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                msgID_ = value;
+              }
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              playerID_ = input.readInt64();
+              break;
+            }
+            case 26: {
+              com.game.proto.TestMoveMessage.AnimatorInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = animatorInfo_.toBuilder();
+              }
+              animatorInfo_ = input.readMessage(com.game.proto.TestMoveMessage.AnimatorInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(animatorInfo_);
+                animatorInfo_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ResSyncAnimatorMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ResSyncAnimatorMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.game.proto.TestMoveMessage.ResSyncAnimatorMessage.class, com.game.proto.TestMoveMessage.ResSyncAnimatorMessage.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ResSyncAnimatorMessage> PARSER =
+        new com.google.protobuf.AbstractParser<ResSyncAnimatorMessage>() {
+      public ResSyncAnimatorMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ResSyncAnimatorMessage(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ResSyncAnimatorMessage> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResSyncAnimator];
+    public static final int MSGID_FIELD_NUMBER = 1;
+    private com.game.proto.TestMoveMessage.Protos_TestMove msgID_;
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResSyncAnimator];</code>
+     */
+    public boolean hasMsgID() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResSyncAnimator];</code>
+     */
+    public com.game.proto.TestMoveMessage.Protos_TestMove getMsgID() {
+      return msgID_;
+    }
+
+    // required int64 playerID = 2;
+    public static final int PLAYERID_FIELD_NUMBER = 2;
+    private long playerID_;
+    /**
+     * <code>required int64 playerID = 2;</code>
+     */
+    public boolean hasPlayerID() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int64 playerID = 2;</code>
+     */
+    public long getPlayerID() {
+      return playerID_;
+    }
+
+    // required .com.game.proto.AnimatorInfo animatorInfo = 3;
+    public static final int ANIMATORINFO_FIELD_NUMBER = 3;
+    private com.game.proto.TestMoveMessage.AnimatorInfo animatorInfo_;
+    /**
+     * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+     */
+    public boolean hasAnimatorInfo() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+     */
+    public com.game.proto.TestMoveMessage.AnimatorInfo getAnimatorInfo() {
+      return animatorInfo_;
+    }
+    /**
+     * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+     */
+    public com.game.proto.TestMoveMessage.AnimatorInfoOrBuilder getAnimatorInfoOrBuilder() {
+      return animatorInfo_;
+    }
+
+    private void initFields() {
+      msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ResSyncAnimator;
+      playerID_ = 0L;
+      animatorInfo_ = com.game.proto.TestMoveMessage.AnimatorInfo.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasPlayerID()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAnimatorInfo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(1, msgID_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt64(2, playerID_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, animatorInfo_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, msgID_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, playerID_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, animatorInfo_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.game.proto.TestMoveMessage.ResSyncAnimatorMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.proto.TestMoveMessage.ResSyncAnimatorMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ResSyncAnimatorMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.proto.TestMoveMessage.ResSyncAnimatorMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ResSyncAnimatorMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.ResSyncAnimatorMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ResSyncAnimatorMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.ResSyncAnimatorMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ResSyncAnimatorMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.ResSyncAnimatorMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.game.proto.TestMoveMessage.ResSyncAnimatorMessage prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.game.proto.ResSyncAnimatorMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.game.proto.TestMoveMessage.ResSyncAnimatorMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ResSyncAnimatorMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ResSyncAnimatorMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.game.proto.TestMoveMessage.ResSyncAnimatorMessage.class, com.game.proto.TestMoveMessage.ResSyncAnimatorMessage.Builder.class);
+      }
+
+      // Construct using com.game.proto.TestMoveMessage.ResSyncAnimatorMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getAnimatorInfoFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ResSyncAnimator;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        playerID_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (animatorInfoBuilder_ == null) {
+          animatorInfo_ = com.game.proto.TestMoveMessage.AnimatorInfo.getDefaultInstance();
+        } else {
+          animatorInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ResSyncAnimatorMessage_descriptor;
+      }
+
+      public com.game.proto.TestMoveMessage.ResSyncAnimatorMessage getDefaultInstanceForType() {
+        return com.game.proto.TestMoveMessage.ResSyncAnimatorMessage.getDefaultInstance();
+      }
+
+      public com.game.proto.TestMoveMessage.ResSyncAnimatorMessage build() {
+        com.game.proto.TestMoveMessage.ResSyncAnimatorMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.game.proto.TestMoveMessage.ResSyncAnimatorMessage buildPartial() {
+        com.game.proto.TestMoveMessage.ResSyncAnimatorMessage result = new com.game.proto.TestMoveMessage.ResSyncAnimatorMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.msgID_ = msgID_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.playerID_ = playerID_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (animatorInfoBuilder_ == null) {
+          result.animatorInfo_ = animatorInfo_;
+        } else {
+          result.animatorInfo_ = animatorInfoBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.game.proto.TestMoveMessage.ResSyncAnimatorMessage) {
+          return mergeFrom((com.game.proto.TestMoveMessage.ResSyncAnimatorMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.game.proto.TestMoveMessage.ResSyncAnimatorMessage other) {
+        if (other == com.game.proto.TestMoveMessage.ResSyncAnimatorMessage.getDefaultInstance()) return this;
+        if (other.hasMsgID()) {
+          setMsgID(other.getMsgID());
+        }
+        if (other.hasPlayerID()) {
+          setPlayerID(other.getPlayerID());
+        }
+        if (other.hasAnimatorInfo()) {
+          mergeAnimatorInfo(other.getAnimatorInfo());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasPlayerID()) {
+          
+          return false;
+        }
+        if (!hasAnimatorInfo()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.game.proto.TestMoveMessage.ResSyncAnimatorMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.game.proto.TestMoveMessage.ResSyncAnimatorMessage) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResSyncAnimator];
+      private com.game.proto.TestMoveMessage.Protos_TestMove msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ResSyncAnimator;
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResSyncAnimator];</code>
+       */
+      public boolean hasMsgID() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResSyncAnimator];</code>
+       */
+      public com.game.proto.TestMoveMessage.Protos_TestMove getMsgID() {
+        return msgID_;
+      }
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResSyncAnimator];</code>
+       */
+      public Builder setMsgID(com.game.proto.TestMoveMessage.Protos_TestMove value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        msgID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResSyncAnimator];</code>
+       */
+      public Builder clearMsgID() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ResSyncAnimator;
+        onChanged();
+        return this;
+      }
+
+      // required int64 playerID = 2;
+      private long playerID_ ;
+      /**
+       * <code>required int64 playerID = 2;</code>
+       */
+      public boolean hasPlayerID() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int64 playerID = 2;</code>
+       */
+      public long getPlayerID() {
+        return playerID_;
+      }
+      /**
+       * <code>required int64 playerID = 2;</code>
+       */
+      public Builder setPlayerID(long value) {
+        bitField0_ |= 0x00000002;
+        playerID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 playerID = 2;</code>
+       */
+      public Builder clearPlayerID() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        playerID_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // required .com.game.proto.AnimatorInfo animatorInfo = 3;
+      private com.game.proto.TestMoveMessage.AnimatorInfo animatorInfo_ = com.game.proto.TestMoveMessage.AnimatorInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.game.proto.TestMoveMessage.AnimatorInfo, com.game.proto.TestMoveMessage.AnimatorInfo.Builder, com.game.proto.TestMoveMessage.AnimatorInfoOrBuilder> animatorInfoBuilder_;
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public boolean hasAnimatorInfo() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public com.game.proto.TestMoveMessage.AnimatorInfo getAnimatorInfo() {
+        if (animatorInfoBuilder_ == null) {
+          return animatorInfo_;
+        } else {
+          return animatorInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public Builder setAnimatorInfo(com.game.proto.TestMoveMessage.AnimatorInfo value) {
+        if (animatorInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          animatorInfo_ = value;
+          onChanged();
+        } else {
+          animatorInfoBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public Builder setAnimatorInfo(
+          com.game.proto.TestMoveMessage.AnimatorInfo.Builder builderForValue) {
+        if (animatorInfoBuilder_ == null) {
+          animatorInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          animatorInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public Builder mergeAnimatorInfo(com.game.proto.TestMoveMessage.AnimatorInfo value) {
+        if (animatorInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              animatorInfo_ != com.game.proto.TestMoveMessage.AnimatorInfo.getDefaultInstance()) {
+            animatorInfo_ =
+              com.game.proto.TestMoveMessage.AnimatorInfo.newBuilder(animatorInfo_).mergeFrom(value).buildPartial();
+          } else {
+            animatorInfo_ = value;
+          }
+          onChanged();
+        } else {
+          animatorInfoBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public Builder clearAnimatorInfo() {
+        if (animatorInfoBuilder_ == null) {
+          animatorInfo_ = com.game.proto.TestMoveMessage.AnimatorInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          animatorInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public com.game.proto.TestMoveMessage.AnimatorInfo.Builder getAnimatorInfoBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getAnimatorInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      public com.game.proto.TestMoveMessage.AnimatorInfoOrBuilder getAnimatorInfoOrBuilder() {
+        if (animatorInfoBuilder_ != null) {
+          return animatorInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return animatorInfo_;
+        }
+      }
+      /**
+       * <code>required .com.game.proto.AnimatorInfo animatorInfo = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.game.proto.TestMoveMessage.AnimatorInfo, com.game.proto.TestMoveMessage.AnimatorInfo.Builder, com.game.proto.TestMoveMessage.AnimatorInfoOrBuilder> 
+          getAnimatorInfoFieldBuilder() {
+        if (animatorInfoBuilder_ == null) {
+          animatorInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.game.proto.TestMoveMessage.AnimatorInfo, com.game.proto.TestMoveMessage.AnimatorInfo.Builder, com.game.proto.TestMoveMessage.AnimatorInfoOrBuilder>(
+                  animatorInfo_,
+                  getParentForChildren(),
+                  isClean());
+          animatorInfo_ = null;
+        }
+        return animatorInfoBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.game.proto.ResSyncAnimatorMessage)
+    }
+
+    static {
+      defaultInstance = new ResSyncAnimatorMessage(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.game.proto.ResSyncAnimatorMessage)
+  }
+
+  public interface AnimatorInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional float h = 1;
+    /**
+     * <code>optional float h = 1;</code>
+     */
+    boolean hasH();
+    /**
+     * <code>optional float h = 1;</code>
+     */
+    float getH();
+
+    // optional float v = 2;
+    /**
+     * <code>optional float v = 2;</code>
+     */
+    boolean hasV();
+    /**
+     * <code>optional float v = 2;</code>
+     */
+    float getV();
+
+    // optional bool runing = 3;
+    /**
+     * <code>optional bool runing = 3;</code>
+     */
+    boolean hasRuning();
+    /**
+     * <code>optional bool runing = 3;</code>
+     */
+    boolean getRuning();
+
+    // optional bool inAttack = 4;
+    /**
+     * <code>optional bool inAttack = 4;</code>
+     */
+    boolean hasInAttack();
+    /**
+     * <code>optional bool inAttack = 4;</code>
+     */
+    boolean getInAttack();
+
+    // optional bool havaTarget = 5;
+    /**
+     * <code>optional bool havaTarget = 5;</code>
+     */
+    boolean hasHavaTarget();
+    /**
+     * <code>optional bool havaTarget = 5;</code>
+     */
+    boolean getHavaTarget();
+  }
+  /**
+   * Protobuf type {@code com.game.proto.AnimatorInfo}
+   */
+  public static final class AnimatorInfo extends
+      com.google.protobuf.GeneratedMessage
+      implements AnimatorInfoOrBuilder {
+    // Use AnimatorInfo.newBuilder() to construct.
+    private AnimatorInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private AnimatorInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final AnimatorInfo defaultInstance;
+    public static AnimatorInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public AnimatorInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AnimatorInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 13: {
+              bitField0_ |= 0x00000001;
+              h_ = input.readFloat();
+              break;
+            }
+            case 21: {
+              bitField0_ |= 0x00000002;
+              v_ = input.readFloat();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              runing_ = input.readBool();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              inAttack_ = input.readBool();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              havaTarget_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.game.proto.TestMoveMessage.internal_static_com_game_proto_AnimatorInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.game.proto.TestMoveMessage.internal_static_com_game_proto_AnimatorInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.game.proto.TestMoveMessage.AnimatorInfo.class, com.game.proto.TestMoveMessage.AnimatorInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<AnimatorInfo> PARSER =
+        new com.google.protobuf.AbstractParser<AnimatorInfo>() {
+      public AnimatorInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AnimatorInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AnimatorInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional float h = 1;
+    public static final int H_FIELD_NUMBER = 1;
+    private float h_;
+    /**
+     * <code>optional float h = 1;</code>
+     */
+    public boolean hasH() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional float h = 1;</code>
+     */
+    public float getH() {
+      return h_;
+    }
+
+    // optional float v = 2;
+    public static final int V_FIELD_NUMBER = 2;
+    private float v_;
+    /**
+     * <code>optional float v = 2;</code>
+     */
+    public boolean hasV() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional float v = 2;</code>
+     */
+    public float getV() {
+      return v_;
+    }
+
+    // optional bool runing = 3;
+    public static final int RUNING_FIELD_NUMBER = 3;
+    private boolean runing_;
+    /**
+     * <code>optional bool runing = 3;</code>
+     */
+    public boolean hasRuning() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional bool runing = 3;</code>
+     */
+    public boolean getRuning() {
+      return runing_;
+    }
+
+    // optional bool inAttack = 4;
+    public static final int INATTACK_FIELD_NUMBER = 4;
+    private boolean inAttack_;
+    /**
+     * <code>optional bool inAttack = 4;</code>
+     */
+    public boolean hasInAttack() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional bool inAttack = 4;</code>
+     */
+    public boolean getInAttack() {
+      return inAttack_;
+    }
+
+    // optional bool havaTarget = 5;
+    public static final int HAVATARGET_FIELD_NUMBER = 5;
+    private boolean havaTarget_;
+    /**
+     * <code>optional bool havaTarget = 5;</code>
+     */
+    public boolean hasHavaTarget() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional bool havaTarget = 5;</code>
+     */
+    public boolean getHavaTarget() {
+      return havaTarget_;
+    }
+
+    private void initFields() {
+      h_ = 0F;
+      v_ = 0F;
+      runing_ = false;
+      inAttack_ = false;
+      havaTarget_ = false;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeFloat(1, h_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeFloat(2, v_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBool(3, runing_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBool(4, inAttack_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBool(5, havaTarget_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(1, h_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(2, v_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, runing_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, inAttack_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, havaTarget_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.game.proto.TestMoveMessage.AnimatorInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.proto.TestMoveMessage.AnimatorInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.AnimatorInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.proto.TestMoveMessage.AnimatorInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.AnimatorInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.AnimatorInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.AnimatorInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.AnimatorInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.AnimatorInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.AnimatorInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.game.proto.TestMoveMessage.AnimatorInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.game.proto.AnimatorInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.game.proto.TestMoveMessage.AnimatorInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_AnimatorInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_AnimatorInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.game.proto.TestMoveMessage.AnimatorInfo.class, com.game.proto.TestMoveMessage.AnimatorInfo.Builder.class);
+      }
+
+      // Construct using com.game.proto.TestMoveMessage.AnimatorInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        h_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        v_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        runing_ = false;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        inAttack_ = false;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        havaTarget_ = false;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_AnimatorInfo_descriptor;
+      }
+
+      public com.game.proto.TestMoveMessage.AnimatorInfo getDefaultInstanceForType() {
+        return com.game.proto.TestMoveMessage.AnimatorInfo.getDefaultInstance();
+      }
+
+      public com.game.proto.TestMoveMessage.AnimatorInfo build() {
+        com.game.proto.TestMoveMessage.AnimatorInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.game.proto.TestMoveMessage.AnimatorInfo buildPartial() {
+        com.game.proto.TestMoveMessage.AnimatorInfo result = new com.game.proto.TestMoveMessage.AnimatorInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.h_ = h_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.v_ = v_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.runing_ = runing_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.inAttack_ = inAttack_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.havaTarget_ = havaTarget_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.game.proto.TestMoveMessage.AnimatorInfo) {
+          return mergeFrom((com.game.proto.TestMoveMessage.AnimatorInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.game.proto.TestMoveMessage.AnimatorInfo other) {
+        if (other == com.game.proto.TestMoveMessage.AnimatorInfo.getDefaultInstance()) return this;
+        if (other.hasH()) {
+          setH(other.getH());
+        }
+        if (other.hasV()) {
+          setV(other.getV());
+        }
+        if (other.hasRuning()) {
+          setRuning(other.getRuning());
+        }
+        if (other.hasInAttack()) {
+          setInAttack(other.getInAttack());
+        }
+        if (other.hasHavaTarget()) {
+          setHavaTarget(other.getHavaTarget());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.game.proto.TestMoveMessage.AnimatorInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.game.proto.TestMoveMessage.AnimatorInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional float h = 1;
+      private float h_ ;
+      /**
+       * <code>optional float h = 1;</code>
+       */
+      public boolean hasH() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional float h = 1;</code>
+       */
+      public float getH() {
+        return h_;
+      }
+      /**
+       * <code>optional float h = 1;</code>
+       */
+      public Builder setH(float value) {
+        bitField0_ |= 0x00000001;
+        h_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float h = 1;</code>
+       */
+      public Builder clearH() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        h_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // optional float v = 2;
+      private float v_ ;
+      /**
+       * <code>optional float v = 2;</code>
+       */
+      public boolean hasV() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional float v = 2;</code>
+       */
+      public float getV() {
+        return v_;
+      }
+      /**
+       * <code>optional float v = 2;</code>
+       */
+      public Builder setV(float value) {
+        bitField0_ |= 0x00000002;
+        v_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float v = 2;</code>
+       */
+      public Builder clearV() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        v_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // optional bool runing = 3;
+      private boolean runing_ ;
+      /**
+       * <code>optional bool runing = 3;</code>
+       */
+      public boolean hasRuning() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional bool runing = 3;</code>
+       */
+      public boolean getRuning() {
+        return runing_;
+      }
+      /**
+       * <code>optional bool runing = 3;</code>
+       */
+      public Builder setRuning(boolean value) {
+        bitField0_ |= 0x00000004;
+        runing_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool runing = 3;</code>
+       */
+      public Builder clearRuning() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        runing_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional bool inAttack = 4;
+      private boolean inAttack_ ;
+      /**
+       * <code>optional bool inAttack = 4;</code>
+       */
+      public boolean hasInAttack() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional bool inAttack = 4;</code>
+       */
+      public boolean getInAttack() {
+        return inAttack_;
+      }
+      /**
+       * <code>optional bool inAttack = 4;</code>
+       */
+      public Builder setInAttack(boolean value) {
+        bitField0_ |= 0x00000008;
+        inAttack_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool inAttack = 4;</code>
+       */
+      public Builder clearInAttack() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        inAttack_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional bool havaTarget = 5;
+      private boolean havaTarget_ ;
+      /**
+       * <code>optional bool havaTarget = 5;</code>
+       */
+      public boolean hasHavaTarget() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional bool havaTarget = 5;</code>
+       */
+      public boolean getHavaTarget() {
+        return havaTarget_;
+      }
+      /**
+       * <code>optional bool havaTarget = 5;</code>
+       */
+      public Builder setHavaTarget(boolean value) {
+        bitField0_ |= 0x00000010;
+        havaTarget_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool havaTarget = 5;</code>
+       */
+      public Builder clearHavaTarget() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        havaTarget_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.game.proto.AnimatorInfo)
+    }
+
+    static {
+      defaultInstance = new AnimatorInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.game.proto.AnimatorInfo)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_game_proto_ReqEnterMapMessage_descriptor;
   private static
@@ -3838,6 +5891,21 @@ public final class TestMoveMessage {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_game_proto_PosRot_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_game_proto_ReqSyncAnimatorMessage_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_game_proto_ReqSyncAnimatorMessage_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_game_proto_ResSyncAnimatorMessage_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_game_proto_ResSyncAnimatorMessage_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_game_proto_AnimatorInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_game_proto_AnimatorInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3860,13 +5928,24 @@ public final class TestMoveMessage {
       "PosRot\"\277\001\n\024ResSyncPosRotMessage\022=\n\005msgID" +
       "\030\001 \001(\0162\037.com.game.proto.Protos_TestMove:" +
       "\rResSyncPosRot\022\025\n\npersonType\030\002 \001(\005:\0011\022\020\n" +
-      "\010personID\030\003 \001(\003\022\"\n\002pr\030\004 \001(\0132\026.com.game.p" +
+      "\010personID\030\003 \002(\003\022\"\n\002pr\030\004 \002(\0132\026.com.game.p" +
       "roto.PosRot\022\014\n\004time\030\005 \001(\002\022\r\n\005speed\030\006 \001(\002" +
       "\"@\n\006PosRot\022\014\n\004posX\030\001 \001(\002\022\014\n\004posY\030\002 \001(\002\022\014" +
-      "\n\004posZ\030\003 \001(\002\022\014\n\004rotY\030\004 \001(\002*]\n\017Protos_Tes" +
-      "tMove\022\020\n\013ReqEnterMap\020\267-\022\020\n\013ResEnterMap\020\270" +
-      "-\022\022\n\rReqSyncPosRot\020\271-\022\022\n\rResSyncPosRot\020\272" +
-      "-"
+      "\n\004posZ\030\003 \001(\002\022\014\n\004rotY\030\004 \001(\002\"\215\001\n\026ReqSyncAn" +
+      "imatorMessage\022?\n\005msgID\030\001 \001(\0162\037.com.game." +
+      "proto.Protos_TestMove:\017ReqSyncAnimator\0222" +
+      "\n\014animatorInfo\030\003 \002(\0132\034.com.game.proto.An",
+      "imatorInfo\"\237\001\n\026ResSyncAnimatorMessage\022?\n" +
+      "\005msgID\030\001 \001(\0162\037.com.game.proto.Protos_Tes" +
+      "tMove:\017ResSyncAnimator\022\020\n\010playerID\030\002 \002(\003" +
+      "\0222\n\014animatorInfo\030\003 \002(\0132\034.com.game.proto." +
+      "AnimatorInfo\"Z\n\014AnimatorInfo\022\t\n\001h\030\001 \001(\002\022" +
+      "\t\n\001v\030\002 \001(\002\022\016\n\006runing\030\003 \001(\010\022\020\n\010inAttack\030\004" +
+      " \001(\010\022\022\n\nhavaTarget\030\005 \001(\010*\211\001\n\017Protos_Test" +
+      "Move\022\020\n\013ReqEnterMap\020\267-\022\020\n\013ResEnterMap\020\270-" +
+      "\022\022\n\rReqSyncPosRot\020\271-\022\022\n\rResSyncPosRot\020\272-" +
+      "\022\024\n\017ReqSyncAnimator\020\273-\022\024\n\017ResSyncAnimato",
+      "r\020\274-"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3903,6 +5982,24 @@ public final class TestMoveMessage {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_game_proto_PosRot_descriptor,
               new java.lang.String[] { "PosX", "PosY", "PosZ", "RotY", });
+          internal_static_com_game_proto_ReqSyncAnimatorMessage_descriptor =
+            getDescriptor().getMessageTypes().get(5);
+          internal_static_com_game_proto_ReqSyncAnimatorMessage_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_game_proto_ReqSyncAnimatorMessage_descriptor,
+              new java.lang.String[] { "MsgID", "AnimatorInfo", });
+          internal_static_com_game_proto_ResSyncAnimatorMessage_descriptor =
+            getDescriptor().getMessageTypes().get(6);
+          internal_static_com_game_proto_ResSyncAnimatorMessage_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_game_proto_ResSyncAnimatorMessage_descriptor,
+              new java.lang.String[] { "MsgID", "PlayerID", "AnimatorInfo", });
+          internal_static_com_game_proto_AnimatorInfo_descriptor =
+            getDescriptor().getMessageTypes().get(7);
+          internal_static_com_game_proto_AnimatorInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_game_proto_AnimatorInfo_descriptor,
+              new java.lang.String[] { "H", "V", "Runing", "InAttack", "HavaTarget", });
           return null;
         }
       };

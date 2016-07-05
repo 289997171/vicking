@@ -6,7 +6,7 @@ public class ResSyncPosRotHandler
 {
     public static void Execute(ResSyncPosRotMessage message)
     {
-        Debug.Log("接收到服务器消息：" + message);
+        // Debug.Log("接收到服务器消息：" + message);
 
         int personType = message.personType;
         long personId = message.personID;

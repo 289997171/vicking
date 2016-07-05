@@ -90,7 +90,6 @@ public class MoveController : Moveable, IPersonController
 
         if (!moveing)
         {
-            //animator.SetBool("run", false);
             moveAnimationController.OnIdle();
             return;
         }
@@ -104,7 +103,6 @@ public class MoveController : Moveable, IPersonController
             return;
         }
 
-        //animator.SetBool("run", true);
         moveAnimationController.OnRun();
 
         // 目标点朝向

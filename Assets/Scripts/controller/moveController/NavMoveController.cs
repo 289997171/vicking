@@ -77,12 +77,10 @@ public class NavMoveController : Moveable, IPersonController
 
         if (!navMoveing)
         {
-            //animator.SetBool("run", false);
             moveAnimationController.OnIdle();
             return;
         }
 
-        // animator.SetBool("run", true);
         moveAnimationController.OnRun();
 
         x = curAutoPos.x - transform.position.x;
