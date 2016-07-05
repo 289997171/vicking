@@ -74,7 +74,7 @@ public class PlayerMoveController : Moveable, IPersonController
     // 最终朝向
     private Vector3 endDir = Vector3.zero;
 
-    void Update()
+    void FixedUpdate()
     {
         if (!onGround && !isFly)
         {
@@ -94,7 +94,7 @@ public class PlayerMoveController : Moveable, IPersonController
                 return;
             }
             Quaternion newQuaternion = Quaternion.LookRotation(endDir);
-            transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion, 0.2f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion, this.person.rotSpeed * Time.deltaTime /*0.2f*/);
             moveAnimationController.OnTurn(newQuaternion);
             return;
         }
@@ -179,7 +179,7 @@ public class PlayerMoveController : Moveable, IPersonController
         if (v3 != Vector3.zero)
         {
             Quaternion newQuaternion = Quaternion.LookRotation(v3);
-            transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion, 0.2f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion, this.person.rotSpeed * Time.deltaTime /*0.2f*/);
         }
 
         // 出发区域改变判断

@@ -12,7 +12,7 @@ public class ResEnterMapHandler {
         long playerId = message.playerId;
         PosRot pr = message.pr;
 
-        PlayerManager.Instance.createPlayer("P" + playerId, 1, isLocalPlayer, player =>
+        PlayerManager.Instance.createPlayer(playerId, "Player:" + playerId, 1, isLocalPlayer, player =>
         {
             if (message.isLocalPlayer)
             {

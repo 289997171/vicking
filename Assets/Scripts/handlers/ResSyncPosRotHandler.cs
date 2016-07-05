@@ -17,19 +17,22 @@ public class ResSyncPosRotHandler
 
         if (personType == Person.PERSON_PLAYER)
         {
+            // TODO 临时测试需要的，以后可以删除
+            if (personId == PlayerManager.Instance.localPlayer.id)
+            {
+                return;
+            }
+
             Player player;
             if (PlayerManager.Instance.players.TryGetValue(personId, out player))
             {
                 if (posRot.posX != 0f || posRot.posY != 0f || posRot.posZ != 0f)
                 {
-                    player.ResSyncPosRotController.syncPostion(new Vector3(posRot.posX, posRot.posY, posRot.posZ));
-                } else if (posRot.rotY != 0f)
-                {
-                    player.ResSyncPosRotController.syncRot(posRot.rotY);
+                    player.UpdateSyncPosRotController.syncPos(new Vector3(posRot.posX, posRot.posY, posRot.posZ));
                 }
-                else
+                if (posRot.rotY != 0f)
                 {
-                    Debug.LogError("既没同步坐标，又没同步朝向");
+                    player.UpdateSyncPosRotController.syncRot(posRot.rotY);
                 }
             }
         }

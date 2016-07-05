@@ -23,6 +23,9 @@ public abstract class Person : MonoBehaviour, IMapObject
     //对象类型
     public byte personType;
 
+    //唯一ID
+    public long id;
+
     //名字
     public String personName;
 
@@ -77,7 +80,10 @@ public abstract class Person : MonoBehaviour, IMapObject
     //属性部分
     public Dictionary<int, BaseAbility> attributes = new Dictionary<int, BaseAbility>();
 
-#region CharacterController needs
+    //旋转速度
+    public float rotSpeed = 10;
+
+    #region CharacterController needs
     //模型高度
     public float height = 2f;
 
@@ -95,9 +101,9 @@ public abstract class Person : MonoBehaviour, IMapObject
 
     #region controllers
 
-    public ReqSyncPosRotController ReqSyncPosRotController;
+    public SyncPosRotController SyncPosRotController;
 
-    public ResSyncPosRotController ResSyncPosRotController;
+    public UpdateSyncPosRotController UpdateSyncPosRotController;
 
     #endregion
 

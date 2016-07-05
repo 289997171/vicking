@@ -83,7 +83,7 @@ public class MoveController : Moveable, IPersonController
                 return;
             }
             Quaternion newQuaternion = Quaternion.LookRotation(endDir);
-            transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion, 0.2f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion, this.person.rotSpeed * Time.deltaTime /*0.2f*/);
             moveAnimationController.OnTurn(newQuaternion);
             return;
         }
@@ -121,7 +121,7 @@ public class MoveController : Moveable, IPersonController
         if (v3 != Vector3.zero)
         {
             Quaternion newQuaternion = Quaternion.LookRotation(v3);
-            transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion, 0.2f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion, this.person.rotSpeed * Time.deltaTime /*0.2f*/);
         }
 
     }

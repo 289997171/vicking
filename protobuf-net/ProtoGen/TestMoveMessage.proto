@@ -9,6 +9,8 @@ enum Protos_TestMove {
 	ReqSyncPosRot				= 5817;//客户端移动时不停的同步坐标
 	ResSyncPosRot     			= 5818;//服务器广播玩家移动
 
+	ReqPing						= 5819;
+	ResPing						= 5820;
 }
 
 
@@ -50,4 +52,12 @@ message PosRot {
 	optional float  posZ 						= 3;  //坐标 z
 
 	optional float  rotY 						= 4;  //朝向 y (transform.localEulerAngles.y，只需要考虑水平朝向)
+}
+
+message ReqPingMessage {
+
+}
+
+message ResPingMessage {
+	
 }

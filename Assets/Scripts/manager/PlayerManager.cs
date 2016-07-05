@@ -18,12 +18,12 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
     // 其他角色
     public Dictionary<long, Player> players = new Dictionary<long, Player>(); 
 
-    public void createPlayer(string name, int job, bool isLocalPlayer, Action<Player> callback = null)
+    public void createPlayer(long id, string name, int job, bool isLocalPlayer, Action<Player> callback = null)
     {
-        StartCoroutine(_createPlayer(name, job, isLocalPlayer, callback));
+        StartCoroutine(_createPlayer(id, name, job, isLocalPlayer, callback));
     }
 
-    private IEnumerator _createPlayer(string name, int job, bool isLocalPlayer, Action<Player> callback = null)
+    private IEnumerator _createPlayer(long id, string name, int job, bool isLocalPlayer, Action<Player> callback = null)
     {
         string modelPath = "";
         if (job == 1)
@@ -38,6 +38,9 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
 
         Player person = player.getOrAddComponent<Player>();
         person.isLocalPlayer = isLocalPlayer;
+
+        person.id = id;
+        person.name = name;
 
         person.height = 2f;
         person.radius = 0.5f;
@@ -60,11 +63,11 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         if (isLocalPlayer)
         {
             // 只有主角才需要添加向服务器同步坐标请求
-            person.ReqSyncPosRotController = player.getOrAddComponent<ReqSyncPosRotController>();
+            person.SyncPosRotController = player.getOrAddComponent<SyncPosRotController>();
         }
 
         // 主角，非主角，都需要添加坐标改变控制器（主角用于如，因为恐惧等情况导致的位移）
-        person.ResSyncPosRotController = player.getOrAddComponent<ResSyncPosRotController>();
+        person.UpdateSyncPosRotController = player.getOrAddComponent<UpdateSyncPosRotController>();
 
         yield return 1;
 
@@ -84,10 +87,7 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         {
             player.getOrAddComponent<PlayerMoveController>();
         }
-        else
-        {
-            player.getOrAddComponent<MoveController>();
-        }
+    
         yield return 1;
 
 
