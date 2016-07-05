@@ -3095,59 +3095,23 @@ public final class TestMoveMessage {
      */
     float getPosZ();
 
-    // optional float rotX = 4;
+    // optional float rotY = 4;
     /**
-     * <code>optional float rotX = 4;</code>
+     * <code>optional float rotY = 4;</code>
      *
      * <pre>
-     *朝向 x
-     * </pre>
-     */
-    boolean hasRotX();
-    /**
-     * <code>optional float rotX = 4;</code>
-     *
-     * <pre>
-     *朝向 x
-     * </pre>
-     */
-    float getRotX();
-
-    // optional float rotY = 5;
-    /**
-     * <code>optional float rotY = 5;</code>
-     *
-     * <pre>
-     *朝向 y
+     *朝向 y (transform.localEulerAngles.y，只需要考虑水平朝向)
      * </pre>
      */
     boolean hasRotY();
     /**
-     * <code>optional float rotY = 5;</code>
+     * <code>optional float rotY = 4;</code>
      *
      * <pre>
-     *朝向 y
+     *朝向 y (transform.localEulerAngles.y，只需要考虑水平朝向)
      * </pre>
      */
     float getRotY();
-
-    // optional float rotZ = 6;
-    /**
-     * <code>optional float rotZ = 6;</code>
-     *
-     * <pre>
-     *朝向 z
-     * </pre>
-     */
-    boolean hasRotZ();
-    /**
-     * <code>optional float rotZ = 6;</code>
-     *
-     * <pre>
-     *朝向 z
-     * </pre>
-     */
-    float getRotZ();
   }
   /**
    * Protobuf type {@code com.game.proto.PosRot}
@@ -3221,17 +3185,7 @@ public final class TestMoveMessage {
             }
             case 37: {
               bitField0_ |= 0x00000008;
-              rotX_ = input.readFloat();
-              break;
-            }
-            case 45: {
-              bitField0_ |= 0x00000010;
               rotY_ = input.readFloat();
-              break;
-            }
-            case 53: {
-              bitField0_ |= 0x00000020;
-              rotZ_ = input.readFloat();
               break;
             }
           }
@@ -3346,85 +3300,35 @@ public final class TestMoveMessage {
       return posZ_;
     }
 
-    // optional float rotX = 4;
-    public static final int ROTX_FIELD_NUMBER = 4;
-    private float rotX_;
-    /**
-     * <code>optional float rotX = 4;</code>
-     *
-     * <pre>
-     *朝向 x
-     * </pre>
-     */
-    public boolean hasRotX() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional float rotX = 4;</code>
-     *
-     * <pre>
-     *朝向 x
-     * </pre>
-     */
-    public float getRotX() {
-      return rotX_;
-    }
-
-    // optional float rotY = 5;
-    public static final int ROTY_FIELD_NUMBER = 5;
+    // optional float rotY = 4;
+    public static final int ROTY_FIELD_NUMBER = 4;
     private float rotY_;
     /**
-     * <code>optional float rotY = 5;</code>
+     * <code>optional float rotY = 4;</code>
      *
      * <pre>
-     *朝向 y
+     *朝向 y (transform.localEulerAngles.y，只需要考虑水平朝向)
      * </pre>
      */
     public boolean hasRotY() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional float rotY = 5;</code>
+     * <code>optional float rotY = 4;</code>
      *
      * <pre>
-     *朝向 y
+     *朝向 y (transform.localEulerAngles.y，只需要考虑水平朝向)
      * </pre>
      */
     public float getRotY() {
       return rotY_;
     }
 
-    // optional float rotZ = 6;
-    public static final int ROTZ_FIELD_NUMBER = 6;
-    private float rotZ_;
-    /**
-     * <code>optional float rotZ = 6;</code>
-     *
-     * <pre>
-     *朝向 z
-     * </pre>
-     */
-    public boolean hasRotZ() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional float rotZ = 6;</code>
-     *
-     * <pre>
-     *朝向 z
-     * </pre>
-     */
-    public float getRotZ() {
-      return rotZ_;
-    }
-
     private void initFields() {
       posX_ = 0F;
       posY_ = 0F;
       posZ_ = 0F;
-      rotX_ = 0F;
       rotY_ = 0F;
-      rotZ_ = 0F;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3448,13 +3352,7 @@ public final class TestMoveMessage {
         output.writeFloat(3, posZ_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeFloat(4, rotX_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeFloat(5, rotY_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeFloat(6, rotZ_);
+        output.writeFloat(4, rotY_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3479,15 +3377,7 @@ public final class TestMoveMessage {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(4, rotX_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(5, rotY_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(6, rotZ_);
+          .computeFloatSize(4, rotY_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3615,12 +3505,8 @@ public final class TestMoveMessage {
         bitField0_ = (bitField0_ & ~0x00000002);
         posZ_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000004);
-        rotX_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000008);
         rotY_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        rotZ_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -3664,15 +3550,7 @@ public final class TestMoveMessage {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.rotX_ = rotX_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
         result.rotY_ = rotY_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.rotZ_ = rotZ_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3698,14 +3576,8 @@ public final class TestMoveMessage {
         if (other.hasPosZ()) {
           setPosZ(other.getPosZ());
         }
-        if (other.hasRotX()) {
-          setRotX(other.getRotX());
-        }
         if (other.hasRotY()) {
           setRotY(other.getRotY());
-        }
-        if (other.hasRotZ()) {
-          setRotZ(other.getRotZ());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -3881,149 +3753,51 @@ public final class TestMoveMessage {
         return this;
       }
 
-      // optional float rotX = 4;
-      private float rotX_ ;
-      /**
-       * <code>optional float rotX = 4;</code>
-       *
-       * <pre>
-       *朝向 x
-       * </pre>
-       */
-      public boolean hasRotX() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional float rotX = 4;</code>
-       *
-       * <pre>
-       *朝向 x
-       * </pre>
-       */
-      public float getRotX() {
-        return rotX_;
-      }
-      /**
-       * <code>optional float rotX = 4;</code>
-       *
-       * <pre>
-       *朝向 x
-       * </pre>
-       */
-      public Builder setRotX(float value) {
-        bitField0_ |= 0x00000008;
-        rotX_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float rotX = 4;</code>
-       *
-       * <pre>
-       *朝向 x
-       * </pre>
-       */
-      public Builder clearRotX() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        rotX_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // optional float rotY = 5;
+      // optional float rotY = 4;
       private float rotY_ ;
       /**
-       * <code>optional float rotY = 5;</code>
+       * <code>optional float rotY = 4;</code>
        *
        * <pre>
-       *朝向 y
+       *朝向 y (transform.localEulerAngles.y，只需要考虑水平朝向)
        * </pre>
        */
       public boolean hasRotY() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional float rotY = 5;</code>
+       * <code>optional float rotY = 4;</code>
        *
        * <pre>
-       *朝向 y
+       *朝向 y (transform.localEulerAngles.y，只需要考虑水平朝向)
        * </pre>
        */
       public float getRotY() {
         return rotY_;
       }
       /**
-       * <code>optional float rotY = 5;</code>
+       * <code>optional float rotY = 4;</code>
        *
        * <pre>
-       *朝向 y
+       *朝向 y (transform.localEulerAngles.y，只需要考虑水平朝向)
        * </pre>
        */
       public Builder setRotY(float value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         rotY_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional float rotY = 5;</code>
+       * <code>optional float rotY = 4;</code>
        *
        * <pre>
-       *朝向 y
+       *朝向 y (transform.localEulerAngles.y，只需要考虑水平朝向)
        * </pre>
        */
       public Builder clearRotY() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         rotY_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // optional float rotZ = 6;
-      private float rotZ_ ;
-      /**
-       * <code>optional float rotZ = 6;</code>
-       *
-       * <pre>
-       *朝向 z
-       * </pre>
-       */
-      public boolean hasRotZ() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional float rotZ = 6;</code>
-       *
-       * <pre>
-       *朝向 z
-       * </pre>
-       */
-      public float getRotZ() {
-        return rotZ_;
-      }
-      /**
-       * <code>optional float rotZ = 6;</code>
-       *
-       * <pre>
-       *朝向 z
-       * </pre>
-       */
-      public Builder setRotZ(float value) {
-        bitField0_ |= 0x00000020;
-        rotZ_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float rotZ = 6;</code>
-       *
-       * <pre>
-       *朝向 z
-       * </pre>
-       */
-      public Builder clearRotZ() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        rotZ_ = 0F;
         onChanged();
         return this;
       }
@@ -4088,11 +3862,11 @@ public final class TestMoveMessage {
       "\rResSyncPosRot\022\025\n\npersonType\030\002 \001(\005:\0011\022\020\n" +
       "\010personID\030\003 \001(\003\022\"\n\002pr\030\004 \001(\0132\026.com.game.p" +
       "roto.PosRot\022\014\n\004time\030\005 \001(\002\022\r\n\005speed\030\006 \001(\002" +
-      "\"\\\n\006PosRot\022\014\n\004posX\030\001 \001(\002\022\014\n\004posY\030\002 \001(\002\022\014" +
-      "\n\004posZ\030\003 \001(\002\022\014\n\004rotX\030\004 \001(\002\022\014\n\004rotY\030\005 \001(\002" +
-      "\022\014\n\004rotZ\030\006 \001(\002*]\n\017Protos_TestMove\022\020\n\013Req" +
-      "EnterMap\020\267-\022\020\n\013ResEnterMap\020\270-\022\022\n\rReqSync" +
-      "PosRot\020\271-\022\022\n\rResSyncPosRot\020\272-"
+      "\"@\n\006PosRot\022\014\n\004posX\030\001 \001(\002\022\014\n\004posY\030\002 \001(\002\022\014" +
+      "\n\004posZ\030\003 \001(\002\022\014\n\004rotY\030\004 \001(\002*]\n\017Protos_Tes" +
+      "tMove\022\020\n\013ReqEnterMap\020\267-\022\020\n\013ResEnterMap\020\270" +
+      "-\022\022\n\rReqSyncPosRot\020\271-\022\022\n\rResSyncPosRot\020\272" +
+      "-"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4128,7 +3902,7 @@ public final class TestMoveMessage {
           internal_static_com_game_proto_PosRot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_game_proto_PosRot_descriptor,
-              new java.lang.String[] { "PosX", "PosY", "PosZ", "RotX", "RotY", "RotZ", });
+              new java.lang.String[] { "PosX", "PosY", "PosZ", "RotY", });
           return null;
         }
       };

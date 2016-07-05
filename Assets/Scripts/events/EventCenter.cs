@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EventCenter :
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
         DDOSingleton<EventCenter>
-#else
-        NormalSingleton<MessageCenter>
-#endif
+//#else
+//        NormalSingleton<MessageCenter>
+//#endif
 
 {
 

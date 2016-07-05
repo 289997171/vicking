@@ -1,4 +1,5 @@
 ﻿
+using com.game.proto;
 using UnityEngine;
 
 /// <summary>
@@ -16,7 +17,7 @@ public class ReqSyncPosRotController : MonoBehaviour
     // 上次同步给服务器的坐标
     private Vector3 serverPos;
 
-    private Vector3 serverRot;
+    private float serverRot;
 
     void Start()
     {
@@ -25,7 +26,7 @@ public class ReqSyncPosRotController : MonoBehaviour
         this.moveable = this.GetComponent<Moveable>();
 
         this.serverPos = this.personTra.position;
-        this.serverRot = this.personTra.rotation.eulerAngles;
+        this.serverRot = this.personTra.localEulerAngles.y;
     }
 
     protected  void OnEnable()
@@ -44,16 +45,28 @@ public class ReqSyncPosRotController : MonoBehaviour
         if (Vector3.Distance(serverPos, transform.position) > 0.1f)
         {
             this.serverPos = transform.position;
+
             // TODO 发送请求
+            ReqSyncPosRotMessage reqSyncPosRotMessage = new ReqSyncPosRotMessage();
+            reqSyncPosRotMessage.pr = new PosRot();
+            reqSyncPosRotMessage.pr.posX = this.serverPos.x;
+            reqSyncPosRotMessage.pr.posY = this.serverPos.y;
+            reqSyncPosRotMessage.pr.posZ = this.serverPos.z;
+            NetManager.Instance.SendMessage(NetMessageBuilder.Encode((int)reqSyncPosRotMessage.msgID, reqSyncPosRotMessage));
         }
         // 如果有点位移动就不考虑朝向，依赖点位移动计算朝向（FPS游戏除外）
         else
         {
-            Vector3 direction = this.personTra.rotation.eulerAngles;
-            if (Vector3.Distance(serverRot, direction) > 0.1f)
+            float currentRot = this.personTra.localEulerAngles.y;
+            if (Mathf.Abs(this.serverRot - currentRot) > 0.2f)
             {
-                this.serverRot = direction;
+                this.serverRot = currentRot;
+
                 // TODO 发送消息
+                ReqSyncPosRotMessage reqSyncPosRotMessage = new ReqSyncPosRotMessage();
+                reqSyncPosRotMessage.pr = new PosRot();
+                reqSyncPosRotMessage.pr.rotY = this.serverRot;
+                NetManager.Instance.SendMessage(NetMessageBuilder.Encode((int)reqSyncPosRotMessage.msgID, reqSyncPosRotMessage));
             }
         }
     }

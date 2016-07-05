@@ -10,6 +10,8 @@ public class ResSyncPosRotController : MonoBehaviour
 
     private Transform personTra;
 
+    private Person person;
+
     private Moveable moveable;
 
 
@@ -17,24 +19,23 @@ public class ResSyncPosRotController : MonoBehaviour
     {
         this.personObj = this.gameObject;
         this.personTra = this.transform;
+        this.person = this.GetComponent<Person>();
         this.moveable = this.GetComponent<Moveable>();
     }
 
-    public void syncPostion(Vector3 postion)
+    public void syncPostion(Vector3 syncPos)
     {
-        if (Vector3.Distance(postion, transform.position) > 0.1f)
+        if (Vector3.Distance(syncPos, transform.position) > 0.1f)
         {
             // TODO 处理坐标改变
-            moveable.move(postion);
+            moveable.move(syncPos);
+            // personTra.position = Vector3.Lerp(personTra.position, syncPos, Time.deltaTime * this.person.finalAbility.speed);
         }
     }
 
-    public void syncdirection(Vector3 direction)
+    public void syncRot(float rot)
     {
-        if (Vector3.Distance(direction, this.personTra.rotation.eulerAngles) > 0.1f)
-        {
-            // TODO 处理朝向改变
-            moveable.turn(direction);
-        }
+       
     }
+
 }

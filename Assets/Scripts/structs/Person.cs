@@ -89,7 +89,17 @@ public abstract class Person : MonoBehaviour, IMapObject
     
     // 皮肤材质宽度（如果值太大，会影响人物的Y坐标，导致悬空的情况）
     public float skinWidth = 0.001f;
-#endregion
+    #endregion
+
+
+
+    #region controllers
+
+    public ReqSyncPosRotController ReqSyncPosRotController;
+
+    public ResSyncPosRotController ResSyncPosRotController;
+
+    #endregion
 
     public long getMapId()
     {

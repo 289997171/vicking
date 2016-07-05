@@ -1,6 +1,9 @@
 ﻿
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class PlayerManager : DDOSingleton<PlayerManager>, IManager
 {
@@ -9,12 +12,18 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         return true;
     }
 
-    public void createPlayer(string name, int job, bool isLocalPlayer)
+    // 主角
+    public Player localPlayer;
+
+    // 其他角色
+    public Dictionary<long, Player> players = new Dictionary<long, Player>(); 
+
+    public void createPlayer(string name, int job, bool isLocalPlayer, Action<Player> callback = null)
     {
-        StartCoroutine(_createPlayer(name, job, isLocalPlayer));
+        StartCoroutine(_createPlayer(name, job, isLocalPlayer, callback));
     }
 
-    private IEnumerator _createPlayer(string name, int job, bool isLocalPlayer)
+    private IEnumerator _createPlayer(string name, int job, bool isLocalPlayer, Action<Player> callback = null)
     {
         string modelPath = "";
         if (job == 1)
@@ -51,11 +60,12 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         if (isLocalPlayer)
         {
             // 只有主角才需要添加向服务器同步坐标请求
-            player.getOrAddComponent<ReqSyncPosRotController>();
+            person.ReqSyncPosRotController = player.getOrAddComponent<ReqSyncPosRotController>();
         }
 
         // 主角，非主角，都需要添加坐标改变控制器（主角用于如，因为恐惧等情况导致的位移）
-        player.getOrAddComponent<ResSyncPosRotController>();
+        person.ResSyncPosRotController = player.getOrAddComponent<ResSyncPosRotController>();
+
         yield return 1;
 
         if (isLocalPlayer)
@@ -89,5 +99,7 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
             WowMainCamera mainCamera = Camera.main.gameObject.getOrAddComponent<WowMainCamera>();
             mainCamera.target = player.transform;
         }
+
+        if (callback != null) callback(person);
     }
 }

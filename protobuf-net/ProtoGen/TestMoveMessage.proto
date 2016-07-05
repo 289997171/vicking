@@ -3,8 +3,8 @@ package com.game.proto;
 
 enum Protos_TestMove { 
 
-	ReqEnterMap = 5815;
-	ResEnterMap = 5816;
+	ReqEnterMap 				= 5815;
+	ResEnterMap 				= 5816;
 
 	ReqSyncPosRot				= 5817;//客户端移动时不停的同步坐标
 	ResSyncPosRot     			= 5818;//服务器广播玩家移动
@@ -49,7 +49,5 @@ message PosRot {
 	optional float  posY 						= 2;  //坐标 y
 	optional float  posZ 						= 3;  //坐标 z
 
-	optional float  rotX		     		= 4;  //朝向 x
-	optional float  rotY 					= 5;  //朝向 y
-	optional float  rotZ 					= 6;  //朝向 z
+	optional float  rotY 						= 4;  //朝向 y (transform.localEulerAngles.y，只需要考虑水平朝向)
 }
