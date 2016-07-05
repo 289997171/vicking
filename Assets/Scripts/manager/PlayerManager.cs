@@ -19,7 +19,7 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         string modelPath = "";
         if (job == 1)
         {
-            modelPath = "person/player/female/Female";
+            modelPath = "Prefab/Player_Worrior_niutou@NewWorrior";
         }
         Object model = Resources.Load(modelPath);
         GameObject player = Instantiate(model) as GameObject;
@@ -66,7 +66,7 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
 
         if (job == 1)
         {
-            player.getOrAddComponent<PlayerFemaleMoveAnimationController>();
+            player.getOrAddComponent<PlayerMoveAnimationController>();
             yield return 1;
         }
 

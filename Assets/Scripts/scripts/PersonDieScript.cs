@@ -40,6 +40,9 @@ public class PersonDieScript : NormalSingleton<PersonDieScript>, IManager, OnPer
         }
 
         Player player = person as Player;
+
+
+        // PlayerManager.Instance.xxxx
     }
 }
 

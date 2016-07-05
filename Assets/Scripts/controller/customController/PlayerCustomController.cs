@@ -77,6 +77,15 @@ public class PlayerCustomController : CustomController, IPersonController
                 capes.Add(rname, renderer);
             }
         }
+
+        string defaultEqitem = "LV0";
+        changeHead(CustomController.Head + "_" + defaultEqitem);
+        changeBody(CustomController.Body + "_" + defaultEqitem);
+        changeClavicle(CustomController.Clavicle + "_" + defaultEqitem);
+        changeSkirt(CustomController.Skirt + "_" + defaultEqitem);
+        changeCape(CustomController.Cape + "_" + defaultEqitem);
+        changeFoot(CustomController.Foot + "_" + defaultEqitem);
+        changeHand(CustomController.Hand + "_" + defaultEqitem);
     }
 
     public override void changeHead(string head)
