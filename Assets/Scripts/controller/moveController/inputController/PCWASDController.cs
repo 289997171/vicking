@@ -9,12 +9,12 @@ public class PCWASDController : WASDController
     {
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
-#if UNITY_EDITOR
-        if (h != 0 || v != 0)
-        {
-            Debug.Log("h = " + h + "  v = " + v);
-        }
-#endif
+//#if UNITY_EDITOR
+//        if (h != 0 || v != 0)
+//        {
+//            Debug.Log("h = " + h + "  v = " + v);
+//        }
+//#endif
     }
 
     public override void getInputHV(ref float h, ref float v)

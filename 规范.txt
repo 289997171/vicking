@@ -1,0 +1,24 @@
+1.要求，以后每个Update/FixedUpdate/LateUpdate/InvokeRepeating 都需要添加以下内容，测试单个Update性能开销
+    void Update()
+    {
+#if UNITY_EDITOR && DEBUG_MOVE
+        float begin = Time.realtimeSinceStartup;
+        // long begin = DateTime.Now.Ticks;
+        try
+        {
+#endif
+
+// 逻辑代码
+
+#if UNITY_EDITOR && DEBUG_MOVE
+        }
+        finally
+        {
+            //long cost = DateTime.Now.Ticks - begin;
+            float cost = Time.realtimeSinceStartup - begin * 1000000; // 转换成为纳秒
+            if (cost > 200) // 超过200纳秒就代表有问题了，需要优化性能
+            {
+                Debug.Log("PlayerMoveController Update cost ::: " + cost);
+            }
+        }
+#endif

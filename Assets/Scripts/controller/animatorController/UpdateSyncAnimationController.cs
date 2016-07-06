@@ -11,7 +11,7 @@ public class UpdateSyncAnimationController : AnimatorController
         setV(serverAnimatorInfo.v);
         setRuning(serverAnimatorInfo.runing);
         setAttacking(serverAnimatorInfo.inAttack);
-        setHaveTarget(serverAnimatorInfo.havaTarget);
+        setHaveTarget(serverAnimatorInfo.haveTarget);
     }
 
     #region Animator条件值

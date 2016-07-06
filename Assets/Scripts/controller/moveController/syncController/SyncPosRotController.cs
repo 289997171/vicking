@@ -61,7 +61,7 @@ public class SyncPosRotController : MonoBehaviour
 
 
             float currentRot = this.personTra.localEulerAngles.y;
-            if (Mathf.Abs(this.serverRot - currentRot) > 0.1f)
+            if (Mathf.Abs(this.serverRot - currentRot) > 10f)
             {
                 this.serverRot = currentRot;
 
@@ -74,7 +74,7 @@ public class SyncPosRotController : MonoBehaviour
         else
         {
             float currentRot = this.personTra.localEulerAngles.y;
-            if (Mathf.Abs(this.serverRot - currentRot) > 0.1f)
+            if (Mathf.Abs(this.serverRot - currentRot) > 10f)
             {
                 this.serverRot = currentRot;
 

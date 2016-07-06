@@ -22,6 +22,9 @@ public class ResEnterMapHandler {
             {
                 PlayerManager.Instance.players.Add(playerId, player);
             }
+
+            player.transform.position = new Vector3(pr.posX, pr.posY, pr.posZ);
+            player.transform.rotation = Quaternion.Euler(new Vector3(0, pr.rotY, 0));
         });
         
     }

@@ -45,6 +45,14 @@ public final class TestMoveMessage {
      * <code>ResSyncAnimator = 5820;</code>
      */
     ResSyncAnimator(5, 5820),
+    /**
+     * <code>ReqPing = 5821;</code>
+     */
+    ReqPing(6, 5821),
+    /**
+     * <code>ResPing = 5822;</code>
+     */
+    ResPing(7, 5822),
     ;
 
     /**
@@ -79,6 +87,14 @@ public final class TestMoveMessage {
      * <code>ResSyncAnimator = 5820;</code>
      */
     public static final int ResSyncAnimator_VALUE = 5820;
+    /**
+     * <code>ReqPing = 5821;</code>
+     */
+    public static final int ReqPing_VALUE = 5821;
+    /**
+     * <code>ResPing = 5822;</code>
+     */
+    public static final int ResPing_VALUE = 5822;
 
 
     public final int getNumber() { return value; }
@@ -91,6 +107,8 @@ public final class TestMoveMessage {
         case 5818: return ResSyncPosRot;
         case 5819: return ReqSyncAnimator;
         case 5820: return ResSyncAnimator;
+        case 5821: return ReqPing;
+        case 5822: return ResPing;
         default: return null;
       }
     }
@@ -5189,15 +5207,15 @@ public final class TestMoveMessage {
      */
     boolean getInAttack();
 
-    // optional bool havaTarget = 5;
+    // optional bool haveTarget = 5;
     /**
-     * <code>optional bool havaTarget = 5;</code>
+     * <code>optional bool haveTarget = 5;</code>
      */
-    boolean hasHavaTarget();
+    boolean hasHaveTarget();
     /**
-     * <code>optional bool havaTarget = 5;</code>
+     * <code>optional bool haveTarget = 5;</code>
      */
-    boolean getHavaTarget();
+    boolean getHaveTarget();
   }
   /**
    * Protobuf type {@code com.game.proto.AnimatorInfo}
@@ -5272,7 +5290,7 @@ public final class TestMoveMessage {
             }
             case 40: {
               bitField0_ |= 0x00000010;
-              havaTarget_ = input.readBool();
+              haveTarget_ = input.readBool();
               break;
             }
           }
@@ -5379,20 +5397,20 @@ public final class TestMoveMessage {
       return inAttack_;
     }
 
-    // optional bool havaTarget = 5;
-    public static final int HAVATARGET_FIELD_NUMBER = 5;
-    private boolean havaTarget_;
+    // optional bool haveTarget = 5;
+    public static final int HAVETARGET_FIELD_NUMBER = 5;
+    private boolean haveTarget_;
     /**
-     * <code>optional bool havaTarget = 5;</code>
+     * <code>optional bool haveTarget = 5;</code>
      */
-    public boolean hasHavaTarget() {
+    public boolean hasHaveTarget() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional bool havaTarget = 5;</code>
+     * <code>optional bool haveTarget = 5;</code>
      */
-    public boolean getHavaTarget() {
-      return havaTarget_;
+    public boolean getHaveTarget() {
+      return haveTarget_;
     }
 
     private void initFields() {
@@ -5400,7 +5418,7 @@ public final class TestMoveMessage {
       v_ = 0F;
       runing_ = false;
       inAttack_ = false;
-      havaTarget_ = false;
+      haveTarget_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -5427,7 +5445,7 @@ public final class TestMoveMessage {
         output.writeBool(4, inAttack_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBool(5, havaTarget_);
+        output.writeBool(5, haveTarget_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -5456,7 +5474,7 @@ public final class TestMoveMessage {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(5, havaTarget_);
+          .computeBoolSize(5, haveTarget_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5582,7 +5600,7 @@ public final class TestMoveMessage {
         bitField0_ = (bitField0_ & ~0x00000004);
         inAttack_ = false;
         bitField0_ = (bitField0_ & ~0x00000008);
-        havaTarget_ = false;
+        haveTarget_ = false;
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
@@ -5631,7 +5649,7 @@ public final class TestMoveMessage {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.havaTarget_ = havaTarget_;
+        result.haveTarget_ = haveTarget_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5660,8 +5678,8 @@ public final class TestMoveMessage {
         if (other.hasInAttack()) {
           setInAttack(other.getInAttack());
         }
-        if (other.hasHavaTarget()) {
-          setHavaTarget(other.getHavaTarget());
+        if (other.hasHaveTarget()) {
+          setHaveTarget(other.getHaveTarget());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -5822,35 +5840,35 @@ public final class TestMoveMessage {
         return this;
       }
 
-      // optional bool havaTarget = 5;
-      private boolean havaTarget_ ;
+      // optional bool haveTarget = 5;
+      private boolean haveTarget_ ;
       /**
-       * <code>optional bool havaTarget = 5;</code>
+       * <code>optional bool haveTarget = 5;</code>
        */
-      public boolean hasHavaTarget() {
+      public boolean hasHaveTarget() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional bool havaTarget = 5;</code>
+       * <code>optional bool haveTarget = 5;</code>
        */
-      public boolean getHavaTarget() {
-        return havaTarget_;
+      public boolean getHaveTarget() {
+        return haveTarget_;
       }
       /**
-       * <code>optional bool havaTarget = 5;</code>
+       * <code>optional bool haveTarget = 5;</code>
        */
-      public Builder setHavaTarget(boolean value) {
+      public Builder setHaveTarget(boolean value) {
         bitField0_ |= 0x00000010;
-        havaTarget_ = value;
+        haveTarget_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bool havaTarget = 5;</code>
+       * <code>optional bool haveTarget = 5;</code>
        */
-      public Builder clearHavaTarget() {
+      public Builder clearHaveTarget() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        havaTarget_ = false;
+        haveTarget_ = false;
         onChanged();
         return this;
       }
@@ -5864,6 +5882,816 @@ public final class TestMoveMessage {
     }
 
     // @@protoc_insertion_point(class_scope:com.game.proto.AnimatorInfo)
+  }
+
+  public interface ReqPingMessageOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqPing];
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqPing];</code>
+     */
+    boolean hasMsgID();
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqPing];</code>
+     */
+    com.game.proto.TestMoveMessage.Protos_TestMove getMsgID();
+  }
+  /**
+   * Protobuf type {@code com.game.proto.ReqPingMessage}
+   */
+  public static final class ReqPingMessage extends
+      com.google.protobuf.GeneratedMessage
+      implements ReqPingMessageOrBuilder {
+    // Use ReqPingMessage.newBuilder() to construct.
+    private ReqPingMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ReqPingMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ReqPingMessage defaultInstance;
+    public static ReqPingMessage getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ReqPingMessage getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ReqPingMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              int rawValue = input.readEnum();
+              com.game.proto.TestMoveMessage.Protos_TestMove value = com.game.proto.TestMoveMessage.Protos_TestMove.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                msgID_ = value;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ReqPingMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ReqPingMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.game.proto.TestMoveMessage.ReqPingMessage.class, com.game.proto.TestMoveMessage.ReqPingMessage.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ReqPingMessage> PARSER =
+        new com.google.protobuf.AbstractParser<ReqPingMessage>() {
+      public ReqPingMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ReqPingMessage(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ReqPingMessage> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqPing];
+    public static final int MSGID_FIELD_NUMBER = 1;
+    private com.game.proto.TestMoveMessage.Protos_TestMove msgID_;
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqPing];</code>
+     */
+    public boolean hasMsgID() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqPing];</code>
+     */
+    public com.game.proto.TestMoveMessage.Protos_TestMove getMsgID() {
+      return msgID_;
+    }
+
+    private void initFields() {
+      msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ReqPing;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(1, msgID_.getNumber());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, msgID_.getNumber());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.game.proto.TestMoveMessage.ReqPingMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.proto.TestMoveMessage.ReqPingMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ReqPingMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.proto.TestMoveMessage.ReqPingMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ReqPingMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.ReqPingMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ReqPingMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.ReqPingMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ReqPingMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.ReqPingMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.game.proto.TestMoveMessage.ReqPingMessage prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.game.proto.ReqPingMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.game.proto.TestMoveMessage.ReqPingMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ReqPingMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ReqPingMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.game.proto.TestMoveMessage.ReqPingMessage.class, com.game.proto.TestMoveMessage.ReqPingMessage.Builder.class);
+      }
+
+      // Construct using com.game.proto.TestMoveMessage.ReqPingMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ReqPing;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ReqPingMessage_descriptor;
+      }
+
+      public com.game.proto.TestMoveMessage.ReqPingMessage getDefaultInstanceForType() {
+        return com.game.proto.TestMoveMessage.ReqPingMessage.getDefaultInstance();
+      }
+
+      public com.game.proto.TestMoveMessage.ReqPingMessage build() {
+        com.game.proto.TestMoveMessage.ReqPingMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.game.proto.TestMoveMessage.ReqPingMessage buildPartial() {
+        com.game.proto.TestMoveMessage.ReqPingMessage result = new com.game.proto.TestMoveMessage.ReqPingMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.msgID_ = msgID_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.game.proto.TestMoveMessage.ReqPingMessage) {
+          return mergeFrom((com.game.proto.TestMoveMessage.ReqPingMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.game.proto.TestMoveMessage.ReqPingMessage other) {
+        if (other == com.game.proto.TestMoveMessage.ReqPingMessage.getDefaultInstance()) return this;
+        if (other.hasMsgID()) {
+          setMsgID(other.getMsgID());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.game.proto.TestMoveMessage.ReqPingMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.game.proto.TestMoveMessage.ReqPingMessage) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqPing];
+      private com.game.proto.TestMoveMessage.Protos_TestMove msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ReqPing;
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqPing];</code>
+       */
+      public boolean hasMsgID() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqPing];</code>
+       */
+      public com.game.proto.TestMoveMessage.Protos_TestMove getMsgID() {
+        return msgID_;
+      }
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqPing];</code>
+       */
+      public Builder setMsgID(com.game.proto.TestMoveMessage.Protos_TestMove value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        msgID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ReqPing];</code>
+       */
+      public Builder clearMsgID() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ReqPing;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.game.proto.ReqPingMessage)
+    }
+
+    static {
+      defaultInstance = new ReqPingMessage(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.game.proto.ReqPingMessage)
+  }
+
+  public interface ResPingMessageOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResPing];
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResPing];</code>
+     */
+    boolean hasMsgID();
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResPing];</code>
+     */
+    com.game.proto.TestMoveMessage.Protos_TestMove getMsgID();
+  }
+  /**
+   * Protobuf type {@code com.game.proto.ResPingMessage}
+   */
+  public static final class ResPingMessage extends
+      com.google.protobuf.GeneratedMessage
+      implements ResPingMessageOrBuilder {
+    // Use ResPingMessage.newBuilder() to construct.
+    private ResPingMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ResPingMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ResPingMessage defaultInstance;
+    public static ResPingMessage getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ResPingMessage getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ResPingMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              int rawValue = input.readEnum();
+              com.game.proto.TestMoveMessage.Protos_TestMove value = com.game.proto.TestMoveMessage.Protos_TestMove.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                msgID_ = value;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ResPingMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ResPingMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.game.proto.TestMoveMessage.ResPingMessage.class, com.game.proto.TestMoveMessage.ResPingMessage.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ResPingMessage> PARSER =
+        new com.google.protobuf.AbstractParser<ResPingMessage>() {
+      public ResPingMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ResPingMessage(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ResPingMessage> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResPing];
+    public static final int MSGID_FIELD_NUMBER = 1;
+    private com.game.proto.TestMoveMessage.Protos_TestMove msgID_;
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResPing];</code>
+     */
+    public boolean hasMsgID() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResPing];</code>
+     */
+    public com.game.proto.TestMoveMessage.Protos_TestMove getMsgID() {
+      return msgID_;
+    }
+
+    private void initFields() {
+      msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ResPing;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(1, msgID_.getNumber());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, msgID_.getNumber());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.game.proto.TestMoveMessage.ResPingMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.proto.TestMoveMessage.ResPingMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ResPingMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.proto.TestMoveMessage.ResPingMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ResPingMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.ResPingMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ResPingMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.ResPingMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.game.proto.TestMoveMessage.ResPingMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.proto.TestMoveMessage.ResPingMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.game.proto.TestMoveMessage.ResPingMessage prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.game.proto.ResPingMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.game.proto.TestMoveMessage.ResPingMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ResPingMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ResPingMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.game.proto.TestMoveMessage.ResPingMessage.class, com.game.proto.TestMoveMessage.ResPingMessage.Builder.class);
+      }
+
+      // Construct using com.game.proto.TestMoveMessage.ResPingMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ResPing;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.game.proto.TestMoveMessage.internal_static_com_game_proto_ResPingMessage_descriptor;
+      }
+
+      public com.game.proto.TestMoveMessage.ResPingMessage getDefaultInstanceForType() {
+        return com.game.proto.TestMoveMessage.ResPingMessage.getDefaultInstance();
+      }
+
+      public com.game.proto.TestMoveMessage.ResPingMessage build() {
+        com.game.proto.TestMoveMessage.ResPingMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.game.proto.TestMoveMessage.ResPingMessage buildPartial() {
+        com.game.proto.TestMoveMessage.ResPingMessage result = new com.game.proto.TestMoveMessage.ResPingMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.msgID_ = msgID_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.game.proto.TestMoveMessage.ResPingMessage) {
+          return mergeFrom((com.game.proto.TestMoveMessage.ResPingMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.game.proto.TestMoveMessage.ResPingMessage other) {
+        if (other == com.game.proto.TestMoveMessage.ResPingMessage.getDefaultInstance()) return this;
+        if (other.hasMsgID()) {
+          setMsgID(other.getMsgID());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.game.proto.TestMoveMessage.ResPingMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.game.proto.TestMoveMessage.ResPingMessage) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResPing];
+      private com.game.proto.TestMoveMessage.Protos_TestMove msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ResPing;
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResPing];</code>
+       */
+      public boolean hasMsgID() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResPing];</code>
+       */
+      public com.game.proto.TestMoveMessage.Protos_TestMove getMsgID() {
+        return msgID_;
+      }
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResPing];</code>
+       */
+      public Builder setMsgID(com.game.proto.TestMoveMessage.Protos_TestMove value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        msgID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.game.proto.Protos_TestMove msgID = 1 [default = ResPing];</code>
+       */
+      public Builder clearMsgID() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        msgID_ = com.game.proto.TestMoveMessage.Protos_TestMove.ResPing;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.game.proto.ResPingMessage)
+    }
+
+    static {
+      defaultInstance = new ResPingMessage(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.game.proto.ResPingMessage)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
@@ -5906,6 +6734,16 @@ public final class TestMoveMessage {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_game_proto_AnimatorInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_game_proto_ReqPingMessage_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_game_proto_ReqPingMessage_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_game_proto_ResPingMessage_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_game_proto_ResPingMessage_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -5941,11 +6779,15 @@ public final class TestMoveMessage {
       "\0222\n\014animatorInfo\030\003 \002(\0132\034.com.game.proto." +
       "AnimatorInfo\"Z\n\014AnimatorInfo\022\t\n\001h\030\001 \001(\002\022" +
       "\t\n\001v\030\002 \001(\002\022\016\n\006runing\030\003 \001(\010\022\020\n\010inAttack\030\004" +
-      " \001(\010\022\022\n\nhavaTarget\030\005 \001(\010*\211\001\n\017Protos_Test" +
-      "Move\022\020\n\013ReqEnterMap\020\267-\022\020\n\013ResEnterMap\020\270-" +
-      "\022\022\n\rReqSyncPosRot\020\271-\022\022\n\rResSyncPosRot\020\272-" +
-      "\022\024\n\017ReqSyncAnimator\020\273-\022\024\n\017ResSyncAnimato",
-      "r\020\274-"
+      " \001(\010\022\022\n\nhaveTarget\030\005 \001(\010\"I\n\016ReqPingMessa" +
+      "ge\0227\n\005msgID\030\001 \001(\0162\037.com.game.proto.Proto" +
+      "s_TestMove:\007ReqPing\"I\n\016ResPingMessage\0227\n" +
+      "\005msgID\030\001 \001(\0162\037.com.game.proto.Protos_Tes",
+      "tMove:\007ResPing*\245\001\n\017Protos_TestMove\022\020\n\013Re" +
+      "qEnterMap\020\267-\022\020\n\013ResEnterMap\020\270-\022\022\n\rReqSyn" +
+      "cPosRot\020\271-\022\022\n\rResSyncPosRot\020\272-\022\024\n\017ReqSyn" +
+      "cAnimator\020\273-\022\024\n\017ResSyncAnimator\020\274-\022\014\n\007Re" +
+      "qPing\020\275-\022\014\n\007ResPing\020\276-"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5999,7 +6841,19 @@ public final class TestMoveMessage {
           internal_static_com_game_proto_AnimatorInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_game_proto_AnimatorInfo_descriptor,
-              new java.lang.String[] { "H", "V", "Runing", "InAttack", "HavaTarget", });
+              new java.lang.String[] { "H", "V", "Runing", "InAttack", "HaveTarget", });
+          internal_static_com_game_proto_ReqPingMessage_descriptor =
+            getDescriptor().getMessageTypes().get(8);
+          internal_static_com_game_proto_ReqPingMessage_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_game_proto_ReqPingMessage_descriptor,
+              new java.lang.String[] { "MsgID", });
+          internal_static_com_game_proto_ResPingMessage_descriptor =
+            getDescriptor().getMessageTypes().get(9);
+          internal_static_com_game_proto_ResPingMessage_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_game_proto_ResPingMessage_descriptor,
+              new java.lang.String[] { "MsgID", });
           return null;
         }
       };

@@ -286,13 +286,49 @@ namespace com.game.proto
       get { return _inAttack; }
       set { _inAttack = value; }
     }
-    private bool _havaTarget = default(bool);
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"havaTarget", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private bool _haveTarget = default(bool);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"haveTarget", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(default(bool))]
-    public bool havaTarget
+    public bool haveTarget
     {
-      get { return _havaTarget; }
-      set { _havaTarget = value; }
+      get { return _haveTarget; }
+      set { _haveTarget = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ReqPingMessage")]
+  public partial class ReqPingMessage : global::ProtoBuf.IExtensible
+  {
+    public ReqPingMessage() {}
+    
+    private com.game.proto.Protos_TestMove _msgID = com.game.proto.Protos_TestMove.ReqPing;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"msgID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(com.game.proto.Protos_TestMove.ReqPing)]
+    public com.game.proto.Protos_TestMove msgID
+    {
+      get { return _msgID; }
+      set { _msgID = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResPingMessage")]
+  public partial class ResPingMessage : global::ProtoBuf.IExtensible
+  {
+    public ResPingMessage() {}
+    
+    private com.game.proto.Protos_TestMove _msgID = com.game.proto.Protos_TestMove.ResPing;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"msgID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(com.game.proto.Protos_TestMove.ResPing)]
+    public com.game.proto.Protos_TestMove msgID
+    {
+      get { return _msgID; }
+      set { _msgID = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -319,7 +355,13 @@ namespace com.game.proto
       ReqSyncAnimator = 5819,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ResSyncAnimator", Value=5820)]
-      ResSyncAnimator = 5820
+      ResSyncAnimator = 5820,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ReqPing", Value=5821)]
+      ReqPing = 5821,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResPing", Value=5822)]
+      ResPing = 5822
     }
   
 }

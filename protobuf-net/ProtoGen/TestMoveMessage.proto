@@ -11,6 +11,9 @@ enum Protos_TestMove {
 
 	ReqSyncAnimator				= 5819;
 	ResSyncAnimator				= 5820;
+
+	ReqPing						= 5821;
+	ResPing						= 5822;
 }
 
 
@@ -75,4 +78,12 @@ message AnimatorInfo {
     optional bool runing = 3;
     optional bool inAttack = 4;
     optional bool haveTarget = 5;
+}
+
+message	ReqPingMessage {
+	optional Protos_TestMove msgID = 1 [default = ReqPing];
+}
+
+message	ResPingMessage {
+	optional Protos_TestMove msgID = 1 [default = ResPing];
 }

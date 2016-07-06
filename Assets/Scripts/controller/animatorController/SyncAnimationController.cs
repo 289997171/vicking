@@ -50,9 +50,9 @@ public class SyncAnimationController : AnimatorController
 
     public override void setHaveTarget(bool haveTarget)
     {
-        if (this.serverAnimatorInfo.havaTarget == haveTarget) return;
+        if (this.serverAnimatorInfo.haveTarget == haveTarget) return;
 
-        this.serverAnimatorInfo.havaTarget = haveTarget;
+        this.serverAnimatorInfo.haveTarget = haveTarget;
         this.animator.SetBool("haveTarget", haveTarget);
         this.flag = true;
     }
@@ -84,4 +84,22 @@ public class SyncAnimationController : AnimatorController
     }
 
     #endregion
+
+
+
+    /// <summary>
+    /// 测试使用
+    /// </summary>
+    void OnGUI()
+    {
+        if (GUI.Button(new Rect(10, 200, 100, 30), "进入战斗状态"))
+        {
+            setAttacking(true);
+        }
+
+        if (GUI.Button(new Rect(10, 250, 100, 30), "退出战斗状态"))
+        {
+            setAttacking(false);
+        }
+    }
 }

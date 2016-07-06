@@ -6,11 +6,14 @@ using UnityEngine;
 
 public class NetManager : DDOSingleton<NetManager>, IManager
 {
-
+    // 网络基础
     private NetBase gameNet = new NetBase();
 
     // 消息队列
     private Queue<NetMessage> _msgQueue;
+
+    // Ping相关处理
+    private PingController pingController;
 
     public NetBase GameNet
     {
@@ -89,13 +92,34 @@ public class NetManager : DDOSingleton<NetManager>, IManager
         while (gameNet.IsConnecting)
             yield return 0;
 
-        if (gameNet.State == NetState.Connected) Debug.LogError("链接成功");
-        else Debug.Log("连接失败，请检查网络.");
+        if (gameNet.State == NetState.Connected)
+        {
+            Debug.LogError("链接成功");
+
+            // ping，链接成功后,开启ping
+            pingController = this.gameObject.getOrAddComponent<PingController>();
+            pingController.enabled = true;
+        }
+        else
+        {
+            Debug.Log("连接失败，请检查网络.");
+
+            // ping，链接失败后,禁用ping
+            pingController = this.gameObject.getOrAddComponent<PingController>();
+            pingController.enabled = false;
+        }
 
         callback(gameNet.State);
     }
 
-//#if UNITY_EDITOR
+
+    public void OnPing()
+    {
+        pingController.OnPing();
+    }
+
+
+    //#if UNITY_EDITOR
 
     [SerializeField] private string host = "192.168.1.77";
     [SerializeField] private int port = 7777;
@@ -132,4 +156,5 @@ public class NetManager : DDOSingleton<NetManager>, IManager
         }
     }
 //#endif
+    
 }

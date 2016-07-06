@@ -29,6 +29,11 @@ public class NetMessageHandler
                 ResSyncAnimatorHandler.Execute(resSyncAnimator);
                 break;
 
+            case (int)Protos_TestMove.ResPing:
+                var resPing = NetMessageBuilder.Decode<ResPingMessage>(netMessage);
+                ResPingHandler.Execute(resPing);
+                break;
+
             #endregion
 
             default:
