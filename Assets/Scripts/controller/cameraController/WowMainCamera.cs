@@ -119,7 +119,7 @@ public class WowMainCamera : MonoBehaviour
 	void LateUpdate ()
     {
 
-#if UNITY_EDITOR && DEBUG_MOVE
+#if UNITY_EDITOR && DEBUG_CAMERA
         float begin = Time.realtimeSinceStartup;
         // long begin = DateTime.Now.Ticks;
         try
@@ -218,7 +218,7 @@ public class WowMainCamera : MonoBehaviour
         transform.position = position;
 
 
-#if UNITY_EDITOR && DEBUG_MOVE
+#if UNITY_EDITOR && DEBUG_CAMERA
         }
         finally
         {
