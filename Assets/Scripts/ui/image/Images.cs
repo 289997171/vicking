@@ -38,6 +38,7 @@ public static class ImageExt
         Images images = image.gameObject.GetComponent<Images>();
         if (images != null)
         {
+            Debug.LogError("未找到Images!");
             images.changeImage(name);
         }
     }
