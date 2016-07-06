@@ -15,7 +15,7 @@
         finally
         {
             //long cost = DateTime.Now.Ticks - begin;
-            float cost = Time.realtimeSinceStartup - begin * 1000000; // 转换成为纳秒
+            float cost = （Time.realtimeSinceStartup - begin） * 1000000; // 转换成为纳秒
             if (cost > 200) // 超过200纳秒就代表有问题了，需要优化性能
             {
                 Debug.Log("PlayerMoveController Update cost ::: " + cost);

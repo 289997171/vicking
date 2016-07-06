@@ -26,8 +26,8 @@ public class WowMainCamera : MonoBehaviour
     public float distance = 5.0f;
 
     // 镜头与目标的最小最近距离
-    public float minDistance = .6f;
-    public float maxDistance = 20;
+    public float minDistance = 2f;
+    public float maxDistance = 14;
 
     // 鼠标右键或中键导致的，镜头x，y旋转速度
     public float xSpeed = 250.0f;
@@ -118,9 +118,19 @@ public class WowMainCamera : MonoBehaviour
 
 	void LateUpdate ()
     {
+
+#if UNITY_EDITOR && DEBUG_MOVE
+        float begin = Time.realtimeSinceStartup;
+        // long begin = DateTime.Now.Ticks;
+        try
+        {
+#endif
+
+
+
 #if UNITY_EDITOR
-        // 在鼠标右键以及中键点击时，隐藏鼠标
-        if(HideAndShowCursor)
+            // 在鼠标右键以及中键点击时，隐藏鼠标
+            if (HideAndShowCursor)
 		{
 		    if (Input.GetMouseButton(1) || Input.GetMouseButton(2))
 		        Cursor.visible = false; //Screen.lockCursor = true; 
@@ -202,12 +212,26 @@ public class WowMainCamera : MonoBehaviour
         currentDistance = !isCorrected || correctedDistance > currentDistance ? Mathf.Lerp(currentDistance, correctedDistance, Time.deltaTime * zoomDampening) : correctedDistance;
 
         // recalculate position based on the new currentDistance
-        position = target.position - (rotation * Vector3.forward * currentDistance + new Vector3(0, -targetHeight - 0.05f, 0));
+            position = target.position - (rotation*Vector3.forward*currentDistance + new Vector3(0, -targetHeight - 0.2f, 0));
 
         transform.rotation = rotation;
         transform.position = position;
-		
-	}
+
+
+#if UNITY_EDITOR && DEBUG_MOVE
+        }
+        finally
+        {
+            //long cost = DateTime.Now.Ticks - begin;
+            float cost = (Time.realtimeSinceStartup - begin) * 1000000; // 转换成为纳秒
+            if (cost > 200) // 超过200纳秒就代表有问题了，需要优化性能
+            {
+                Debug.Log("WoWMainCamera Update cost ::: " + cost);
+            }
+        }
+#endif
+
+    }
 
     private static float ClampAngle(float angle, float min, float max)
     {
