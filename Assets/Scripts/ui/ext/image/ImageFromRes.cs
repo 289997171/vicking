@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -10,21 +11,35 @@ public class ImageFromRes : MonoBehaviour
     private Image image;
 
     // 换图片其他图片的路径
-    [SerializeField] private string resourcePath;
+    [SerializeField]
+    private string resourcePath;
+
+    // 相对原始尺寸缩放比例
+    [SerializeField] private float ratio = 1f;
 
     void Start()
     {
         this.image = GetComponent<Image>();
         if (!resourcePath.EndsWith("/"))
         {
-            Object load = Resources.Load(resourcePath, typeof (Sprite));
+            Object load = Resources.Load(resourcePath, typeof(Sprite));
             // 设置的是一张图片
             if (load != null)
             {
-                this.image.sprite = load as Sprite;
+                Sprite newSprite = load as Sprite;
+
+                this.image.sprite = newSprite;
 
                 // 使用图片默认大小
-                image.SetNativeSize();
+                if (ratio == 1f)
+                {
+                    image.SetNativeSize();
+                }
+                else
+                {
+                    Rect rect = newSprite.rect;
+                    this.image.rectTransform.sizeDelta = new Vector2(rect.size.x * ratio, rect.size.y * ratio);
+                }
 
                 int index = resourcePath.LastIndexOf('/');
                 resourcePath = resourcePath.Remove(index + 1);
@@ -37,22 +52,30 @@ public class ImageFromRes : MonoBehaviour
         }
     }
 
+    public void changeImage(string name, float ratio)
+    {
+        StartCoroutine(_changeImage(name, ratio));
+    }
+
     /// <summary>
     /// 切换图片
     /// </summary>
     /// <param name="name"></param>
-    /// <param name="setNativeSize"></param>
+    /// <param name="mapSize"></param>
+    /// <param name="ratioSize"></param>
     /// <returns></returns>
-    private IEnumerator changeImage(string name, bool setNativeSize)
+    private IEnumerator _changeImage(string name, float ratio)
     {
         yield return 1;
-        Object res = Resources.Load(resourcePath + name, typeof (Sprite));
+        Object res = Resources.Load(resourcePath + name, typeof(Sprite));
         if (res == null)
         {
             yield break;
         }
 
         Sprite newSprite = res as Sprite;
+
+        Rect rect = newSprite.rect;
 
         Sprite oldSprite = image.sprite;
 
@@ -63,10 +86,14 @@ public class ImageFromRes : MonoBehaviour
             Resources.UnloadAsset(oldSprite);
         }
 
-        if (setNativeSize)
+        if (ratio == 1f)
         {
-            Debug.Log("setNativeSize!!");
             image.SetNativeSize();
+        }
+        else
+        {
+            this.ratio = ratio;
+            image.rectTransform.sizeDelta = new Vector2(rect.size.x * ratio, rect.size.y * ratio);
         }
     }
 }

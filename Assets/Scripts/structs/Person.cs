@@ -60,7 +60,7 @@ public abstract class Person : MonoBehaviour, IMapObject
     public long mapId;
 
     //地图模板id
-    public int mapModelId;
+    public int mapModelId = 1;
 
     //所在线服务器
     public int line;
