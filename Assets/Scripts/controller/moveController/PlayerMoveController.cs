@@ -52,11 +52,7 @@ public class PlayerMoveController : Moveable, IPersonController
 
         this.characterController = GetComponent<CharacterController>();
 
-        // 设置胶囊碰撞体信息
-        this.characterController.height = this.person.height;
-        this.characterController.radius = this.person.radius;
-        this.characterController.center = this.person.center;
-        this.characterController.skinWidth = this.person.skinWidth;
+        
 
         this.wasdController = GetComponent<WASDController>();
 

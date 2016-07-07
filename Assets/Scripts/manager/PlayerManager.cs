@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Object = UnityEngine.Object;
 
 public class PlayerManager : DDOSingleton<PlayerManager>, IManager
@@ -44,9 +45,16 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
 
         person.height = 2f;
         person.radius = 0.5f;
-        person.center = Vector3.up;
+        person.center = new Vector3(0, person.height / 2, 0);
         person.skinWidth = 0.001f;
         person.finalAbility.speed = 6f;
+
+        CharacterController characterController = player.getOrAddComponent<CharacterController>();
+        // 设置胶囊碰撞体信息
+        characterController.height = person.height;
+        characterController.radius = person.radius;
+        characterController.center = person.center;
+        characterController.skinWidth = person.skinWidth;
 
         PlayerCustomController customController = player.getOrAddComponent<PlayerCustomController>();
 
@@ -97,13 +105,24 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
 
         if (isLocalPlayer)
         {
-            player.getOrAddComponent<PlayerMoveController>();
+            person.Moveable = player.getOrAddComponent<PlayerMoveController>();
         }
     
         yield return 1;
 
+        if (isLocalPlayer)
+        {
+            // 自己就不用添加被点击事件了
+            // player.getOrAddComponent<PlayerClickController>();
+        }
+        else
+        {
+            // 其他角色允许被点击
+            player.getOrAddComponent<PlayerClickController>();
+        }
 
-        
+
+
 
         // 设置相机
         if (isLocalPlayer)
@@ -113,5 +132,14 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         }
 
         if (callback != null) callback(person);
+    }
+
+    public void OnWalkClick(PointerEventData eventData)
+    {
+        Debug.Log("OnWalkClick !!!");
+        if (localPlayer != null)
+        {
+            localPlayer.Moveable.move(eventData.pointerCurrentRaycast.worldPosition);
+        }
     }
 }

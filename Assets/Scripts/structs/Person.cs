@@ -101,6 +101,8 @@ public abstract class Person : MonoBehaviour, IMapObject
 
     #region controllers
 
+    public Moveable Moveable;
+
     public SyncPosRotController SyncPosRotController;
 
     public UpdateSyncPosRotController UpdateSyncPosRotController;
