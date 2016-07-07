@@ -127,8 +127,12 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         // 设置相机
         if (isLocalPlayer)
         {
+            // 3D 摄像机
             WowMainCamera mainCamera = Camera.main.gameObject.getOrAddComponent<WowMainCamera>();
             mainCamera.target = player.transform;
+
+            // 射线
+            PhysicsRaycaster physicsRaycaster = mainCamera.gameObject.getOrAddComponent<PhysicsRaycaster>();
         }
 
         if (callback != null) callback(person);
