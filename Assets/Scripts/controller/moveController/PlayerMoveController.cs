@@ -132,6 +132,7 @@ public class PlayerMoveController : Moveable, IPersonController
                 moveDirection.x = h;
                 moveDirection.y = 0;
                 moveDirection.z = v;
+                moveDirection.Normalize();
 
                 // 1.以角色自身坐标朝向
                 // moveDirection = transform.TransformDirection(moveDirection);

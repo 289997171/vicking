@@ -60,7 +60,8 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
 
         if (isLocalPlayer)
         {
-            player.getOrAddComponent<PCWASDController>();
+            // player.getOrAddComponent<PCWASDController>();
+            player.getOrAddComponent<JoysticksController>();
             yield return 1;
         }
         else
