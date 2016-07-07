@@ -20,9 +20,9 @@ public class GameNetCloseEvts : NormalSingleton<GameNetCloseEvts>, IManager
     {
         Debug.Log("OnGameNetClose");
 
-        if (PlayerManager.Instance.localPlayer != null)
+        if (PlayerManager.Instance.LocalPlayer != null)
         {
-            PlayerManager.Instance.localPlayer.gameObject.SetActive(false);
+            PlayerManager.Instance.LocalPlayer.gameObject.SetActive(false);
         }
     }
 }

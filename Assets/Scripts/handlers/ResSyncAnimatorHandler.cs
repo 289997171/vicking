@@ -7,7 +7,7 @@ public class ResSyncAnimatorHandler
     {
         Debug.Log("接收到服务器消息：" + message);
         long playerId = message.playerID;
-        if (playerId  == PlayerManager.Instance.localPlayer.id)
+        if (playerId  == PlayerManager.Instance.LocalPlayer.id)
         {
             return;
         }

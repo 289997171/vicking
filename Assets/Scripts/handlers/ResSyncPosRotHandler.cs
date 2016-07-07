@@ -18,7 +18,7 @@ public class ResSyncPosRotHandler
         if (personType == Person.PERSON_PLAYER)
         {
             // TODO 临时测试需要的，以后可以删除
-            if (personId == PlayerManager.Instance.localPlayer.id)
+            if (personId == PlayerManager.Instance.LocalPlayer.id)
             {
                 return;
             }

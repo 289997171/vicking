@@ -63,6 +63,8 @@ public class WowMainCamera : MonoBehaviour
 
     private IEnumerator Start ()
     {
+        yield return 0;
+
         walkMask = LayerMask.GetMask("Walk");
 
         Vector3 angles = transform.eulerAngles;
@@ -78,40 +80,40 @@ public class WowMainCamera : MonoBehaviour
         if (GetComponent<Rigidbody>())
             GetComponent<Rigidbody>().freezeRotation = true;
 
-	    while (true)
-	    {
-            yield return new WaitForSeconds(1);
-
-            // Don't do anything if target is not defined
-            // 如果未指定目标，自动查找Player对象
-            if (!target)
-            {
-                tryFindTarget--;
-                GameObject go = GameObject.Find("Player");
-                if (go != null)
-                {
-                    Debug.LogError("自动查询到目标：Player!!!");
-                    target = go.transform;
-                    transform.LookAt(target);
-                    break;
-                }
-
-                PlayerMoveController[] controllers = GameObject.FindObjectsOfType<PlayerMoveController>();
-                foreach (PlayerMoveController controller in controllers)
-                {
-                    //if (controller.isLocalPlayer)
-                    //{
-                    target = controller.transform;
-                    transform.LookAt(target);
-                    //}
-                }
-
-                if (tryFindTarget < 0)
-                {
-                    Debug.LogError("无法找到镜头目标！！！");
-                }
-            }
-        }
+//	    while (true)
+//	    {
+//            yield return new WaitForSeconds(1);
+//
+//            // Don't do anything if target is not defined
+//            // 如果未指定目标，自动查找Player对象
+//            if (!target)
+//            {
+//                tryFindTarget--;
+//                GameObject go = GameObject.Find("Player");
+//                if (go != null)
+//                {
+//                    Debug.LogError("自动查询到目标：Player!!!");
+//                    target = go.transform;
+//                    transform.LookAt(target);
+//                    break;
+//                }
+//
+//                PlayerMoveController[] controllers = GameObject.FindObjectsOfType<PlayerMoveController>();
+//                foreach (PlayerMoveController controller in controllers)
+//                {
+//                    //if (controller.isLocalPlayer)
+//                    //{
+//                    target = controller.transform;
+//                    transform.LookAt(target);
+//                    //}
+//                }
+//
+//                if (tryFindTarget < 0)
+//                {
+//                    Debug.LogError("无法找到镜头目标！！！");
+//                }
+//            }
+//        }
 
         Debug.Log("WowMainCamera init success !");
     }

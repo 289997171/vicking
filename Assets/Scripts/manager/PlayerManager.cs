@@ -14,7 +14,17 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
     }
 
     // 主角
-    public Player localPlayer;
+    private Player localPlayer;
+
+    private GameObject localPlayerObj;
+
+
+    // 3D摄像机，对应主角的
+    private WowMainCamera wowMainCamera;
+
+    private GameObject wowMainCameraObj;
+
+
 
     // 其他角色
     public Dictionary<long, Player> players = new Dictionary<long, Player>(); 
@@ -129,14 +139,36 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         if (isLocalPlayer)
         {
             // 3D 摄像机
-            WowMainCamera mainCamera = Camera.main.gameObject.getOrAddComponent<WowMainCamera>();
-            mainCamera.target = player.transform;
+            wowMainCameraObj = Camera.main.gameObject;
+            wowMainCamera = Camera.main.gameObject.getOrAddComponent<WowMainCamera>();
+
+            wowMainCamera.target = player.transform;
 
             // 射线
-            PhysicsRaycaster physicsRaycaster = mainCamera.gameObject.getOrAddComponent<PhysicsRaycaster>();
+            PhysicsRaycaster physicsRaycaster = wowMainCamera.gameObject.getOrAddComponent<PhysicsRaycaster>();
         }
 
         if (callback != null) callback(person);
+    }
+
+    public Player LocalPlayer
+    {
+        get
+        {
+            return localPlayer;
+        }
+    }
+
+    /// <summary>
+    /// 设置主角
+    /// </summary>
+    /// <param name="player"></param>
+    public void setLocalPlayer(Player player)
+    {
+        this.localPlayer = player;
+        this.localPlayerObj = player.gameObject;
+
+        // TODO ...
     }
 
     public void OnWalkClick(PointerEventData eventData)
@@ -147,4 +179,11 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
             localPlayer.Moveable.move(eventData.pointerCurrentRaycast.worldPosition);
         }
     }
+
+    public void playSound()
+    {
+        // TODO 播放音效
+    }
+
+    
 }

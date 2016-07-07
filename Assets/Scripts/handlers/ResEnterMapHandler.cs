@@ -16,7 +16,7 @@ public class ResEnterMapHandler {
         {
             if (message.isLocalPlayer)
             {
-                PlayerManager.Instance.localPlayer = player;
+                PlayerManager.Instance.setLocalPlayer(player);
             }
             else
             {
