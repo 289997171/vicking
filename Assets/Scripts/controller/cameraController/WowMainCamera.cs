@@ -17,6 +17,9 @@ public class WowMainCamera : MonoBehaviour
     // 镜头目标
     public Transform target;
 
+    // 镜头角色
+    public Person targetPerson;
+
     // 尝试查找目标的最大次数（1秒一次）
     public int tryFindTarget = 10;
 
@@ -44,6 +47,9 @@ public class WowMainCamera : MonoBehaviour
     public float rotationDampening = 3.0f;
     public float zoomDampening = 10.0f;
 
+    // 因为角色移动导致镜头旋转
+    public float personRunningRotationDampening = 0.5f;
+
     private float x = 0.0f;
     private float y = 0.0f;
 
@@ -53,12 +59,15 @@ public class WowMainCamera : MonoBehaviour
     private float desiredDistance;
     // 修正距离
     private float correctedDistance;
+
     // 镜头是否在地表或其他物体覆盖下
     // private bool grounded = false;
 
-
     // 寻路地表层
     public int walkMask;
+
+    // 人物移动的时候，人物朝向改变是否影响摄像机旋转 (移动到WoWMainCamera)
+    [SerializeField] private bool mainCameraRotate = true;
 
 
     private IEnumerator Start ()
@@ -174,8 +183,15 @@ public class WowMainCamera : MonoBehaviour
 //            float currentRotationAngle = transform.eulerAngles.y;
 //            x = Mathf.LerpAngle(currentRotationAngle, targetRotationAngle, rotationDampening * Time.deltaTime);
 //        }
+        // 角色移动，导致摄像机向人物朝向旋转
+        else if (targetPerson != null && targetPerson.Moveable.isMoving())
+        {
+            float targetRotationAngle = target.eulerAngles.y;
+            float currentRotationAngle = transform.eulerAngles.y;
+            x = Mathf.LerpAngle(currentRotationAngle, targetRotationAngle, personRunningRotationDampening * Time.deltaTime);
+        }
 
-        y = ClampAngle(y, yMinLimit, yMaxLimit);
+            y = ClampAngle(y, yMinLimit, yMaxLimit);
 
         // set camera rotation
         // 设置镜头旋转，通过Vector3返回欧拉角对应的四元素Quaternion

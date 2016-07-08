@@ -143,6 +143,7 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
             wowMainCamera = Camera.main.gameObject.getOrAddComponent<WowMainCamera>();
 
             wowMainCamera.target = player.transform;
+            wowMainCamera.targetPerson = person;
 
             // 射线
             PhysicsRaycaster physicsRaycaster = wowMainCamera.gameObject.getOrAddComponent<PhysicsRaycaster>();

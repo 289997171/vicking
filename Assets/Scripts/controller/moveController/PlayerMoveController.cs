@@ -42,11 +42,14 @@ public class PlayerMoveController : Moveable, IPersonController
     // 是否处于飞行状态
     private bool isFly = false;
 
-    private Camera mainCamera;
+    // private Camera mainCamera;
+
+    // 人物移动的时候，人物朝向改变是否影响摄像机旋转 (移动到WoWMainCamera)
+    // [SerializeField] private bool mainCameraRotate = true;
 
     void Start()
     {
-        this.mainCamera = Camera.main;
+        // this.mainCamera = Camera.main;
 
         this.person = GetComponent<Person>();
 
@@ -215,6 +218,14 @@ public class PlayerMoveController : Moveable, IPersonController
                 newQuaternion = Quaternion.LookRotation(moveDirection);
                 transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion,
                     this.person.rotSpeed * Time.deltaTime /*0.2f*/);
+
+
+                // 因为WOWMainCamra的原因，这里无效，所以需要添加到WoWMainCamra中
+                // // 摄像机朝移动朝向旋转
+                // if (mainCameraRotate)
+                // {
+                //     mainCamera.transform.rotation = Quaternion.Slerp(mainCamera.transform.rotation, newQuaternion, 0.001f);
+                // }
             }
 
             // 出发区域改变判断
@@ -282,7 +293,7 @@ public class PlayerMoveController : Moveable, IPersonController
         if (navMoveing) stopMove();
 
         // endPos.y = transform.position.y;
-        if (Vector3.Distance(transform.position, endPos) < 0.5f)
+        if (Vector3.Distance(transform.position, endPos) < 1f)
         {
             Debug.Log("移动距离不超过0.5f");
             return false;
