@@ -152,7 +152,7 @@ public class PlayerMoveController : Moveable, IPersonController
             }
             else if (navMoveing)
             {
-                if (Vector3.Distance(transform.position, curAutoPos) < 0.1f)
+                if (Vector3.Distance(transform.position, curAutoPos) < 0.2f)
                 {
                     if (!nextPoint())
                     {
