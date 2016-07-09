@@ -16,6 +16,9 @@ public abstract class Person : MonoBehaviour, IMapObject
     public const byte PERSON_MONSTER = 2; // 怪物
     public const byte PERSON_NPC = 3;     // NPC
     public const byte PERSON_PET = 4;     // 宠物
+    public const byte Item = 5;           // 物品
+    public const byte Obj = 6;            // 其他物体
+    public const byte Unknow = 255;       // 未知类型
 
     //创建时间
     public DateTime createTime = DateTime.Now;
@@ -106,6 +109,8 @@ public abstract class Person : MonoBehaviour, IMapObject
     public SyncPosRotController SyncPosRotController;
 
     public UpdateSyncPosRotController UpdateSyncPosRotController;
+
+    public Selectable Selectable;
 
     #endregion
 

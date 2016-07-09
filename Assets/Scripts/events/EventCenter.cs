@@ -21,6 +21,15 @@ public class EventCenter :
     //为什么用List而不用委托的 += 因为：方便扩展，事件优先级，事件需要循环发送，某个事件添加有相应
     private Dictionary<int, List<MessageEvent>> dicMessageEvents = new Dictionary<int, List<MessageEvent>>();
 
+
+    /// <summary>
+    /// 通用回调委托事件
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
+    public delegate void GeneralCallback(object sender, object[] args);
+
+
 #if UNITY_EDITOR
     // 所有事件发送次数
     public int totalSendCount = 0;

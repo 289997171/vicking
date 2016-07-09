@@ -191,7 +191,7 @@ public class WowMainCamera : MonoBehaviour
             x = Mathf.LerpAngle(currentRotationAngle, targetRotationAngle, personRunningRotationDampening * Time.deltaTime);
         }
 
-            y = ClampAngle(y, yMinLimit, yMaxLimit);
+        y = ClampAngle(y, yMinLimit, yMaxLimit);
 
         // set camera rotation
         // 设置镜头旋转，通过Vector3返回欧拉角对应的四元素Quaternion
@@ -230,7 +230,7 @@ public class WowMainCamera : MonoBehaviour
         currentDistance = !isCorrected || correctedDistance > currentDistance ? Mathf.Lerp(currentDistance, correctedDistance, Time.deltaTime * zoomDampening) : correctedDistance;
 
         // recalculate position based on the new currentDistance
-            position = target.position - (rotation*Vector3.forward*currentDistance + new Vector3(0, -targetHeight - 0.2f, 0));
+        position = target.position - (rotation*Vector3.forward*currentDistance + new Vector3(0, -targetHeight - 0.2f, 0));
 
         transform.rotation = rotation;
         transform.position = position;

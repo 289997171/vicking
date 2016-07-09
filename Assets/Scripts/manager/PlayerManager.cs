@@ -121,15 +121,17 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
     
         yield return 1;
 
+        // 添加允许选择组件
+        person.Selectable = player.getOrAddComponent<Selectable>();
+
         if (isLocalPlayer)
         {
-            // 自己就不用添加被点击事件了
-            // player.getOrAddComponent<PlayerClickController>();
+            // 
         }
         else
         {
             // 其他角色允许被点击
-            player.getOrAddComponent<PlayerClickController>();
+            player.getOrAddComponent<Targetable>();
         }
 
 
