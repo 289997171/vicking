@@ -109,9 +109,7 @@ public abstract class Person : MonoBehaviour, IMapObject
 
     public Moveable Moveable;
 
-    public SyncPosRotController SyncPosRotController;
-
-    public UpdateSyncPosRotController UpdateSyncPosRotController;
+    
 
     public Selectable Selectable;
 

@@ -15,8 +15,9 @@ public class FightManager : DDOSingleton<FightManager>, IManager
     /// <param name="skillModelId">技能模版ID</param>
     public void reqPlayerAttack(Person target, int skillModelId)
     {
-        // 获得主角
+        // 获得主角（也只能是主角才能发送使用技能请求）
         Player player = PlayerManager.Instance.LocalPlayer;
+        CooldownController cooldownController = player.CooldownController;
 
         // 死亡检测
         if (player.isDie())
@@ -40,15 +41,14 @@ public class FightManager : DDOSingleton<FightManager>, IManager
         // 地图验证
 
         // 冷却检查
-        if (CooldownManager.getInstance().isCooldowning(player, CooldownTypes.SKILL, String.valueOf(skillModelID)))
+        if (cooldownController.isCooldowning(CooldownTypes.SKILL, skillModelId.ToString()))
         {
             AlertUtil.Instance.alert(0, "施法冷却中");
             return;
         }
 
         // 公共冷却检查
-        if (CooldownManager.getInstance()
-            .isCooldowning(player, CooldownTypes.SKILL_PUBLIC, String.valueOf(skillModel.getQPublicCdLevel())))
+        if (cooldownController.isCooldowning(CooldownTypes.SKILL_PUBLIC, skillModel.getQPublicCdLevel().ToString()))
         {
             AlertUtil.Instance.alert(0, "公共冷却中");
             return;
@@ -64,8 +64,7 @@ public class FightManager : DDOSingleton<FightManager>, IManager
         }
 
         // 技能配置
-        QSkill skillModel =
-            DataManager.getInstance().getQSkillMap().get(skill.getSkillModelId() + "_" + skill.getSkillLevel());
+        QSkill skillModel = DataManager.getInstance().getQSkillMap().get(skill.getSkillModelId() + "_" + skill.getSkillLevel());
         if (skillModel == null)
         {
             AlertUtil.Instance.alert(0, "错误的技能使用");

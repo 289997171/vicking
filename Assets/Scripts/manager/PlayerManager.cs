@@ -137,6 +137,11 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
             player.getOrAddComponent<Targetable>();
         }
 
+        if (isLocalPlayer)
+        {
+            // 冷却控制器
+            person.CooldownController = player.getOrAddComponent<CooldownController>();
+        }
 
 
 

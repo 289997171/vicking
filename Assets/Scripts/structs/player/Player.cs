@@ -5,6 +5,12 @@ public class Player : Person
     //是否是主角
     public bool isLocalPlayer = false;
 
+    public SyncPosRotController SyncPosRotController;
+
+    public UpdateSyncPosRotController UpdateSyncPosRotController;
+
+    public CooldownController CooldownController;
+
     public override bool isDie()
     {
 
