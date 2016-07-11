@@ -2,7 +2,7 @@
 
 public class PlayerAreaController : AreaController
 {
-    public override void OnMove(Vector3 oldPos, Vector3 position)
+    public override void OnMove(Vector3 oldPos, Vector3 newPos)
     {
     }
 }

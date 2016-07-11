@@ -77,6 +77,9 @@ public abstract class Person : MonoBehaviour, IMapObject
     //战斗状态
     public long fightState;
 
+    // 状态
+    public int state;
+
     //最终计算属性
     public BaseAbility finalAbility = new BaseAbility();
 
@@ -128,4 +131,7 @@ public abstract class Person : MonoBehaviour, IMapObject
     {
         return true;
     }
+
+    // 角色是否已死亡
+    public abstract bool isDie();
 }

@@ -59,6 +59,7 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         person.skinWidth = 0.001f;
         person.finalAbility.speed = 6f;
 
+        // 主要控制移动
         CharacterController characterController = player.getOrAddComponent<CharacterController>();
         // 设置胶囊碰撞体信息
         characterController.height = person.height;
@@ -66,10 +67,12 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         characterController.center = person.center;
         characterController.skinWidth = person.skinWidth;
 
+        // 换装
         PlayerCustomController customController = player.getOrAddComponent<PlayerCustomController>();
 
         if (isLocalPlayer)
         {
+            // 移动控制的输入来源
             // player.getOrAddComponent<PCWASDController>();
             player.getOrAddComponent<JoysticksController>();
             yield return 1;
@@ -177,10 +180,10 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
     public void OnWalkClick(PointerEventData eventData)
     {
         Debug.Log("OnWalkClick !!!");
-        if (localPlayer != null)
-        {
-            localPlayer.Moveable.move(eventData.pointerCurrentRaycast.worldPosition);
-        }
+//        if (localPlayer != null)
+//        {
+//            localPlayer.Moveable.move(eventData.pointerCurrentRaycast.worldPosition);
+//        }
     }
 
     public void playSound()
@@ -188,5 +191,4 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         // TODO 播放音效
     }
 
-    
 }
