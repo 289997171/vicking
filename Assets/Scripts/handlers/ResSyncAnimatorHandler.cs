@@ -11,10 +11,10 @@ public class ResSyncAnimatorHandler
         {
             return;
         }
-        Player player;
-        if (PlayerManager.Instance.players.TryGetValue(playerId, out player))
+        GameObject playerObj;
+        if (PlayerManager.Instance.players.TryGetValue(playerId, out playerObj))
         {
-            UpdateSyncAnimationController controller = player.GetComponent<UpdateSyncAnimationController>();
+            UpdateSyncAnimationController controller = playerObj.GetComponent<UpdateSyncAnimationController>();
             controller.SyncAimator(message.animatorInfo);
         }
     }

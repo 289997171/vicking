@@ -23,16 +23,16 @@ public class ResSyncPosRotHandler
                 return;
             }
 
-            Player player;
-            if (PlayerManager.Instance.players.TryGetValue(personId, out player))
+            GameObject playerObj;
+            if (PlayerManager.Instance.players.TryGetValue(personId, out playerObj))
             {
                 if (posRot.posX != 0f || posRot.posY != 0f || posRot.posZ != 0f)
                 {
-                    player.UpdateSyncPosRotController.syncPos(new Vector3(posRot.posX, posRot.posY, posRot.posZ));
+                    playerObj.GetComponent<Player>().UpdateSyncPosRotController.syncPos(new Vector3(posRot.posX, posRot.posY, posRot.posZ));
                 }
                 if (posRot.rotY != 0f)
                 {
-                    player.UpdateSyncPosRotController.syncRot(posRot.rotY);
+                    playerObj.GetComponent<Player>().UpdateSyncPosRotController.syncRot(posRot.rotY);
                 }
             }
         }

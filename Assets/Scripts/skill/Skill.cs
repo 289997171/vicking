@@ -8,9 +8,9 @@ public class Skill : MonoBehaviour
     #region properties
 
     //技能模板Id
-    private int skillModelId;
+    public int skillModelId;
     //技能等级
-    private int skillLevel;
+    public int skillLevel;
 
 
     /// <summary> 技能是如何激活 </summary>

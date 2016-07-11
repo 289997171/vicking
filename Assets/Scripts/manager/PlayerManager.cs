@@ -14,7 +14,7 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
     }
 
     // 主角
-    private Player localPlayer;
+    private LocalPlayer localPlayer;
 
     private GameObject localPlayerObj;
 
@@ -27,14 +27,14 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
 
 
     // 其他角色
-    public Dictionary<long, Player> players = new Dictionary<long, Player>(); 
+    public Dictionary<long, GameObject> players = new Dictionary<long, GameObject>(); 
 
-    public void createPlayer(long id, string name, int job, bool isLocalPlayer, Action<Player> callback = null)
+    public void createPlayer(long playerId, string playerName, int job, bool isLocalPlayer, Action<GameObject> callback = null)
     {
-        StartCoroutine(_createPlayer(id, name, job, isLocalPlayer, callback));
+        StartCoroutine(_createPlayer(playerId, playerName, job, isLocalPlayer, callback));
     }
 
-    private IEnumerator _createPlayer(long id, string name, int job, bool isLocalPlayer, Action<Player> callback = null)
+    private IEnumerator _createPlayer(long playerId, string playerName, int job, bool isLocalPlayer, Action<GameObject> callback = null)
     {
         string modelPath = "";
         if (job == 1)
@@ -42,127 +42,141 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
             modelPath = "Prefab/Player_Worrior_niutou@NewWorrior";
         }
         Object model = Resources.Load(modelPath);
-        GameObject player = Instantiate(model) as GameObject;
-        player.transform.position = Vector3.zero;
-        player.transform.rotation = Quaternion.identity;
+        GameObject playerObj = Instantiate(model) as GameObject;
+        playerObj.transform.position = Vector3.zero;
+        playerObj.transform.rotation = Quaternion.identity;
         yield return 1;
 
-        Player person = player.getOrAddComponent<Player>();
-        person.isLocalPlayer = isLocalPlayer;
+        if (isLocalPlayer)
+        {
+            createLocalPlayer(playerObj, playerId, playerName);
+        }
+        else
+        {
+            createPlayer(playerObj, playerId, playerName);
+        }
+        
 
-        person.id = id;
-        person.name = name;
+        if (callback != null) callback(playerObj);
+    }
 
-        person.height = 2f;
-        person.radius = 0.5f;
-        person.center = new Vector3(0, person.height / 2, 0);
-        person.skinWidth = 0.001f;
-        person.finalAbility.speed = 6f;
+    private void createLocalPlayer(GameObject playerObj,long playerId, string playerName)
+    {
+        LocalPlayer localPlayer = playerObj.getOrAddComponent<LocalPlayer>();
 
-        // 主要控制移动
-        CharacterController characterController = player.getOrAddComponent<CharacterController>();
-        // 设置胶囊碰撞体信息
-        characterController.height = person.height;
-        characterController.radius = person.radius;
-        characterController.center = person.center;
-        characterController.skinWidth = person.skinWidth;
+        localPlayer.id = playerId;
+        localPlayer.name = playerName;
+
+        localPlayer.height = 2f;
+        localPlayer.radius = 0.5f;
+        localPlayer.center = new Vector3(0, localPlayer.height / 2, 0);
+        localPlayer.skinWidth = 0.001f;
+        localPlayer.finalAbility.speed = 6f;
+
+        {
+            // 主要控制移动
+            CharacterController characterController = playerObj.getOrAddComponent<CharacterController>();
+            // 设置胶囊碰撞体信息
+            characterController.height = localPlayer.height;
+            characterController.radius = localPlayer.radius;
+            characterController.center = localPlayer.center;
+            characterController.skinWidth = localPlayer.skinWidth;
+        }
 
         // 换装
-        PlayerCustomController customController = player.getOrAddComponent<PlayerCustomController>();
+        PlayerCustomController customController = playerObj.getOrAddComponent<PlayerCustomController>();
 
-        if (isLocalPlayer)
-        {
-            // 移动控制的输入来源
-            // player.getOrAddComponent<PCWASDController>();
-            player.getOrAddComponent<JoysticksController>();
-            yield return 1;
-        }
-        else
-        {
-            // 非本地主角不添加WASD移动
-        }
+        // 移动控制的输入来源
+        // PCWASDController pcWASDController = layerObj.getOrAddComponent<PCWASDController>();
+        JoysticksController joysticksController = playerObj.getOrAddComponent<JoysticksController>();
 
-        if (isLocalPlayer)
-        {
-            // 只有主角才需要添加向服务器同步坐标请求
-            person.SyncPosRotController = player.getOrAddComponent<SyncPosRotController>();
-        }
-        else
-        {
-            // 主角，非主角，都需要添加坐标改变控制器（主角用于如，因为恐惧等情况导致的位移）
-            person.UpdateSyncPosRotController = player.getOrAddComponent<UpdateSyncPosRotController>();
-        }
 
-        yield return 1;
+        // 只有主角才需要添加向服务器同步坐标请求
+        localPlayer.SyncPosRotController = playerObj.getOrAddComponent<SyncPosRotController>();
 
-        if (isLocalPlayer)
-        {
-            player.getOrAddComponent<PlayerAreaController>();
-            yield return 1;
-        }
+        playerObj.getOrAddComponent<PlayerAreaController>();
 
-        if (isLocalPlayer)
-        {
-            player.getOrAddComponent<SyncAnimationController>();
-        }
-        else
-        {
-            player.getOrAddComponent<UpdateSyncAnimationController>();
-        }
-        yield return 1;
+        playerObj.getOrAddComponent<SyncAnimationController>();
 
-        if (job == 1)
-        {
-            player.getOrAddComponent<PlayerMoveAnimationController>();
-            yield return 1;
-        }
-
-        if (isLocalPlayer)
-        {
-            person.Moveable = player.getOrAddComponent<PlayerMoveController>();
-        }
-    
-        yield return 1;
+        playerObj.getOrAddComponent<PlayerMoveAnimationController>();
+        
+        localPlayer.Moveable = playerObj.getOrAddComponent<PlayerMoveController>();
 
         // 添加允许选择组件
-        person.Selectable = player.getOrAddComponent<Selectable>();
+        localPlayer.Selectable = playerObj.getOrAddComponent<Selectable>();
 
-        if (isLocalPlayer)
-        {
-            // 
-        }
-        else
-        {
-            // 其他角色允许被点击
-            player.getOrAddComponent<Targetable>();
-        }
+        // 其他角色允许被点击
+        localPlayer.Targetable = playerObj.getOrAddComponent<Targetable>();
 
-        if (isLocalPlayer)
-        {
-            // 冷却控制器
-            person.CooldownController = player.getOrAddComponent<CooldownController>();
-        }
-
-
+        // 冷却控制器
+        localPlayer.CooldownController = playerObj.getOrAddComponent<CooldownController>();
 
         // 设置相机
-        if (isLocalPlayer)
         {
             // 3D 摄像机
             wowMainCameraObj = Camera.main.gameObject;
             wowMainCamera = Camera.main.gameObject.getOrAddComponent<WowMainCamera>();
 
-            wowMainCamera.target = player.transform;
-            wowMainCamera.targetPerson = person;
+            wowMainCamera.target = playerObj.transform;
+            wowMainCamera.targetPerson = localPlayer;
 
             // 射线
             PhysicsRaycaster physicsRaycaster = wowMainCamera.gameObject.getOrAddComponent<PhysicsRaycaster>();
         }
-
-        if (callback != null) callback(person);
+        
     }
 
-    public Player LocalPlayer
+
+    private void createPlayer(GameObject playerObj, long playerId, string playerName)
+    {
+        Player player = playerObj.getOrAddComponent<Player>();
+
+        player.id = playerId;
+        player.name = playerName;
+
+        player.height = 2f;
+        player.radius = 0.5f;
+        player.center = new Vector3(0, player.height / 2, 0);
+        player.skinWidth = 0.001f;
+        player.finalAbility.speed = 6f;
+
+        {
+            // 主要控制移动
+            CharacterController characterController = playerObj.getOrAddComponent<CharacterController>();
+            // 设置胶囊碰撞体信息
+            characterController.height = player.height;
+            characterController.radius = player.radius;
+            characterController.center = player.center;
+            characterController.skinWidth = player.skinWidth;
+        }
+
+        // 换装
+        PlayerCustomController customController = playerObj.getOrAddComponent<PlayerCustomController>();
+
+        // 移动控制的输入来源
+        // PCWASDController pcWASDController = playerObj.getOrAddComponent<PCWASDController>();
+        JoysticksController joysticksController = playerObj.getOrAddComponent<JoysticksController>();
+
+        // 主角，非主角，都需要添加坐标改变控制器（主角用于如，因为恐惧等情况导致的位移）
+        player.UpdateSyncPosRotController = playerObj.getOrAddComponent<UpdateSyncPosRotController>();
+
+        playerObj.getOrAddComponent<UpdateSyncAnimationController>();
+
+        playerObj.getOrAddComponent<PlayerMoveAnimationController>();
+
+
+        // 添加允许选择组件
+        player.Selectable = playerObj.getOrAddComponent<Selectable>();
+
+        // 其他角色允许被点击
+        playerObj.getOrAddComponent<Targetable>();
+
+        // 冷却控制器
+        player.CooldownController = playerObj.getOrAddComponent<CooldownController>();
+
+    }
+
+    public LocalPlayer LocalPlayer
     {
         get
         {
@@ -174,10 +188,10 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
     /// 设置主角
     /// </summary>
     /// <param name="player"></param>
-    public void setLocalPlayer(Player player)
+    public void setLocalPlayer(GameObject localPlayerObj)
     {
-        this.localPlayer = player;
-        this.localPlayerObj = player.gameObject;
+        this.localPlayer = localPlayerObj.GetComponent<LocalPlayer>();
+        this.localPlayerObj = localPlayerObj;
 
         // TODO ...
     }
@@ -195,5 +209,6 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
     {
         // TODO 播放音效
     }
+
 
 }

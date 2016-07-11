@@ -59,4 +59,9 @@ public class FighterState
 
     // 攻击加成状态 该状态下受到的攻击会加成
     public const long ON_ATTACKUP = (0x00100000);//1048576
+
+    public static bool compare(long state1, long state2)
+    {
+        return ((state1 & state2) != 0);
+    }
 }

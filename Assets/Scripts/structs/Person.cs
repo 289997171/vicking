@@ -132,4 +132,34 @@ public abstract class Person : MonoBehaviour, IMapObject
 
     // 角色是否已死亡
     public abstract bool isDie();
+
+    /**
+     * 检查是否能攻击
+     *
+     * @return boolean true 能 false 不能
+     */
+    public bool canAttack()
+    {
+        return true;
+    }
+
+    /**
+     * 是否允许释放技能
+     *
+     * @return
+     */
+    public bool canUseSkill()
+    {
+        return true;
+    }
+
+    /**
+     * 检查是否能移动
+     *
+     * @return boolean true 能 false 不能
+     */
+    public bool canMove()
+    {
+        return true;
+    }
 }

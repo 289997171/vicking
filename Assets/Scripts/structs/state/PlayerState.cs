@@ -240,6 +240,11 @@ public class PlayerState
         }
         player.state = stateValue;
     }
+
+    public static bool compare(int state1, int state2)
+    {
+        return ((state1 & state2) != 0);
+    }
 }
 
 public class PlayerStateHandler

@@ -12,19 +12,19 @@ public class ResEnterMapHandler {
         long playerId = message.playerId;
         PosRot pr = message.pr;
 
-        PlayerManager.Instance.createPlayer(playerId, "Player:" + playerId, 1, isLocalPlayer, player =>
+        PlayerManager.Instance.createPlayer(playerId, "Player:" + playerId, 1, isLocalPlayer, playerObj =>
         {
             if (message.isLocalPlayer)
             {
-                PlayerManager.Instance.setLocalPlayer(player);
+                PlayerManager.Instance.setLocalPlayer(playerObj);
             }
             else
             {
-                PlayerManager.Instance.players.Add(playerId, player);
+                PlayerManager.Instance.players.Add(playerId, playerObj);
             }
 
-            player.transform.position = new Vector3(pr.posX, pr.posY, pr.posZ);
-            player.transform.rotation = Quaternion.Euler(new Vector3(0, pr.rotY, 0));
+            playerObj.transform.position = new Vector3(pr.posX, pr.posY, pr.posZ);
+            playerObj.transform.rotation = Quaternion.Euler(new Vector3(0, pr.rotY, 0));
         });
         
     }
