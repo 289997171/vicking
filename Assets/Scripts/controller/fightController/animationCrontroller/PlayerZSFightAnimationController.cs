@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-public class PlayerZSFightAnimationController : FigtAnimationController
+public class PlayerZSFightAnimationController : FightAnimationController
 {
 
     private Animator animator;
@@ -12,8 +12,8 @@ public class PlayerZSFightAnimationController : FigtAnimationController
     }
 
 
-    public override void castSkill(int skillId, int skillLv)
-    {
-
-    }
+//    public override void castSkill(int skillId, int skillLv, float skillCost)
+//    {
+//
+//    }
 }

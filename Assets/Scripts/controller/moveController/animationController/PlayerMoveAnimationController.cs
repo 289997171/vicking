@@ -23,13 +23,13 @@ public class PlayerMoveAnimationController : MoveAnimationController
 
     private Animator animator;
 
-    private AnimatorController animatorController;
+    private MoveAnimatorController animatorController;
 
 
     void Start()
     {
         this.animator = GetComponent<Animator>();
-        this.animatorController = GetComponent<AnimatorController>();
+        this.animatorController = GetComponent<MoveAnimatorController>();
     }
 
     

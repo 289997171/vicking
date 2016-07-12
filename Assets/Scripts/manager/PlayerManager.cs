@@ -49,18 +49,19 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
 
         if (isLocalPlayer)
         {
-            createLocalPlayer(playerObj, playerId, playerName);
+            createLocalPlayer(ref playerObj, playerId, playerName);
         }
         else
         {
-            createPlayer(playerObj, playerId, playerName);
+            createPlayer(ref playerObj, playerId, playerName);
         }
-        
+
+        yield return 1;
 
         if (callback != null) callback(playerObj);
     }
 
-    private void createLocalPlayer(GameObject playerObj,long playerId, string playerName)
+    private void createLocalPlayer(ref GameObject playerObj,long playerId, string playerName)
     {
         LocalPlayer localPlayer = playerObj.getOrAddComponent<LocalPlayer>();
 
@@ -111,6 +112,12 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         // 冷却控制器
         localPlayer.CooldownController = playerObj.getOrAddComponent<CooldownController>();
 
+        playerObj.getOrAddComponent<FightAnimationController>();
+
+        playerObj.getOrAddComponent<LocalPlayerSkillController>();
+
+        playerObj.getOrAddComponent<FightController>();
+
         // 设置相机
         {
             // 3D 摄像机
@@ -127,7 +134,7 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
     }
 
 
-    private void createPlayer(GameObject playerObj, long playerId, string playerName)
+    private void createPlayer(ref GameObject playerObj, long playerId, string playerName)
     {
         Player player = playerObj.getOrAddComponent<Player>();
 
@@ -174,6 +181,7 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         // 冷却控制器
         player.CooldownController = playerObj.getOrAddComponent<CooldownController>();
 
+        playerObj.getOrAddComponent<SkillController>();
     }
 
     public LocalPlayer LocalPlayer

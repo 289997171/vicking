@@ -2,7 +2,7 @@
 using com.game.proto;
 using UnityEngine;
 
-public class UpdateSyncAnimationController : AnimatorController
+public class UpdateSyncAnimationController : MoveAnimatorController
 {
 
     public void SyncAimator(AnimatorInfo serverAnimatorInfo)

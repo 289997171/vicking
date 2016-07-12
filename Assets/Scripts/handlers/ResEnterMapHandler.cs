@@ -16,6 +16,7 @@ public class ResEnterMapHandler {
         {
             if (message.isLocalPlayer)
             {
+                Debug.Log("创建主角");
                 PlayerManager.Instance.setLocalPlayer(playerObj);
             }
             else

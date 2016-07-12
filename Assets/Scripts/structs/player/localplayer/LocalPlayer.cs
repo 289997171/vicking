@@ -1,9 +1,16 @@
 ﻿
+using System.Collections.Generic;
+
 public class LocalPlayer : Player
 {
 
     // 前PK模式0-和平 1-组队 2-帮会 3-帮会战 4-善恶 5-全体 6-战场模式A组 7-战场模式B组
-    private int prePkState;
+    public int prePkState;
+
+    /**
+     * 技能,技能模版ID，同类型的技能，最高等级的技能
+     */
+    public Dictionary<int, Skill> skills = new Dictionary<int, Skill>();
 
 
     /**

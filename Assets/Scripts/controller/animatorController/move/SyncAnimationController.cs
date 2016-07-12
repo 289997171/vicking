@@ -1,7 +1,7 @@
 ﻿using com.game.proto;
 using UnityEngine;
 
-public class SyncAnimationController : AnimatorController
+public class SyncAnimationController : MoveAnimatorController
 {
     #region Animator条件值
 

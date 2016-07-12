@@ -296,4 +296,9 @@ public class QSkill
 
     //无伤害的预警
     public int qWarningNoHit;
+
+
+    // TODO
+    //技能对应的动画
+    public string qAnimation;
 }
