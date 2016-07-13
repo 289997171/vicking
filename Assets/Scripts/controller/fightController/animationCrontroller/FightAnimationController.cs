@@ -12,5 +12,9 @@ public class FightAnimationController : MonoBehaviour
         this.animator = GetComponent<Animator>();
     }
 
-     
+
+    public void castSkill(int skillModelId)
+    {
+        this.animator.SetInteger("iAction", skillModelId);
+    }
 }

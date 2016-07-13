@@ -20,15 +20,15 @@ public class FightController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Alpha1))
         {
             Debug.Log("KeyCode::1");
-            this.skillController.castSkill(null, 0, 1);
+            this.skillController.castSkill(null, 1, 1);
         } else if (Input.GetKeyUp(KeyCode.Alpha2))
         {
             Debug.Log("KeyCode::2");
-            this.skillController.castSkill(null, 0, 2);
+            this.skillController.castSkill(null, 2, 1);
         }else if (Input.GetKeyUp(KeyCode.Alpha3))
         {
             Debug.Log("KeyCode::3");
-            this.skillController.castSkill(null, 0, 3);
+            this.skillController.castSkill(null, 3, 1);
         }
     }
 #endif

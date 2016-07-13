@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Animator))]
@@ -35,10 +36,10 @@ public abstract class AnimatorController : MonoBehaviour
     }
 
 
+    
 
 
 
 
-  
 
 }

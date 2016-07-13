@@ -114,7 +114,7 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
 
         playerObj.getOrAddComponent<FightAnimationController>();
 
-        playerObj.getOrAddComponent<LocalPlayerSkillController>();
+        localPlayer.LocalPlayerSkillController = playerObj.getOrAddComponent<LocalPlayerSkillController>();
 
         playerObj.getOrAddComponent<FightController>();
 

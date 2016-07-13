@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 public class LocalPlayerSkillController : SkillController
 {
@@ -18,20 +19,32 @@ public class LocalPlayerSkillController : SkillController
     /// 主角请求施放技能
     /// </summary>
     /// <param name="target"></param>
-    public void reqCastSkill(Person target, int skillModelId)
+    public void reqCastSkill(int skillModelId, int skillLv)
     {
        
-        if (!checkCastCondition(target, skillModelId))
+        if (!checkCastCondition(skillModelId, skillLv))
         {
             return;
         }
 
         // 发送施法请求
-
+//        com.game.proto.ReqUseSkillMessage useSMsg = new com.game.proto.ReqUseSkillMessage();
+//        useSMsg.SkillID = SkillID;
+//        useSMsg.TargetID = role.ID;
+//        useSMsg.TargetType = (int)role.Type;
+//        NetManager.Instance.GetGameNet().Send(ProtobufSerializer.GetInstance().ProtobufSerToBytes<com.game.proto.ReqUseSkillMessage>((object)useSMsg, (int)useSMsg.msgID));
     }
 
-    private bool checkCastCondition(Person target, int skillModelId)
+    public void resCastSkill()
     {
+        
+    }
+
+    private bool checkCastCondition(int skillModelId, int skillLv)
+    {
+        // 判断是否有武器
+
+
         // 死亡检测
         if (localPlayer.isDie())
         {
@@ -182,16 +195,23 @@ public class LocalPlayerSkillController : SkillController
             }
         }
 
-        // 目标安全区检测
 
-        // 距离检查
-        double distance = Vector3.Distance(localPlayer.transform.position, target.transform.position);
-        if (distance > skillModel.qRangeLimit + target.radius)
+        // 获得目标
+        Person target = null;
+        Targetable selectedTarget = localPlayer.Selectable.selectedTarget;
+        if (selectedTarget != null)
         {
-            AlertUtil.Instance.alert(0, "超出攻击距离");
-            return false;
+            target = selectedTarget.person;
+        }
+        else
+        {
+            // TODO 自动选择目标
         }
 
+
+        // 目标安全区检测
+
+       
         // 是敌人判断是否允许攻击,否则判断是否允许释放技能
         if (skillModel.qTarget == 4)
         {
@@ -217,6 +237,22 @@ public class LocalPlayerSkillController : SkillController
             }
         }
 
+        // 距离检查
+        double distance = Vector3.Distance(localPlayer.transform.position, target.transform.position);
+        if (distance > skillModel.qRangeLimit + target.radius)
+        {
+            AlertUtil.Instance.alert(0, "超出攻击距离");
+
+            {
+                // TODO 朝目标移动
+                // TODO 设置自动攻击状态，依赖Update，判断是否靠近目标，可以攻击？
+
+            }
+
+            return false;
+        }
+
+
         return true;
     }
 
@@ -232,6 +268,7 @@ public class LocalPlayerSkillController : SkillController
     /// </summary>
     public void resStudySkill()
     {
+
     }
 
     /// <summary>

@@ -12,6 +12,9 @@ public class LocalPlayer : Player
      */
     public Dictionary<int, Skill> skills = new Dictionary<int, Skill>();
 
+    
+    public LocalPlayerSkillController LocalPlayerSkillController;
+
 
     /**
      * 检查该人物是否是自己的敌对目标
@@ -120,5 +123,10 @@ public class LocalPlayer : Player
                 }
         }
         return true;
+    }
+
+    public void useSkill(int skillModelId, int skillLv)
+    {
+        this.LocalPlayerSkillController.reqCastSkill();
     }
 }
