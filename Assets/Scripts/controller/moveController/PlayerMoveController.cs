@@ -91,7 +91,7 @@ public class PlayerMoveController : Moveable, IPersonController
         try
         {
 #endif
-
+            // 技能控制角色在一定时间内不能移动
             if (!canTurn)
             {
                 moveAnimationController.OnIdle();
@@ -107,8 +107,6 @@ public class PlayerMoveController : Moveable, IPersonController
                 flags = characterController.Move(moveDirection);
                 onGround = (flags & CollisionFlags.Below) != 0;
             }
-
-           
 
             // 朝向改变
             if (turning)
@@ -128,20 +126,25 @@ public class PlayerMoveController : Moveable, IPersonController
             // h = Input.GetAxis("Horizontal");
             // v = Input.GetAxis("Vertical");
 
-            this.wasdController.getInputHV(ref h, ref v);
-
-            wasd = h != 0 || v != 0;
-
-            
-
-            if (wasd && navMoveing) stopMove();
-            else if (!wasd && !navMoveing)
+            if (!isMoveBy)
             {
-                moveAnimationController.OnIdle();
-                return;
-            }
+                this.wasdController.getInputHV(ref h, ref v);
 
-            moveAnimationController.OnRun(h, v);
+                wasd = h != 0 || v != 0;
+
+                if (wasd && navMoveing) stopMove();
+                else if (!wasd && !navMoveing)
+                {
+                    moveAnimationController.OnIdle();
+                    return;
+                }
+
+                moveAnimationController.OnRun(h, v);
+            }
+            else
+            {
+                wasd = false;
+            }
 
             if (wasd)
             {
@@ -170,7 +173,7 @@ public class PlayerMoveController : Moveable, IPersonController
             {
                 if (Vector3.Distance(transform.position, curAutoPos) < 0.2f)
                 {
-                    if (!nextPoint())
+                    if (!nextPoint() || !canNav/*冲锋等位移技能可能不会转点移动*/)
                     {
                         stopMove();
                     }
@@ -181,7 +184,22 @@ public class PlayerMoveController : Moveable, IPersonController
                 moveDirection = curAutoPos - transform.position;
                 moveDirection.y = 0f;
                 moveDirection.Normalize();
-                moveDirection *= this.person.finalAbility.speed;
+
+                if (isMoveBy)
+                {
+                    moveDirection *= moveBySpeed;
+                    //moveDirection = Vector3.Cross(moveDirection, moveBySpeed);
+                    //moveDirection = new Vector3(moveDirection.x * -moveBySpeed.x, moveDirection.y * -moveBySpeed.y, moveDirection.z * -moveBySpeed.z);
+                }
+                else
+                {
+                    moveDirection *= this.person.finalAbility.speed;
+                }
+                
+            } else if (isMoveBy)
+            {
+                isMoveBy = false;
+                canNav = false;
             }
 
             // Allow turning at anytime. Keep the character facing in the same direction as the Camera if the right mouse button is down.
@@ -228,10 +246,13 @@ public class PlayerMoveController : Moveable, IPersonController
 
             if (moveDirection != Vector3.zero)
             {
-                newQuaternion = Quaternion.LookRotation(moveDirection);
-                transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion,
-                    this.person.rotSpeed * Time.deltaTime /*0.2f*/);
-
+                // 技能导致的移动，如果！canNav，不能改变朝向，如，LR的向后跳
+                if (!isMoveBy || canNav)
+                {
+                    newQuaternion = Quaternion.LookRotation(moveDirection);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion,
+                        this.person.rotSpeed * Time.deltaTime /*0.2f*/);
+                }
 
                 // 因为WOWMainCamra的原因，这里无效，所以需要添加到WoWMainCamra中
                 // // 摄像机朝移动朝向旋转
@@ -294,8 +315,22 @@ public class PlayerMoveController : Moveable, IPersonController
     /// 当前自动寻路的下个目标点
     /// </summary>
     private Vector3 curAutoPos = Vector3.zero;
-
+    /// <summary>
+    /// 下一个点
+    /// </summary>
     private int nextPointIndex = 0;
+
+
+#region 技能或其他原因导致的移动
+    //相对移动，如技能等控制的坐标改变
+    private bool isMoveBy = false;
+
+    //是否允许多点移动
+    private bool canNav = false;
+
+    //相对移动的速度
+    private float moveBySpeed = 0f;
+#endregion
 
     /// <summary>
     /// 自动寻路
@@ -337,6 +372,9 @@ public class PlayerMoveController : Moveable, IPersonController
         if (navMoveing)
         {
             navMoveing = false;
+
+            if (isMoveBy) isMoveBy = false;
+            if (canNav) canNav = false;
 
             nextPointIndex = 0;
             endPoint = Vector3.zero;
@@ -414,6 +452,16 @@ public class PlayerMoveController : Moveable, IPersonController
     {
         // TODO 
         this.canTurn = canTrun;
+    }
+
+
+    public override bool moveBy(Vector3 value, float speed, bool canNav)
+    {
+        this.isMoveBy = true;
+        this.canNav = canNav;
+        this.moveBySpeed = speed;
+
+        return move(this.transform.position + value);
     }
 
     #endregion

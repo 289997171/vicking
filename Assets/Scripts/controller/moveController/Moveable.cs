@@ -13,6 +13,15 @@ public abstract class Moveable : MonoBehaviour
     /// <param name="endPos"></param>
     public abstract bool move(Vector3 endPos);
 
+    /// <summary>
+    /// 当前朝向移动
+    /// </summary>
+    /// <param name="value">移动值</param>
+    /// <param name="speed">移动速度</param>
+    /// <param name="canNav">true：类似魔兽世界战士冲锋，如果有阻挡的情况，会转弯，false的情况下，移动到第一个转角</param>
+    /// <returns></returns>
+    public abstract bool moveBy(Vector3 value, float speed, bool canNav);
+
 
     /// <summary>
     /// 停止移动

@@ -1,4 +1,5 @@
 ﻿
+using DG.Tweening;
 using UnityEngine;
 
 public class FightController : MonoBehaviour
@@ -16,7 +17,7 @@ public class FightController : MonoBehaviour
 
     }
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Alpha1))
@@ -40,7 +41,7 @@ public class FightController : MonoBehaviour
             this.skillController.castSkill(null, 4, 1);
         }
     }
-#endif
+//#endif
 
     public void playEffect(string s)
     {
@@ -55,8 +56,27 @@ public class FightController : MonoBehaviour
     public void moveForward(string s)
     {
         Debug.Log("向前移动： " + s);
+        string[] splits = s.Split(',');
 
+        float move = float.Parse(splits[0]);
+        float duration = float.Parse(splits[1]);
+        bool canNav = bool.Parse(splits[2]);
+        
+        // TODO 会导致穿墙，需要修改
+        // this.transform.DOBlendableMoveBy(transform.forward*move, duration);
+        this.mooveable.moveBy(transform.forward*move, duration, canNav);
     }
+
+    public void moveBackward(string s)
+    {
+        Debug.Log("向后移动： " + s);
+        string[] splits = s.Split(',');
+
+        float move = 0f - float.Parse(splits[0]);
+        float duration = float.Parse(splits[1]);
+        this.mooveable.moveBy(transform.forward * move, duration, false);
+    }
+
 
     public void jump(string s)
     {

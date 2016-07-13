@@ -173,6 +173,11 @@ public class NavMoveController : Moveable, IPersonController
         return canNavMove;
     }
 
+    public override bool moveBy(Vector3 value, float speed, bool canNav)
+    {
+        return true;
+    }
+
     /// <summary>
     /// 停止自动导航寻路
     /// </summary>

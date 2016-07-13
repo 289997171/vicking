@@ -132,6 +132,13 @@ public class MoveController : Moveable, IPersonController
         return true;
     }
 
+    public override bool moveBy(Vector3 value, float speed, bool canNav)
+    {
+
+
+        return true;
+    }
+
     public override bool stopMove()
     {
         if (moveing)
