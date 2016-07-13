@@ -42,24 +42,25 @@ public class FightController : MonoBehaviour
     }
 #endif
 
-    public void PlayEffect(string s)
+    public void playEffect(string s)
     {
-        Debug.Log("PlayEffect !!!! " + " " + s);
+        Debug.Log("播放特效： " + s);
     }
 
-    public void PlayEffect(int i)
+    public void playSound(string s)
     {
-        Debug.Log("PlayEffect !!!! " + " " + i);
+        Debug.Log("播放音效: " + s);
     }
 
-    public void PlayEffect(float f)
+    public void moveForward(string s)
     {
-        Debug.Log("PlayEffect !!!! " + " " + f);
+        Debug.Log("向前移动： " + s);
+
     }
 
-    public void PlayEffect(GameObject obj)
+    public void jump(string s)
     {
-        Debug.Log("PlayEffect !!!! " + " " + obj);
+        Debug.Log("跳跃： " + s);
     }
 
     public void canMove(int can)

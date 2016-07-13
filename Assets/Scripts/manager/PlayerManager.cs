@@ -207,10 +207,10 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
     public void OnWalkClick(PointerEventData eventData)
     {
         Debug.Log("OnWalkClick !!!");
-//        if (localPlayer != null)
-//        {
-//            localPlayer.Moveable.move(eventData.pointerCurrentRaycast.worldPosition);
-//        }
+        if (localPlayer != null)
+        {
+            localPlayer.Moveable.move(eventData.pointerCurrentRaycast.worldPosition);
+        }
     }
 
     public void playSound()
