@@ -127,6 +127,6 @@ public class LocalPlayer : Player
 
     public void useSkill(int skillModelId, int skillLv)
     {
-        this.LocalPlayerSkillController.reqCastSkill();
+        // this.LocalPlayerSkillController.reqCastSkill();
     }
 }

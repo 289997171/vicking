@@ -42,6 +42,8 @@ public class PlayerMoveController : Moveable, IPersonController
     // 是否处于飞行状态
     private bool isFly = false;
 
+    private bool canTurn = true;
+
     // private Camera mainCamera;
 
     // 人物移动的时候，人物朝向改变是否影响摄像机旋转 (移动到WoWMainCamera)
@@ -89,6 +91,13 @@ public class PlayerMoveController : Moveable, IPersonController
         try
         {
 #endif
+
+            if (!canTurn)
+            {
+                moveAnimationController.OnIdle();
+                return;
+            }
+
             // 未处于地面
             if (!onGround && !isFly)
             {
@@ -98,6 +107,8 @@ public class PlayerMoveController : Moveable, IPersonController
                 flags = characterController.Move(moveDirection);
                 onGround = (flags & CollisionFlags.Below) != 0;
             }
+
+           
 
             // 朝向改变
             if (turning)
@@ -120,6 +131,8 @@ public class PlayerMoveController : Moveable, IPersonController
             this.wasdController.getInputHV(ref h, ref v);
 
             wasd = h != 0 || v != 0;
+
+            
 
             if (wasd && navMoveing) stopMove();
             else if (!wasd && !navMoveing)
@@ -396,6 +409,12 @@ public class PlayerMoveController : Moveable, IPersonController
         return flag;
     }
 
+
+    public override void setCanTurn(bool canTrun)
+    {
+        // TODO 
+        this.canTurn = canTrun;
+    }
 
     #endregion
 }

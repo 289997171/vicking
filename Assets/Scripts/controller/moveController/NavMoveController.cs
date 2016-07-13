@@ -242,8 +242,13 @@ public class NavMoveController : Moveable, IPersonController
         return flag;
     }
 
+    public override void setCanTurn(bool canTrun)
+    {
+        // TODO 
+    }
+
 
     #endregion
 
-    
+
 }

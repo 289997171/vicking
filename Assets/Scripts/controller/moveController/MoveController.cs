@@ -169,4 +169,9 @@ public class MoveController : Moveable, IPersonController
     {
         return turning;
     }
+
+    public override void setCanTurn(bool canTrun)
+    {
+        // TODO 
+    }
 }

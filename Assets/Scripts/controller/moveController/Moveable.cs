@@ -42,4 +42,10 @@ public abstract class Moveable : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     public abstract bool isTurning();
+
+    /// <summary>
+    /// 是否允许改变朝向
+    /// </summary>
+    /// <param name="canTrun"></param>
+    public abstract void setCanTurn(bool canTrun);
 }

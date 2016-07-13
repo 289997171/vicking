@@ -14,6 +14,6 @@ public class SkillController : MonoBehaviour
 
     public void castSkill(Person target, int skillModelId, int skillLv)
     {
-
+        this.fightAnimationController.castSkill(skillModelId);
     }
 }
