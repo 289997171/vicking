@@ -27,10 +27,10 @@ public class PlayerMoveController : Moveable, IPersonController
     private AreaController areaController;
 
     // 重力加速度
-    private float gravity = 20;
+    private float gravity = 10;
 
     // 是否在地面上
-    private bool onGround = false;
+    // private bool onGround = false;
     private CollisionFlags flags;
 
     // 移动朝向
@@ -38,9 +38,6 @@ public class PlayerMoveController : Moveable, IPersonController
 
     // 场景资源动态加载
     private Vector3 oldPos = Vector3.zero;
-
-    // 是否处于飞行状态
-    private bool isFly = false;
 
     private bool canTurn = true;
 
@@ -99,7 +96,7 @@ public class PlayerMoveController : Moveable, IPersonController
             }
 
             // 未处于地面
-            if (!onGround && !isFly)
+            if (!onGround && !fly)
             {
                 moveDirection.x = 0f;
                 moveDirection.z = 0f;
@@ -171,7 +168,13 @@ public class PlayerMoveController : Moveable, IPersonController
             }
             else if (navMoveing)
             {
-                if (Vector3.Distance(transform.position, curAutoPos) < 0.2f)
+                float minDistance = 0.3f;
+                if (isMoveBy && moveBySpeed > 20f)
+                {
+                    minDistance = 1f;
+                }
+
+                if (Vector3.Distance(transform.position, curAutoPos) < minDistance)
                 {
                     if (!nextPoint() || !canNav/*冲锋等位移技能可能不会转点移动*/)
                     {

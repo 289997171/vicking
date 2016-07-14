@@ -57,4 +57,22 @@ public abstract class Moveable : MonoBehaviour
     /// </summary>
     /// <param name="canTrun"></param>
     public abstract void setCanTurn(bool canTrun);
+
+    protected bool fly;
+
+    /// <summary>
+    /// 是否飞行中
+    /// </summary>
+    /// <param name="fly"></param>
+    public void setFly(bool fly)
+    {
+        this.fly = fly;
+    }
+
+    protected bool onGround;
+
+    public void setOnGround(bool onGround)
+    {
+        this.onGround = onGround;
+    }
 }

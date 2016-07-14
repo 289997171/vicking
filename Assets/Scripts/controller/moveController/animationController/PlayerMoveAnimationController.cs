@@ -36,7 +36,6 @@ public class PlayerMoveAnimationController : MoveAnimationController
 
     public override void OnIdle()
     {
-        //this.animator.SetBool("runing", false);
         animatorController.setRuning(false);
 
         if (inAttack)
@@ -79,6 +78,7 @@ public class PlayerMoveAnimationController : MoveAnimationController
             {
                 //this.animator.SetFloat("h", h);
                 //this.animator.SetFloat("v", v);
+
                 animatorController.setH(h);
                 animatorController.setV(v);
 

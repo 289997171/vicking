@@ -118,6 +118,8 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
 
         playerObj.getOrAddComponent<FightController>();
 
+        playerObj.getOrAddComponent<ParticleSystemController>();
+
         // 设置相机
         {
             // 3D 摄像机
@@ -182,6 +184,8 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
         player.CooldownController = playerObj.getOrAddComponent<CooldownController>();
 
         playerObj.getOrAddComponent<SkillController>();
+
+        playerObj.getOrAddComponent<ParticleSystemController>();
     }
 
     public LocalPlayer LocalPlayer
