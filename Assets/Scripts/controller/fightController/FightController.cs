@@ -53,8 +53,10 @@ public class FightController : MonoBehaviour
     //    }
     //#endif
 
-
-    public void faceToTarget()
+    /// <summary>
+    /// 检查角度条件
+    /// </summary>
+    public void checkConditionAngle(float angle)
     {
         if (this.localPlayer.Targetable == null)
         {
@@ -62,11 +64,8 @@ public class FightController : MonoBehaviour
             return;
         }
 
-        Vector3 direction = this.localPlayer.Targetable.transform.position - this.transform.position;
-        direction.y = 0f;
-        direction.Normalize();
-
-        this.moveable.turn(direction);
+        float currentAngle = Vector3.Angle(this.transform.position, this.localPlayer.Targetable.transform.position);
+        Debug.LogError("currentAngle === " + currentAngle);
     }
 
     // 移动到： EffectController.playEffect

@@ -408,7 +408,6 @@ public class PlayerMoveController : Moveable, IPersonController
     public override bool turn(Vector3 direction)
     {
         newQuaternion = Quaternion.LookRotation(direction);
-
         float angle = Quaternion.Angle(transform.rotation, newQuaternion);
         Debug.LogError("angle XXXXXX : " + angle);
 

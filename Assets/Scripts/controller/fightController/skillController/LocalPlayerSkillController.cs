@@ -40,6 +40,44 @@ public class LocalPlayerSkillController : SkillController
         
     }
 
+
+    public override void castSkill(Person target, int skillModelId, int skillLv)
+    {
+        //TODO 测试角度
+        float angle = 30;
+        if (!checkConditionAngle(angle))
+        {
+            // TODO 角度不符合
+            return;
+        }
+        this.fightAnimationController.castSkill(skillModelId);
+    }
+
+    /// <summary>
+    /// 检查角度条件
+    /// </summary>
+    public bool checkConditionAngle(float angle)
+    {
+        if (this.localPlayer.Selectable.selectedTarget == null)
+        {
+            Debug.LogError("没有目标");
+            return false;
+        }
+
+        Vector3 dir = this.localPlayer.Selectable.selectedTarget.transform.position - this.transform.position;
+        float currentAngle = Vector3.Angle(this.transform.forward, dir);
+        Debug.LogError("currentAngle === " + currentAngle);
+        if (currentAngle > angle)
+        {
+            Debug.LogError("超过角度");
+            return false;
+        }
+
+        return true;
+    }
+
+
+
     private bool checkCastCondition(int skillModelId, int skillLv)
     {
         // 判断是否有武器
