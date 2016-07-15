@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class LocalPlayerSkillController : SkillController
@@ -40,17 +41,36 @@ public class LocalPlayerSkillController : SkillController
         
     }
 
+    private List<int> skillQueue = new List<int>();
+
+    void Update()
+    {
+        if (skillQueue.Count > 0)
+        {
+            if (doCastSkill(skillQueue[0]))
+            {
+                skillQueue.RemoveAt(0);
+            }
+        }
+    }
 
     public override void castSkill(Person target, int skillModelId, int skillLv)
+    {
+        skillQueue.Add(skillModelId);
+    }
+
+    private bool doCastSkill(int skillModelId)
     {
         //TODO 测试角度
         float angle = 30;
         if (!checkConditionAngle(angle))
         {
             // TODO 角度不符合
-            return;
+            return false;
         }
         this.fightAnimationController.castSkill(skillModelId);
+        Debug.LogError("施放成功");
+        return true;
     }
 
     /// <summary>
@@ -65,13 +85,29 @@ public class LocalPlayerSkillController : SkillController
         }
 
         Vector3 dir = this.localPlayer.Selectable.selectedTarget.transform.position - this.transform.position;
+        dir.y = 0f;
+        dir.Normalize();
         float currentAngle = Vector3.Angle(this.transform.forward, dir);
         Debug.LogError("currentAngle === " + currentAngle);
         if (currentAngle > angle)
         {
             Debug.LogError("超过角度");
+            // TODO 设置朝目标看
+            if (!(this.moveable as PlayerMoveController).turningForce)
+            {
+                (this.moveable as PlayerMoveController).turnForce(dir, currentAngle);
+            }
+
             return false;
         }
+//        else
+//        {
+//            if ((this.moveable as PlayerMoveController).turningForce)
+//            {
+//                (this.moveable as PlayerMoveController).turningForce = false;
+////                (this.moveable as PlayerMoveController).trun
+//            }
+//        }
 
         return true;
     }

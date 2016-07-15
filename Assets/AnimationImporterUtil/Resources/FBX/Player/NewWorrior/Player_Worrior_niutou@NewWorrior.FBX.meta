@@ -1730,7 +1730,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.28443652
-        functionName: playParticle
+        functionName: playEffect
         data: zs_skill_1
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
