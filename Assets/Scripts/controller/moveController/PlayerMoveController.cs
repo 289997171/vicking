@@ -111,6 +111,10 @@ public class PlayerMoveController : Moveable, IPersonController
                 float angle = Quaternion.Angle(transform.rotation, newQuaternion);
                 Debug.Log("angle : " + angle);
                 // TODO 判断角度范围
+                if (angle < 5f)
+                {
+                    turning = false;
+                }
 
                 rotY = Camera.main.transform.rotation.eulerAngles.y;
                 moveDirection = Quaternion.Euler(0, rotY, 0) * moveDirection;
@@ -401,14 +405,16 @@ public class PlayerMoveController : Moveable, IPersonController
 
     public override bool turn(Vector3 direction)
     {
-        turning = true;
-
         newQuaternion = Quaternion.LookRotation(direction);
 
         float angle = Quaternion.Angle(transform.rotation, newQuaternion);
-        Debug.Log("angle : " + angle);
+        Debug.LogError("angle XXXXXX : " + angle);
 
         // TODO 判断角度范围
+        if (angle > 5f)
+        {
+            turning = true;
+        }
 
         return turning;
     }

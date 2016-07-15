@@ -103,5 +103,17 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
         Debug.Log("Targetable OnPointerClick : " + eventData.pointerCurrentRaycast.gameObject);
 
         PlayerManager.Instance.LocalPlayer.Selectable.SelectTarget(this);
+
+        faceToTarget();
+    }
+
+
+    private void faceToTarget()
+    {
+        Vector3 direction = this.transform.position - PlayerManager.Instance.LocalPlayer.transform.position;
+        direction.y = 0f;
+        direction.Normalize();
+
+        PlayerManager.Instance.LocalPlayer.Moveable.turn(direction);
     }
 }
