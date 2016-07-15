@@ -54,7 +54,7 @@ public class PlayerMoveController : Moveable, IPersonController
 
         this.characterController = GetComponent<CharacterController>();
 
-        
+
 
         this.wasdController = GetComponent<WASDController>();
 
@@ -105,46 +105,30 @@ public class PlayerMoveController : Moveable, IPersonController
                 onGround = (flags & CollisionFlags.Below) != 0;
             }
 
-            // 朝向改变
-            if (turning)
-            {
-                float angle = Quaternion.Angle(transform.rotation, newQuaternion);
-                Debug.Log("angle : " + angle);
-                // TODO 判断角度范围
-                if (angle < 5f)
-                {
-                    turning = false;
-                }
-
-                rotY = Camera.main.transform.rotation.eulerAngles.y;
-                moveDirection = Quaternion.Euler(0, rotY, 0) * moveDirection;
-
-                transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion,
-                    this.person.rotSpeed * Time.deltaTime /*0.2f*/);
-                moveAnimationController.OnTurn(newQuaternion);
-            }
-
             // h = Input.GetAxis("Horizontal");
             // v = Input.GetAxis("Vertical");
 
-            if (!isMoveBy)
+            if (isMoveBy)
+            {
+                wasd = false;
+            }
+            else
             {
                 this.wasdController.getInputHV(ref h, ref v);
 
                 wasd = h != 0 || v != 0;
 
-                if (wasd && navMoveing) stopMove();
-                else if (!wasd && !navMoveing)
+                if (wasd && navMoveing)
+                {
+                    stopMove();
+                }
+                else if (!wasd && !navMoveing && !turning)
                 {
                     moveAnimationController.OnIdle();
                     return;
                 }
 
                 moveAnimationController.OnRun(h, v);
-            }
-            else
-            {
-                wasd = false;
             }
 
             if (wasd)
@@ -202,11 +186,29 @@ public class PlayerMoveController : Moveable, IPersonController
                 {
                     moveDirection *= this.person.finalAbility.speed;
                 }
-                
-            } else if (isMoveBy)
+
+            }
+            else if (isMoveBy) // 强制移动
             {
                 isMoveBy = false;
                 canNav = false;
+            }
+            else if (turning) // 朝向改变
+            {
+                float angle = Quaternion.Angle(transform.rotation, newQuaternion);
+                // TODO 判断角度范围
+                if (angle < 5f)
+                {
+                    turning = false;
+                }
+
+                //rotY = Camera.main.transform.rotation.eulerAngles.y;
+                //moveDirection = Quaternion.Euler(0, rotY, 0) * moveDirection;
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion,
+                    this.person.rotSpeed * Time.deltaTime /*0.2f*/);
+                moveAnimationController.OnTurn(newQuaternion);
+                return;
             }
 
             // Allow turning at anytime. Keep the character facing in the same direction as the Camera if the right mouse button is down.
@@ -328,7 +330,7 @@ public class PlayerMoveController : Moveable, IPersonController
     private int nextPointIndex = 0;
 
 
-#region 技能或其他原因导致的移动
+    #region 技能或其他原因导致的移动
     //相对移动，如技能等控制的坐标改变
     private bool isMoveBy = false;
 
@@ -337,7 +339,7 @@ public class PlayerMoveController : Moveable, IPersonController
 
     //相对移动的速度
     private float moveBySpeed = 0f;
-#endregion
+    #endregion
 
     /// <summary>
     /// 自动寻路

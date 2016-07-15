@@ -137,9 +137,13 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
     {
         Debug.Log("Targetable OnPointerClick : " + eventData.pointerCurrentRaycast.gameObject);
 
-        PlayerManager.Instance.LocalPlayer.Selectable.SelectTarget(this);
+        if (this.person != PlayerManager.Instance.LocalPlayer)
+        {
+            PlayerManager.Instance.LocalPlayer.Selectable.SelectTarget(this);
+            faceToTarget();
+        }
 
-        faceToTarget();
+        
     }
 
 
