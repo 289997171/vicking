@@ -118,7 +118,7 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
 
         playerObj.getOrAddComponent<FightController>();
 
-        playerObj.getOrAddComponent<ParticleSystemController>();
+        playerObj.getOrAddComponent<EffectController>();
 
         // 设置相机
         {
@@ -185,7 +185,7 @@ public class PlayerManager : DDOSingleton<PlayerManager>, IManager
 
         playerObj.getOrAddComponent<SkillController>();
 
-        playerObj.getOrAddComponent<ParticleSystemController>();
+        playerObj.getOrAddComponent<EffectController>();
     }
 
     public LocalPlayer LocalPlayer

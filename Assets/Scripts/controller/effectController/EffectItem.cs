@@ -1,23 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class ParticleItem : MonoBehaviour
+[DisallowMultipleComponent]
+public class EffectItem : MonoBehaviour
 {
 
+#if UNITY_EDITOR
     [SerializeField]
-    private List<ParticleSystem> particleSystemsList = new List<ParticleSystem>();
+#endif
+    private List<ParticleSystem> particleSystemList = new List<ParticleSystem>();
+
+#if UNITY_EDITOR
+    [SerializeField]
+#endif
+    private List<MeshReadererLifeTimer> mesgReadererLifeTimerList = new List<MeshReadererLifeTimer>();
+
+
 
     void Start()
     {
         Debug.LogError("ParticleItem Start()");
 
         ParticleSystem[] particleSystems = this.transform.GetComponentsInChildren<ParticleSystem>();
-        particleSystemsList.AddRange(particleSystems);
+        particleSystemList.AddRange(particleSystems);
 
-        foreach (ParticleSystem item in particleSystems)
-        {
-            item.startDelay = 0f;
-        }
+        MeshReadererLifeTimer[] mesgReadererLifeTimers = this.transform.GetComponentsInChildren<MeshReadererLifeTimer>();
+        mesgReadererLifeTimerList.AddRange(mesgReadererLifeTimers);
 
         // if (!this.name.EndsWith("(Clone)")) StartCoroutine(init());
     }
@@ -131,12 +139,17 @@ public class ParticleItem : MonoBehaviour
 
     public void play()
     {
-        foreach (ParticleSystem item in particleSystemsList)
+        foreach (MeshReadererLifeTimer meshReadererLifeTimer in mesgReadererLifeTimerList)
+        {
+            meshReadererLifeTimer.play();
+        }
+
+        foreach (ParticleSystem item in particleSystemList)
         {
             item.Play(false);
-            //Debug.LogError("ps::::::" + item.name);
         }
     }
+
 
 
 }
