@@ -5,7 +5,7 @@
 /// </summary>
 [DisallowMultipleComponent]
 [RequireComponent(typeof(MeshRenderer))]
-public class MeshReadererLifeTimer : MonoBehaviour
+public class MeshReadererEffect : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
 

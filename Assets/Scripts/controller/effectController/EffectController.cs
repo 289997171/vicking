@@ -7,10 +7,10 @@ public class EffectController : MonoBehaviour
 {
 
 #if UNITY_EDITOR
-    public List<EffectItem> effectList = new List<EffectItem>();
+    public List<EffectGroup> effectGroupList = new List<EffectGroup>();
 #endif
 
-    public Dictionary<string, EffectItem> effectItemMap = new Dictionary<string, EffectItem>();
+    public Dictionary<string, EffectGroup> effectGroupMap = new Dictionary<string, EffectGroup>();
 
     //    public Person person;
     //
@@ -59,34 +59,57 @@ public class EffectController : MonoBehaviour
         //        }
         //        
 
-        EffectItem[] items = this.transform.GetComponentsInChildren<EffectItem>();
+        EffectGroup[] groups = this.transform.GetComponentsInChildren<EffectGroup>();
 
 #if UNITY_EDITOR
-        effectList.AddRange(items);
+        effectGroupList.AddRange(groups);
 #endif
-        foreach (EffectItem item in items)
+        foreach (EffectGroup group in groups)
         {
-            effectItemMap.Add(item.name, item);
+            effectGroupMap.Add(group.name, group);
 
-            //item.gameObject.SetActive(false);
+            //group.gameObject.SetActive(false);
         }
 
     }
-
-
-
-
 
     public void playParticle(string effectInfo)
     {
         string[] splits = effectInfo.Split(',');
         string effectName = splits[0];
 
-        EffectItem effectItem;
-        if (effectItemMap.TryGetValue(effectName, out effectItem))
+        EffectGroup effectGroup;
+        if (effectGroupMap.TryGetValue(effectName, out effectGroup))
         {
-            //effectItem.gameObject.SetActive(true);
-            effectItem.play();
+            //effectGroup.gameObject.SetActive(true);
+            effectGroup.play(priority);
         }
     }
+
+    private EffectPriority priority = EffectPriority.PERFECT;
+
+#if UNITY_EDITOR
+    void OnGUI()
+    {
+        if (GUI.Button(new Rect(10, Screen.height - 40 * 1, 100, 30), "完美特效"))
+        {
+            this.priority = EffectPriority.PERFECT;
+        }
+
+        if (GUI.Button(new Rect(10, Screen.height - 40 * 2, 100, 30), "优秀特效"))
+        {
+            this.priority = EffectPriority.EXCELLENT;
+        }
+
+        if (GUI.Button(new Rect(10, Screen.height - 40 * 3, 100, 30), "一般特效"))
+        {
+            this.priority = EffectPriority.NORMAL;
+        }
+
+        if (GUI.Button(new Rect(10, Screen.height - 40 * 4, 100, 30), "低特效"))
+        {
+            this.priority = EffectPriority.LOW;
+        }
+    }
+#endif
 }
