@@ -73,7 +73,7 @@ public class EffectController : MonoBehaviour
 
     }
 
-    public void playParticle(string effectInfo)
+    public void playEffect(string effectInfo)
     {
         string[] splits = effectInfo.Split(',');
         string effectName = splits[0];

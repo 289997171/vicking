@@ -16,7 +16,7 @@ public enum EffectPriority
 
 public class EffectItem : MonoBehaviour
 {
-    public EffectPriority priority = EffectPriority.NORMAL;
+    public EffectPriority priority = EffectPriority.LOW;
 
     private ParticleSystem particleSystem;
 
