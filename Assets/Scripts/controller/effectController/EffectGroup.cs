@@ -35,12 +35,26 @@ public class EffectGroup : MonoBehaviour
 
     void Start()
     {
-        Debug.LogError("ParticleItem Start()");
+        Debug.LogError("EffectGroup Start()");
 
         EffectItem[] effects = this.transform.GetComponentsInChildren<EffectItem>();
 
         foreach (EffectItem effectItem in effects)
         {
+            if (!effectItem.follow && effectItem.isRootEffect)
+            {
+                effectItem.gameObject.SetActive(false);
+                EffectItem[] effectItems = effectItem.transform.GetComponentsInChildren<EffectItem>();
+                foreach (EffectItem item in effectItems)
+                {
+                    item.initNotFollow();
+                    if (effectItem.lastTime < item.lastTime)
+                    {
+                        effectItem.lastTime = item.lastTime;
+                    }
+                }
+            }
+
             if (effectItem.priority == EffectPriority.PERFECT)
             {
                 effectList_PERFECT.Add(effectItem);
@@ -50,7 +64,7 @@ public class EffectGroup : MonoBehaviour
                 effectList_PERFECT.Add(effectItem);
                 effectList_EXCELLENT.Add(effectItem);
             }
-            else if(effectItem.priority == EffectPriority.NORMAL)
+            else if (effectItem.priority == EffectPriority.NORMAL)
             {
                 effectList_PERFECT.Add(effectItem);
                 effectList_EXCELLENT.Add(effectItem);
@@ -197,7 +211,22 @@ public class EffectGroup : MonoBehaviour
         {
             foreach (EffectItem effectItem in effectList_PERFECT)
             {
-                effectItem.play();
+                if (effectItem.follow)
+                {
+                    effectItem.play();
+                }
+                else if (effectItem.isRootEffect)
+                {
+                    GameObject clone = Instantiate(effectItem.gameObject);
+                    clone.SetActive(true);
+
+                    Debug.LogError("CLONE position ::: " + clone.transform.position);
+                    Debug.LogError("CLONE rotation ::: " + clone.transform.rotation);
+
+                    clone.transform.position += this.transform.position;
+                    clone.transform.rotation = Quaternion.Euler(clone.transform.rotation.eulerAngles + this.transform.rotation.eulerAngles);
+                    Destroy(clone, effectItem.lastTime);
+                }
             }
         }
         else if (priority == EffectPriority.EXCELLENT)

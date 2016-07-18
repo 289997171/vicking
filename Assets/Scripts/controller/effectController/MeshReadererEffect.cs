@@ -8,12 +8,20 @@ public class MeshReadererEffect : MonoBehaviour
 {
 	public Animation animation;
 
-	public SkinnedMeshRenderer[] meshRenderers;
+    public MeshRenderer meshRenderer;
+
+    public SkinnedMeshRenderer skinnedMeshRenderer;
 
     /// <summary>
     /// 模型特效持续时间
     /// </summary>
     public float lastTime = 0f;
+
+    /// <summary>
+    /// 是否在Awake/Start后，播放
+    /// </summary>
+    [HideInInspector]
+    public bool playOnAwake = false;
 
 #if UNITY_EDITOR
     [SerializeField]
@@ -27,10 +35,32 @@ public class MeshReadererEffect : MonoBehaviour
 			this.animation.playAutomatically = false;
 		}
 
-		this.meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();// GetComponent<MeshRenderer>();
-		foreach (SkinnedMeshRenderer meshRenderer in meshRenderers) {
-			meshRenderer.enabled = false;
-		}
+        this.meshRenderer = GetComponent<MeshRenderer>();
+        this.skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
+
+#if UNITY_EDITOR
+        if (this.meshRenderer == null && this.skinnedMeshRenderer == null)
+        {
+            Debug.LogError("错误，在无MeshRenderer的组件上挂载MeshReadererEffect：" + this.name);
+        }
+#endif
+
+        if (!playOnAwake)
+        {
+            if (this.skinnedMeshRenderer != null)
+            {
+                this.skinnedMeshRenderer.enabled = false;
+            }
+
+            if (this.meshRenderer != null)
+            {
+                this.meshRenderer.enabled = false;
+            }
+        }
+        else
+        {
+            play();
+        }
     }
 
     public void play()
@@ -38,9 +68,16 @@ public class MeshReadererEffect : MonoBehaviour
 		if (this.animation != null) {
 			this.animation.Play ();
 		}
-		foreach (SkinnedMeshRenderer meshRenderer in meshRenderers) {
-			meshRenderer.enabled = true;
-		}
+
+        if (this.skinnedMeshRenderer != null)
+        {
+            this.skinnedMeshRenderer.enabled = true;
+        }
+
+        if (this.meshRenderer != null)
+        {
+            this.meshRenderer.enabled = true;
+        }
         this.cost = lastTime;
     }
 
@@ -54,9 +91,15 @@ public class MeshReadererEffect : MonoBehaviour
             cost -= Time.deltaTime;
             if (cost < 0f)
             {
-				foreach (SkinnedMeshRenderer meshRenderer in meshRenderers) {
-					meshRenderer.enabled = false;
-				}
+                if (this.skinnedMeshRenderer != null)
+                {
+                    this.skinnedMeshRenderer.enabled = false;
+                }
+
+                if (this.meshRenderer != null)
+                {
+                    this.meshRenderer.enabled = false;
+                }
             }
         }
     }
