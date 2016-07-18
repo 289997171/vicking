@@ -16,6 +16,7 @@ public class FightAnimationController : MonoBehaviour
 
     public void castSkill(int skillModelId)
     {
+        Debug.LogError("castSkill :: " + skillModelId);
         this.animator.SetInteger("iAction", skillModelId);
         StartCoroutine(resetAction());
     }
