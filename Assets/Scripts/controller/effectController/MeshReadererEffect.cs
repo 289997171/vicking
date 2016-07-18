@@ -4,10 +4,11 @@
 /// 控制模型特效显示时间
 /// </summary>
 [DisallowMultipleComponent]
-[RequireComponent(typeof(MeshRenderer))]
 public class MeshReadererEffect : MonoBehaviour
 {
-    private MeshRenderer meshRenderer;
+	public Animation animation;
+
+	public SkinnedMeshRenderer[] meshRenderers;
 
     /// <summary>
     /// 模型特效持续时间
@@ -21,13 +22,25 @@ public class MeshReadererEffect : MonoBehaviour
 
     void Start()
     {
-        this.meshRenderer = GetComponent<MeshRenderer>();
-        this.meshRenderer.enabled = false;
+		this.animation = GetComponent<Animation> ();
+		if (this.animation != null) {
+			this.animation.playAutomatically = false;
+		}
+
+		this.meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();// GetComponent<MeshRenderer>();
+		foreach (SkinnedMeshRenderer meshRenderer in meshRenderers) {
+			meshRenderer.enabled = false;
+		}
     }
 
     public void play()
     {
-        this.meshRenderer.enabled = true;
+		if (this.animation != null) {
+			this.animation.Play ();
+		}
+		foreach (SkinnedMeshRenderer meshRenderer in meshRenderers) {
+			meshRenderer.enabled = true;
+		}
         this.cost = lastTime;
     }
 
@@ -41,7 +54,9 @@ public class MeshReadererEffect : MonoBehaviour
             cost -= Time.deltaTime;
             if (cost < 0f)
             {
-                this.meshRenderer.enabled = false;
+				foreach (SkinnedMeshRenderer meshRenderer in meshRenderers) {
+					meshRenderer.enabled = false;
+				}
             }
         }
     }
