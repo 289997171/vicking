@@ -4,6 +4,7 @@
 /// 控制模型特效显示时间
 /// </summary>
 [DisallowMultipleComponent]
+[RequireComponent(typeof(EffectItem))]
 public class MeshReadererEffect : MonoBehaviour
 {
 	public Animation animation;
@@ -35,8 +36,8 @@ public class MeshReadererEffect : MonoBehaviour
 			this.animation.playAutomatically = false;
 		}
 
-        this.meshRenderer = GetComponent<MeshRenderer>();
-        this.skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
+        this.meshRenderer = GetComponentInChildren<MeshRenderer>();
+        this.skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
 
 #if UNITY_EDITOR
         if (this.meshRenderer == null && this.skinnedMeshRenderer == null)
@@ -44,6 +45,7 @@ public class MeshReadererEffect : MonoBehaviour
             Debug.LogError("错误，在无MeshRenderer的组件上挂载MeshReadererEffect：" + this.name);
         }
 #endif
+        Debug.LogError("playOnAwake :: " + playOnAwake);
 
         if (!playOnAwake)
         {

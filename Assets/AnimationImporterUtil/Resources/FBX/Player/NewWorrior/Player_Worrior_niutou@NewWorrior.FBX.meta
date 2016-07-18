@@ -4619,23 +4619,23 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.27710775
+      - time: 0
         functionName: canMove
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.86345345
-        functionName: canMove
-        data: 
+      - time: 0
+        functionName: playEffect
+        data: Zs_Skill_Dilie3
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
-      - time: 0
-        functionName: playEffect
-        data: Zs_Skill_Dilie3
+      - time: 0.86345345
+        functionName: canMove
+        data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1

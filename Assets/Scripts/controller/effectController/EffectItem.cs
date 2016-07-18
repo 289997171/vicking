@@ -22,8 +22,9 @@ public class EffectItem : MonoBehaviour
 
     private MeshReadererEffect meshReadererEffect;
 
-#region 特效是跟随的，还是动态创建的
+    #region 特效是跟随的，还是动态创建的
     // 是否跟随模型
+    [HideInInspector]
     public bool follow = true;
 
     // 特效持续时间

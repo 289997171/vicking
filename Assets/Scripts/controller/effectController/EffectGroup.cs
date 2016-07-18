@@ -211,49 +211,49 @@ public class EffectGroup : MonoBehaviour
         {
             foreach (EffectItem effectItem in effectList_PERFECT)
             {
-                if (effectItem.follow)
-                {
-                    effectItem.play();
-                }
-                else if (effectItem.isRootEffect)
-                {
-                    GameObject clone = Instantiate(effectItem.gameObject);
-                    clone.SetActive(true);
-
-                    Debug.LogError("CLONE position ::: " + clone.transform.position);
-                    Debug.LogError("CLONE rotation ::: " + clone.transform.rotation);
-
-                    clone.transform.position += this.transform.position;
-                    clone.transform.rotation = Quaternion.Euler(clone.transform.rotation.eulerAngles + this.transform.rotation.eulerAngles);
-                    Destroy(clone, effectItem.lastTime);
-                }
+                playEffect(effectItem);
             }
         }
         else if (priority == EffectPriority.EXCELLENT)
         {
             foreach (EffectItem effectItem in effectList_EXCELLENT)
             {
-                effectItem.play();
+                playEffect(effectItem);
             }
         }
         else if (priority == EffectPriority.NORMAL)
         {
             foreach (EffectItem effectItem in effectList_NORMAL)
             {
-                effectItem.play();
+                playEffect(effectItem);
             }
         }
         else if (priority == EffectPriority.LOW)
         {
             foreach (EffectItem effectItem in effectList_LOW)
             {
-                effectItem.play();
+                playEffect(effectItem);
             }
         }
 
 
     }
 
+    private void playEffect(EffectItem effectItem)
+    {
+        if (effectItem.follow)
+        {
+            effectItem.play();
+        }
+        else if (effectItem.isRootEffect)
+        {
+            GameObject clone = Instantiate(effectItem.gameObject);
+            clone.SetActive(true);
 
+            clone.transform.position = effectItem.transform.position;
+            clone.transform.rotation = effectItem.transform.rotation;
 
+            Destroy(clone, effectItem.lastTime /*+ 0.1f*/);
+        }
+    }
 }

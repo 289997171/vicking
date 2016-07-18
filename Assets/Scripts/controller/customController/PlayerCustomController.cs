@@ -45,6 +45,8 @@ public class PlayerCustomController : CustomController, IPersonController
         string rname = "";
         foreach (SkinnedMeshRenderer renderer in renderers)
         {
+            if (renderer.gameObject.GetComponent<EffectItem>() != null) continue; // TODO 特效使用到的SkinnedMeshRenderer
+
             renderer.gameObject.SetActive(false);
             //renderer.enabled = false;
             rname = renderer.name;
