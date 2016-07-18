@@ -1,5 +1,49 @@
-﻿using JetBrains.Annotations;
+﻿using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// 技能队列中的技能信息
+/// </summary>
+public class SingleSkill
+{
+    // 技能配置
+    public QSkill qSkill;
+
+    // 技能ID
+    public int skillModelId;
+
+    // 是否必须有目标
+    public bool mustTarget;
+
+    // 最远攻击距离
+    public float maxDistance = 2f;
+
+    // 朝向目标的最大角度才能施放法术
+    public float maxAngle = 10f;
+
+    // 如果角度不在范围内，允许在一定时间内转向的最长时间
+    public float maxTrunTime = 1f;
+
+    // 朝目标攻击后，任然保持朝向的时间
+    public float keepLookAtTime = 3f;
+
+    public Targetable target;
+
+    // 攻击目标
+    // public Person target;
+
+    public SingleSkill(QSkill qSkill, int skillModelId, bool mustTarget, float maxDistance, float maxAngle, float maxTrunTime, float keepLookAtTime, Targetable target = null)
+    {
+        this.qSkill = qSkill;
+        this.skillModelId = skillModelId;
+        this.mustTarget = mustTarget;
+        this.maxDistance = maxDistance;
+        this.maxAngle = maxAngle;
+        this.maxTrunTime = maxTrunTime;
+        this.keepLookAtTime = keepLookAtTime;
+        this.target = target;
+    }
+}
 
 public class LocalPlayerSkillController : SkillController
 {
@@ -21,24 +65,145 @@ public class LocalPlayerSkillController : SkillController
     /// <param name="target"></param>
     public void reqCastSkill(int skillModelId, int skillLv)
     {
-       
+
         if (!checkCastCondition(skillModelId, skillLv))
         {
             return;
         }
 
         // 发送施法请求
-//        com.game.proto.ReqUseSkillMessage useSMsg = new com.game.proto.ReqUseSkillMessage();
-//        useSMsg.SkillID = SkillID;
-//        useSMsg.TargetID = role.ID;
-//        useSMsg.TargetType = (int)role.Type;
-//        NetManager.Instance.GetGameNet().Send(ProtobufSerializer.GetInstance().ProtobufSerToBytes<com.game.proto.ReqUseSkillMessage>((object)useSMsg, (int)useSMsg.msgID));
+        //        com.game.proto.ReqUseSkillMessage useSMsg = new com.game.proto.ReqUseSkillMessage();
+        //        useSMsg.SkillID = SkillID;
+        //        useSMsg.TargetID = role.ID;
+        //        useSMsg.TargetType = (int)role.Type;
+        //        NetManager.Instance.GetGameNet().Send(ProtobufSerializer.GetInstance().ProtobufSerToBytes<com.game.proto.ReqUseSkillMessage>((object)useSMsg, (int)useSMsg.msgID));
     }
 
     public void resCastSkill()
     {
-        
+
     }
+
+    private List<SingleSkill> skillQueue = new List<SingleSkill>();
+
+    void Update()
+    {
+        if (skillQueue.Count > 0)
+        {
+            if (doCastSkill(skillQueue[0]))
+            {
+                skillQueue.RemoveAt(0);
+            }
+        }
+    }
+
+    public override void castSkill(Person target, int skillModelId, int skillLv)
+    {
+        // 技能ID
+        // int skillModelId;
+
+        // 是否必须有目标
+        bool mustTarget = true;
+
+        // 最远攻击距离
+        float maxDistance = 2f;
+
+        // 朝向目标的最大角度才能施放法术
+        float maxAngle = 10f;
+
+        // 如果角度不在范围内，允许在一定时间内转向的最长时间
+        float maxAngleTime = 1f;
+
+        // 朝目标攻击后，任然保持朝向的时间
+        float keepLookAtTime = 3f;
+
+//        if (target == null)
+//        {
+            Targetable targetable = this.localPlayer.Selectable.selectedTarget;
+
+            if (mustTarget)
+            {
+
+                if (targetable == null)
+                {
+                    Debug.LogError("没有目标");
+                    return;
+                }
+
+//                target = targetable.person;
+//
+//                if (target == null)
+//                {
+//                    Debug.LogError("没有目标");
+//                    return;
+//                }
+
+            }
+//        }
+        
+
+        // TODO 测试
+        skillQueue.Add(new SingleSkill(null, skillModelId, mustTarget, maxDistance, maxAngle, maxAngleTime, keepLookAtTime, targetable));;
+    }
+
+    private bool doCastSkill(SingleSkill singleSkill)
+    {
+        //TODO 测试角度
+        if (singleSkill.mustTarget && !checkConditionAngle(singleSkill))
+        {
+            // TODO 角度不符合
+            return false;
+        }
+
+        this.fightAnimationController.castSkill(singleSkill.skillModelId);
+        Debug.LogError("施放成功");
+
+        return true;
+    }
+
+    /// <summary>
+    /// 检查角度条件
+    /// </summary>
+    public bool checkConditionAngle(SingleSkill singleSkill)
+    {
+        singleSkill.maxTrunTime -= Time.deltaTime;
+        if (singleSkill.maxTrunTime < 0f)
+        {
+            Debug.Log("在时间范围内转向任然失败，取消该技能施放");
+            skillQueue.Remove(singleSkill);
+            return false;
+        }
+
+        Vector3 dir = singleSkill.target.transform.position - this.transform.position;
+        dir.y = 0f;
+        dir.Normalize();
+        float currentAngle = Vector3.Angle(this.transform.forward, dir);
+        // Debug.LogError("currentAngle === " + currentAngle);
+
+        if (currentAngle > singleSkill.maxAngle)
+        {
+            // Debug.LogError("超过角度");
+            // TODO 设置朝目标看
+            if (!(this.moveable as PlayerMoveController).turningForce)
+            {
+                (this.moveable as PlayerMoveController).turnForce(singleSkill);
+            }
+
+            return false;
+        }
+        //        else
+        //        {
+        //            if ((this.moveable as PlayerMoveController).turningForce)
+        //            {
+        //                (this.moveable as PlayerMoveController).turningForce = false;
+        ////                (this.moveable as PlayerMoveController).trun
+        //            }
+        //        }
+
+        return true;
+    }
+
+
 
     private bool checkCastCondition(int skillModelId, int skillLv)
     {
@@ -211,7 +376,7 @@ public class LocalPlayerSkillController : SkillController
 
         // 目标安全区检测
 
-       
+
         // 是敌人判断是否允许攻击,否则判断是否允许释放技能
         if (skillModel.qTarget == 4)
         {

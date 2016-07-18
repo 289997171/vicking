@@ -247,7 +247,7 @@ public class NavMoveController : Moveable, IPersonController
         return flag;
     }
 
-    public override void setCanTurn(bool canTrun)
+    public override void setCanMove(bool canMove)
     {
         // TODO 
     }

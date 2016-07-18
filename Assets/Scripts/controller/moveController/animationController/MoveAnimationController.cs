@@ -26,7 +26,7 @@ public abstract class MoveAnimationController : MonoBehaviour
     /// </summary>
     /// <param name="h"></param>
     /// <param name="v"></param>
-    public abstract void OnRun(float h = 0f, float v = 0f);
+    public abstract void OnRun(float h = 0f, float v = 0f, float angle = 0f);
 
     /// <summary>
     /// 游泳

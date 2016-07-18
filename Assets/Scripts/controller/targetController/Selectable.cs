@@ -22,7 +22,7 @@ public class Selectable : MonoBehaviour
     public virtual void ClearTarget()
     {
         Debug.Log("ClearTarget: " + selectedTarget);
-        
+
         if (selectedTarget == null) return;
 
         // 清除掉队列中的技能
@@ -30,6 +30,8 @@ public class Selectable : MonoBehaviour
 
         // 停止交互
         // StopInteract();
+
+        selectedTarget.onDestroy -= OnTargetedDestroyed;
 
         selectedTarget = null;
     }

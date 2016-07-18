@@ -66,25 +66,28 @@ public class PlayerMoveAnimationController : MoveAnimationController
     {
     }
 
-    public override void OnRun(float h = 0, float v = 0)
+    public override void OnRun(float h = 0f, float v = 0f, float angle = 0f)
     {
         //this.animator.SetBool("runing", true);
         animatorController.setRuning(true);
 
+        // TODO 移动到inAttack中
+        animatorController.setAngle(angle);
+
         if (inAttack)
         {
+            animatorController.setAngle(angle);
 
             if (target != null && target.gameObject.activeInHierarchy /*&& target.isLive()*/)
             {
                 //this.animator.SetFloat("h", h);
                 //this.animator.SetFloat("v", v);
 
-                animatorController.setH(h);
-                animatorController.setV(v);
+                //animatorController.setH(h);
+                //animatorController.setV(v);
+
 
                 // TODO 补偿算法
-                
-
             }
             else
             {

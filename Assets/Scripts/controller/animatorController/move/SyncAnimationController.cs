@@ -29,6 +29,14 @@ public class SyncAnimationController : MoveAnimatorController
         this.flag = true;
     }
 
+    public override void setAngle(float angle)
+    {
+        // TODO 
+
+        this.animator.SetFloat("angle", angle);
+        this.flag = true;
+    }
+
     public override void setRuning(bool runing)
     {
         if (this.serverAnimatorInfo.runing == runing) return;
@@ -67,7 +75,7 @@ public class SyncAnimationController : MoveAnimatorController
         if (!flag) return;
         flag = false;
 
-        Debug.Log("SyncAimator ... ");
+        // Debug.Log("SyncAimator ... ");
         ReqSyncAnimatorMessage reqSyncAnimatorMessage = new ReqSyncAnimatorMessage();
         reqSyncAnimatorMessage.animatorInfo = serverAnimatorInfo;
         NetManager.Instance.SendMessage(NetMessageBuilder.Encode((int)reqSyncAnimatorMessage.msgID, reqSyncAnimatorMessage));

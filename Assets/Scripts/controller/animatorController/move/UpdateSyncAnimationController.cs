@@ -32,6 +32,11 @@ public class UpdateSyncAnimationController : MoveAnimatorController
         this.animator.SetFloat("v", v);
     }
 
+    public override void setAngle(float angle)
+    {
+        this.animator.SetFloat("angle", angle);
+    }
+
     public override void setRuning(bool runing)
     {
         this.animator.SetBool("runing", runing);

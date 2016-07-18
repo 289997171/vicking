@@ -11,6 +11,8 @@ using UnityEngine.EventSystems;
 public class Targetable : MonoBehaviour, IPointerClickHandler
 {
 
+    public string prefab = "effect/targetable/prefabs/TagetableEffect";
+
     // 辅助边缘距离计算
     // 物体半径
     public float zRadius = 0f;
@@ -19,12 +21,45 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
     // 是否是Person类型（可以为NULL)
     public Person person;
 
+    public GameObject tagetableEffectObj;
+
     // Assign to this a delegate to respond to this object being destroyed
     public event EventCenter.GeneralCallback onDestroy
+    {
+        add
         {
-            add { onDestroyInvoke += value; Debug.Log("onDestroy +++++++"); }
-            remove { onDestroyInvoke -= value; Debug.Log("onDestroy ------"); }
+            onDestroyInvoke += value; Debug.Log("onDestroy +++++++");
+            if (tagetableEffectObj == null)
+            {
+                Transform tagetableEffectTra = this.transform.findInChildrens("TagetableEffect");
+                if (tagetableEffectTra == null)
+                {
+                    tagetableEffectObj = Instantiate(Resources.Load(prefab)) as GameObject;
+                    Vector3 localPosition = tagetableEffectObj.transform.localPosition;
+                    Quaternion localRotation = tagetableEffectObj.transform.localRotation;
+                    Vector3 localScale = tagetableEffectObj.transform.localScale;
+
+                    tagetableEffectObj.transform.parent = this.transform;
+                    tagetableEffectObj.transform.localPosition = localPosition;
+                    tagetableEffectObj.transform.localRotation = localRotation;
+                    tagetableEffectObj.transform.localScale = localScale;
+                }
+            }
+            else
+            {
+                tagetableEffectObj.SetActive(true);
+            }
         }
+        remove
+        {
+            onDestroyInvoke -= value; Debug.Log("onDestroy ------");
+            if (tagetableEffectObj != null)
+            {
+                tagetableEffectObj.SetActive(false);
+            }
+
+        }
+    }
     private EventCenter.GeneralCallback onDestroyInvoke; // Because iOS doesn't have a JIT - Multi-cast function pointer.
 
     protected void Start()
@@ -103,5 +138,17 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
         Debug.Log("Targetable OnPointerClick : " + eventData.pointerCurrentRaycast.gameObject);
 
         PlayerManager.Instance.LocalPlayer.Selectable.SelectTarget(this);
+
+        faceToTarget();
+    }
+
+
+    private void faceToTarget()
+    {
+        Vector3 direction = this.transform.position - PlayerManager.Instance.LocalPlayer.transform.position;
+        direction.y = 0f;
+        direction.Normalize();
+
+        PlayerManager.Instance.LocalPlayer.Moveable.turn(direction);
     }
 }

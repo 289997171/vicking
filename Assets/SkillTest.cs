@@ -26,7 +26,7 @@ public class SkillTest : MonoBehaviour
             Event current = Event.current;
             if (current != null && current.isKey)
             {
-                Debug.Log("current.keyCode.ToString() = " + current.keyCode.ToString());
+                // Debug.Log("current.keyCode.ToString() = " + current.keyCode.ToString());
                 int indexOf = inputkeys.IndexOf(current.keyCode.ToString());
                 if (indexOf > -1)
                 {

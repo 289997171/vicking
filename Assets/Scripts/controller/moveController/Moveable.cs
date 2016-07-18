@@ -55,8 +55,8 @@ public abstract class Moveable : MonoBehaviour
     /// <summary>
     /// 是否允许改变朝向
     /// </summary>
-    /// <param name="canTrun"></param>
-    public abstract void setCanTurn(bool canTrun);
+    /// <param name="canMove"></param>
+    public abstract void setCanMove(bool canMove);
 
     protected bool fly;
 

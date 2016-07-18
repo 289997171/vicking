@@ -39,7 +39,7 @@ public class PlayerMoveController : Moveable, IPersonController
     // 场景资源动态加载
     private Vector3 oldPos = Vector3.zero;
 
-    private bool canTurn = true;
+    private bool canMove = true;
 
     // private Camera mainCamera;
 
@@ -53,8 +53,6 @@ public class PlayerMoveController : Moveable, IPersonController
         this.person = GetComponent<Person>();
 
         this.characterController = GetComponent<CharacterController>();
-
-        
 
         this.wasdController = GetComponent<WASDController>();
 
@@ -75,11 +73,32 @@ public class PlayerMoveController : Moveable, IPersonController
     // 是否在旋转中
     private bool turning = false;
 
+    // 强制朝向改变
+    public bool turningForce = false;
+
+    public bool turningForceKeep = false;
+
+    public float maxAngle;
+
+    // 强制朝向的目标
+    private Targetable target;
+
+    // 保持朝向时间
+    private float keepLookAtTime;
+
+    //    public float turningForceLast = 0.006f;
+    //
+    //    public float turningForceCost = 0f;
+
+
+
     // 目前移动只考虑水平朝向
     private float rotY;
 
     // 转向到
     private Quaternion newQuaternion = Quaternion.identity;
+
+
 
     void Update()
     {
@@ -88,12 +107,9 @@ public class PlayerMoveController : Moveable, IPersonController
         try
         {
 #endif
-            // 技能控制角色在一定时间内不能移动
-            if (!canTurn)
-            {
-                moveAnimationController.OnIdle();
-                return;
-            }
+            bool runing = false;
+
+            float angle = 0f;
 
             // 未处于地面
             if (!onGround && !fly)
@@ -105,42 +121,39 @@ public class PlayerMoveController : Moveable, IPersonController
                 onGround = (flags & CollisionFlags.Below) != 0;
             }
 
-            // 朝向改变
-            if (turning)
+
+            // 技能控制角色在一定时间内不能移动
+            if (!canMove)
             {
-                float angle = Quaternion.Angle(transform.rotation, newQuaternion);
-                Debug.Log("angle : " + angle);
-                // TODO 判断角度范围
-
-                rotY = Camera.main.transform.rotation.eulerAngles.y;
-                moveDirection = Quaternion.Euler(0, rotY, 0) * moveDirection;
-
-                transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion,
-                    this.person.rotSpeed * Time.deltaTime /*0.2f*/);
-                moveAnimationController.OnTurn(newQuaternion);
+                moveAnimationController.OnIdle();
+                return;
             }
 
             // h = Input.GetAxis("Horizontal");
             // v = Input.GetAxis("Vertical");
 
-            if (!isMoveBy)
+            if (isMoveBy)
+            {
+                wasd = false;
+            }
+            else
             {
                 this.wasdController.getInputHV(ref h, ref v);
 
                 wasd = h != 0 || v != 0;
 
-                if (wasd && navMoveing) stopMove();
-                else if (!wasd && !navMoveing)
+                if (wasd && navMoveing)
+                {
+                    stopMove();
+                }
+                else if (!wasd && !navMoveing && !turning)
                 {
                     moveAnimationController.OnIdle();
                     return;
                 }
 
-                moveAnimationController.OnRun(h, v);
-            }
-            else
-            {
-                wasd = false;
+                runing = true;
+                // moveAnimationController.OnRun(h, v);
             }
 
             if (wasd)
@@ -164,15 +177,20 @@ public class PlayerMoveController : Moveable, IPersonController
                 // 3.以镜头坐标朝向,只考虑y坐标朝向
                 rotY = Camera.main.transform.rotation.eulerAngles.y;
                 moveDirection = Quaternion.Euler(0, rotY, 0) * moveDirection;
-                moveDirection *= person.finalAbility.speed;
+
+                // moveDirection *= person.finalAbility.speed;
             }
             else if (navMoveing)
             {
                 float minDistance = 0.3f;
-                if (isMoveBy && moveBySpeed > 20f)
+                if (isMoveBy)
                 {
-                    minDistance = 1f;
+                    minDistance = 0.6f;
                 }
+                //                if (isMoveBy && moveBySpeed > 20f)
+                //                {
+                //                    minDistance = 1f;
+                //                }
 
                 if (Vector3.Distance(transform.position, curAutoPos) < minDistance)
                 {
@@ -188,21 +206,108 @@ public class PlayerMoveController : Moveable, IPersonController
                 moveDirection.y = 0f;
                 moveDirection.Normalize();
 
-                if (isMoveBy)
-                {
-                    moveDirection *= moveBySpeed;
-                    //moveDirection = Vector3.Cross(moveDirection, moveBySpeed);
-                    //moveDirection = new Vector3(moveDirection.x * -moveBySpeed.x, moveDirection.y * -moveBySpeed.y, moveDirection.z * -moveBySpeed.z);
-                }
-                else
-                {
-                    moveDirection *= this.person.finalAbility.speed;
-                }
-                
-            } else if (isMoveBy)
+                //                if (isMoveBy)
+                //                {
+                //                    moveDirection *= moveBySpeed;
+                //                    //moveDirection = Vector3.Cross(moveDirection, moveBySpeed);
+                //                    //moveDirection = new Vector3(moveDirection.x * -moveBySpeed.x, moveDirection.y * -moveBySpeed.y, moveDirection.z * -moveBySpeed.z);
+                //                }
+                //                else
+                //                {
+                //                    moveDirection *= this.person.finalAbility.speed;
+                //                }
+
+            }
+            else if (isMoveBy) // 强制移动
             {
                 isMoveBy = false;
                 canNav = false;
+            }
+            else if (turning && !turningForce && !turningForceKeep) // 原地转向
+            {
+                angle = Quaternion.Angle(transform.rotation, newQuaternion);
+                // TODO 判断角度范围
+                if (angle < 5f)
+                {
+                    turning = false;
+                    turningForce = false;
+                }
+
+                //rotY = Camera.main.transform.rotation.eulerAngles.y;
+                //moveDirection = Quaternion.Euler(0, rotY, 0) * moveDirection;
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion,
+                    this.person.rotSpeed * Time.deltaTime /*0.2f*/);
+
+                moveAnimationController.OnTurn(newQuaternion);
+
+                return;
+            }
+
+            
+
+            if (turningForce)
+            {
+                //                turningForceCost -= Time.deltaTime;
+                //
+                //                if (turningForceCost < 0f)
+                //                {
+                //                    turning = false;
+                //                    turningForce = false;
+                //                }
+                Vector3 dir = target.transform.position - this.transform.position;
+                dir.y = 0f;
+                dir.Normalize();
+
+                newQuaternion = Quaternion.LookRotation(dir);
+                angle = Quaternion.Angle(transform.rotation, newQuaternion);
+
+                // TODO 判断角度范围
+                if (angle < maxAngle)
+                {
+                    turning = false;
+                    turningForce = false;
+
+                    if (keepLookAtTime > 0f) turningForceKeep = true;
+                }
+
+                //rotY = Camera.main.transform.rotation.eulerAngles.y;
+                //moveDirection = Quaternion.Euler(0, rotY, 0) * moveDirection;
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion,
+                    this.person.rotSpeed * Time.deltaTime /*0.2f*/);
+
+                angle = Vector3.Angle(moveDirection, dir);
+
+            }
+            else if (turningForceKeep)
+            {
+
+                keepLookAtTime -= Time.deltaTime;
+                if (keepLookAtTime < 0f)
+                {
+                    turning = false;
+                    turningForceKeep = false;
+                }
+
+                Vector3 dir = target.transform.position - this.transform.position;
+                dir.y = 0f;
+                dir.Normalize();
+
+                newQuaternion = Quaternion.LookRotation(dir);
+
+                // angle = Quaternion.Angle(transform.rotation, newQuaternion);
+
+                angle = Vector3.Angle(moveDirection, dir);
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion,
+                        this.person.rotSpeed * Time.deltaTime /*0.2f*/);
+            }
+
+            if (runing)
+            {
+                // Debug.LogError("angle ::: " + angle);
+                moveAnimationController.OnRun(h, v, angle);
             }
 
             // Allow turning at anytime. Keep the character facing in the same direction as the Camera if the right mouse button is down.
@@ -228,6 +333,18 @@ public class PlayerMoveController : Moveable, IPersonController
             // if (moveDirection == Vector3.zero) return;
 
 
+            if (isMoveBy)
+            {
+                moveDirection *= moveBySpeed;
+                //moveDirection = Vector3.Cross(moveDirection, moveBySpeed);
+                //moveDirection = new Vector3(moveDirection.x * -moveBySpeed.x, moveDirection.y * -moveBySpeed.y, moveDirection.z * -moveBySpeed.z);
+            }
+            else
+            {
+                moveDirection *= this.person.finalAbility.speed;
+            }
+
+
             // 处理坐标改变
 
             // 1.如果不使用CharacterController
@@ -247,7 +364,7 @@ public class PlayerMoveController : Moveable, IPersonController
             }
 #endif
 
-            if (moveDirection != Vector3.zero)
+            if (!turningForce && !turningForceKeep && moveDirection != Vector3.zero)
             {
                 // 技能导致的移动，如果！canNav，不能改变朝向，如，LR的向后跳
                 if (!isMoveBy || canNav)
@@ -289,7 +406,7 @@ public class PlayerMoveController : Moveable, IPersonController
             float cost = (Time.realtimeSinceStartup - begin) * 1000000f; // 转换成为纳秒
             if (cost > 200.0f)
             {
-                Debug.Log("PlayerMoveController Update cost ::: " + cost);
+                // Debug.Log("PlayerMoveController Update cost ::: " + cost);
             }
         }
 #endif
@@ -324,7 +441,7 @@ public class PlayerMoveController : Moveable, IPersonController
     private int nextPointIndex = 0;
 
 
-#region 技能或其他原因导致的移动
+    #region 技能或其他原因导致的移动
     //相对移动，如技能等控制的坐标改变
     private bool isMoveBy = false;
 
@@ -333,7 +450,7 @@ public class PlayerMoveController : Moveable, IPersonController
 
     //相对移动的速度
     private float moveBySpeed = 0f;
-#endregion
+    #endregion
 
     /// <summary>
     /// 自动寻路
@@ -401,16 +518,62 @@ public class PlayerMoveController : Moveable, IPersonController
 
     public override bool turn(Vector3 direction)
     {
-        turning = true;
-
         newQuaternion = Quaternion.LookRotation(direction);
-
         float angle = Quaternion.Angle(transform.rotation, newQuaternion);
-        Debug.Log("angle : " + angle);
+        Debug.LogError("angle XXXXXX : " + angle);
 
         // TODO 判断角度范围
+        if (angle > 5f)
+        {
+            turning = true;
+        }
 
         return turning;
+    }
+
+    public bool turnForce(SingleSkill singleSkill/*Vector3 direction, float angle, float lookAtTime*/)
+    {
+        turning = true;
+        turningForce = true;
+
+        maxAngle = singleSkill.maxAngle;
+        target = singleSkill.target;
+        keepLookAtTime = singleSkill.keepLookAtTime;
+
+        return turning;
+
+
+//        // TODO 以下是老版本
+//
+//        newQuaternion = Quaternion.LookRotation(direction);
+//        //        float angle = Quaternion.Angle(transform.rotation, newQuaternion);
+//        //        Debug.LogError("angle XXXXXX : " + angle);
+//        //
+//        //        // TODO 判断角度范围
+//        //        if (angle > 5f)
+//        //        {
+//        turning = true;
+//        turningForce = true;
+//        turningForceCost = lookAtTime;
+//
+//        //        if (angle < 30)
+//        //        {
+//        //            turningForceCost = 0.2f;
+//        //        }
+//        //        else if (angle > 90)
+//        //        {
+//        //            turningForceCost = 0.6f;
+//        //        }
+//        //        else
+//        //        {
+//        //            turningForceCost = 0.4f;
+//        //        }
+//
+//        // turningForceCost = turningForceLast * angle;
+//        // turningForceCost = turningForceCost < 0.2f ? 0.2f : (turningForceCost > 0.6f ? 0.6f : turningForceCost);
+//        //        }
+//
+//        return turning;
     }
 
     public override bool stopTrun()
@@ -451,10 +614,10 @@ public class PlayerMoveController : Moveable, IPersonController
     }
 
 
-    public override void setCanTurn(bool canTrun)
+    public override void setCanMove(bool canMove)
     {
         // TODO 
-        this.canTurn = canTrun;
+        this.canMove = canMove;
     }
 
 

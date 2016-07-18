@@ -10,6 +10,8 @@ public abstract class MoveAnimatorController : AnimatorController
 
     public abstract void setV(float v);
 
+    public abstract void setAngle(float angle);
+
     public abstract void setRuning(bool runing);
 
     public abstract void setAttacking(bool inAttack);
