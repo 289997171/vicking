@@ -31,8 +31,6 @@ public class Selectable : MonoBehaviour
         // 停止交互
         // StopInteract();
 
-        selectedTarget.onDestroy -= OnTargetedDestroyed;
-
         selectedTarget = null;
     }
 

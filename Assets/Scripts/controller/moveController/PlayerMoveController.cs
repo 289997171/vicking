@@ -54,6 +54,8 @@ public class PlayerMoveController : Moveable, IPersonController
 
         this.characterController = GetComponent<CharacterController>();
 
+        
+
         this.wasdController = GetComponent<WASDController>();
 
         this.moveAnimationController = GetComponent<MoveAnimationController>();
@@ -72,13 +74,6 @@ public class PlayerMoveController : Moveable, IPersonController
 
     // 是否在旋转中
     private bool turning = false;
-
-    // 强制朝向改变
-    public bool turningForce = false;
-
-    public float turningForceLast = 0.006f;
-
-    public float turningForceCost = 0f;
 
     // 目前移动只考虑水平朝向
     private float rotY;
@@ -110,30 +105,42 @@ public class PlayerMoveController : Moveable, IPersonController
                 onGround = (flags & CollisionFlags.Below) != 0;
             }
 
+            // 朝向改变
+            if (turning)
+            {
+                float angle = Quaternion.Angle(transform.rotation, newQuaternion);
+                Debug.Log("angle : " + angle);
+                // TODO 判断角度范围
+
+                rotY = Camera.main.transform.rotation.eulerAngles.y;
+                moveDirection = Quaternion.Euler(0, rotY, 0) * moveDirection;
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion,
+                    this.person.rotSpeed * Time.deltaTime /*0.2f*/);
+                moveAnimationController.OnTurn(newQuaternion);
+            }
+
             // h = Input.GetAxis("Horizontal");
             // v = Input.GetAxis("Vertical");
 
-            if (isMoveBy)
-            {
-                wasd = false;
-            }
-            else
+            if (!isMoveBy)
             {
                 this.wasdController.getInputHV(ref h, ref v);
 
                 wasd = h != 0 || v != 0;
 
-                if (wasd && navMoveing)
-                {
-                    stopMove();
-                }
-                else if (!wasd && !navMoveing && !turning)
+                if (wasd && navMoveing) stopMove();
+                else if (!wasd && !navMoveing)
                 {
                     moveAnimationController.OnIdle();
                     return;
                 }
 
                 moveAnimationController.OnRun(h, v);
+            }
+            else
+            {
+                wasd = false;
             }
 
             if (wasd)
@@ -191,58 +198,11 @@ public class PlayerMoveController : Moveable, IPersonController
                 {
                     moveDirection *= this.person.finalAbility.speed;
                 }
-
-            }
-            else if (isMoveBy) // 强制移动
+                
+            } else if (isMoveBy)
             {
                 isMoveBy = false;
                 canNav = false;
-            }
-            else if (turning && !turningForce) // 朝向改变
-            {
-                float angle = Quaternion.Angle(transform.rotation, newQuaternion);
-                // TODO 判断角度范围
-                if (angle < 5f)
-                {
-                    turning = false;
-                    turningForce = false;
-                }
-
-                //rotY = Camera.main.transform.rotation.eulerAngles.y;
-                //moveDirection = Quaternion.Euler(0, rotY, 0) * moveDirection;
-
-                transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion,
-                    this.person.rotSpeed * Time.deltaTime /*0.2f*/);
-                moveAnimationController.OnTurn(newQuaternion);
-
-                return;
-            }
-
-            if (turningForce)
-            {
-                turningForceCost -= Time.deltaTime;
-
-                if (turningForceCost < 0f)
-                {
-                    turning = false;
-                    turningForce = false;
-                }
-
-                //                float angle = Quaternion.Angle(transform.rotation, newQuaternion);
-                //                // TODO 判断角度范围
-                //                if (angle < 5f)
-                //                {
-                //                    turning = false;
-                //                    turningForce = false;
-                //                }
-
-
-                //rotY = Camera.main.transform.rotation.eulerAngles.y;
-                //moveDirection = Quaternion.Euler(0, rotY, 0) * moveDirection;
-
-                transform.rotation = Quaternion.Slerp(transform.rotation, newQuaternion,
-                    this.person.rotSpeed * 2 * Time.deltaTime /*0.2f*/);
-                // moveAnimationController.OnTurn(newQuaternion);
             }
 
             // Allow turning at anytime. Keep the character facing in the same direction as the Camera if the right mouse button is down.
@@ -287,7 +247,7 @@ public class PlayerMoveController : Moveable, IPersonController
             }
 #endif
 
-            if (!turningForce && moveDirection != Vector3.zero)
+            if (moveDirection != Vector3.zero)
             {
                 // 技能导致的移动，如果！canNav，不能改变朝向，如，LR的向后跳
                 if (!isMoveBy || canNav)
@@ -364,7 +324,7 @@ public class PlayerMoveController : Moveable, IPersonController
     private int nextPointIndex = 0;
 
 
-    #region 技能或其他原因导致的移动
+#region 技能或其他原因导致的移动
     //相对移动，如技能等控制的坐标改变
     private bool isMoveBy = false;
 
@@ -373,7 +333,7 @@ public class PlayerMoveController : Moveable, IPersonController
 
     //相对移动的速度
     private float moveBySpeed = 0f;
-    #endregion
+#endregion
 
     /// <summary>
     /// 自动寻路
@@ -441,45 +401,14 @@ public class PlayerMoveController : Moveable, IPersonController
 
     public override bool turn(Vector3 direction)
     {
+        turning = true;
+
         newQuaternion = Quaternion.LookRotation(direction);
+
         float angle = Quaternion.Angle(transform.rotation, newQuaternion);
-        Debug.LogError("angle XXXXXX : " + angle);
+        Debug.Log("angle : " + angle);
 
         // TODO 判断角度范围
-        if (angle > 5f)
-        {
-            turning = true;
-        }
-
-        return turning;
-    }
-
-    public bool turnForce(Vector3 direction, float angle)
-    {
-        newQuaternion = Quaternion.LookRotation(direction);
-//        float angle = Quaternion.Angle(transform.rotation, newQuaternion);
-//        Debug.LogError("angle XXXXXX : " + angle);
-//
-//        // TODO 判断角度范围
-//        if (angle > 5f)
-//        {
-            turning = true;
-            turningForce = true;
-            if (angle < 30)
-            {
-                turningForceCost = 0.2f;
-            }else if (angle > 90)
-            {
-                turningForceCost = 0.6f;
-            }
-            else
-            {
-                turningForceCost = 0.4f;
-            }
-
-            // turningForceCost = turningForceLast * angle;
-            // turningForceCost = turningForceCost < 0.2f ? 0.2f : (turningForceCost > 0.6f ? 0.6f : turningForceCost);
-//        }
 
         return turning;
     }

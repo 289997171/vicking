@@ -12,7 +12,7 @@ public class SkillController : MonoBehaviour
         this.fightAnimationController = GetComponent<FightAnimationController>();
     }
 
-    public virtual void castSkill(Person target, int skillModelId, int skillLv)
+    public void castSkill(Person target, int skillModelId, int skillLv)
     {
         this.fightAnimationController.castSkill(skillModelId);
     }

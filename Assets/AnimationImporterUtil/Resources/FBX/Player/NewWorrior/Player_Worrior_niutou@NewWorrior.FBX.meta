@@ -1731,11 +1731,7 @@ ModelImporter:
       events:
       - time: 0.28443652
         functionName: playEffect
-<<<<<<< HEAD
         data: Zs_Effect_Attack1
-=======
-        data: zs_skill_1
->>>>>>> b1c93f69677f2da4b9dae4d751adbda13471849a
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
