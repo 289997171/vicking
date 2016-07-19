@@ -16,7 +16,7 @@ public class SingleSkill
     public bool mustTarget;
 
     // 最远攻击距离
-    public float maxDistance = 2f;
+    public float maxDistance = 2.5f;
 
     // 朝向目标的最大角度才能施放法术
     public float maxAngle = 10f;
@@ -25,7 +25,7 @@ public class SingleSkill
     public float maxTrunTime = 1f;
 
     // 朝目标攻击后，任然保持朝向的时间
-    public float keepLookAtTime = 3f;
+    public float keepLookAtTime = 1.5f;
 
     public Targetable target;
 
@@ -106,7 +106,7 @@ public class LocalPlayerSkillController : SkillController
         bool mustTarget = true;
 
         // 最远攻击距离
-        float maxDistance = 2f;
+        float maxDistance = 2.5f;
 
         // 朝向目标的最大角度才能施放法术
         float maxAngle = 10f;
@@ -148,11 +148,19 @@ public class LocalPlayerSkillController : SkillController
 
     private bool doCastSkill(SingleSkill singleSkill)
     {
-        //TODO 测试角度
-        if (singleSkill.mustTarget && !checkConditionAngle(singleSkill))
+        if (singleSkill.mustTarget)
         {
-            // TODO 角度不符合
-            return false;
+            if (!checkConditionDistance(singleSkill))
+            {
+                // TODO 距离不符合
+                return false;
+            }
+
+            if (!checkConditionAngle(singleSkill))
+            {
+                // TODO 角度不符合
+                return false;
+            }
         }
 
         this.fightAnimationController.castSkill(singleSkill.skillModelId);
@@ -160,6 +168,27 @@ public class LocalPlayerSkillController : SkillController
 
         return true;
     }
+
+    /// <summary>
+    /// 检查距离条件
+    /// </summary>
+    public bool checkConditionDistance(SingleSkill singleSkill)
+    {
+        float distance = Vector3.Distance(singleSkill.target.transform.position, this.transform.position);
+        if (distance > singleSkill.maxDistance)
+        {
+            if (!this.moveable.isMoving())
+                this.moveable.move(singleSkill.target.transform.position);
+
+            return false;
+        } else if (this.moveable.isMoving())
+        {
+            this.moveable.stopMove();
+        }
+
+        return true;
+    }
+
 
     /// <summary>
     /// 检查角度条件

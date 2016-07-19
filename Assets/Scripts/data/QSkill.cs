@@ -232,7 +232,7 @@ public class QSkill
 
     //怪物释放技能时是否说话（0：不说话 1：只有怪物释放该技能时说话 2：只有宠物施放该技能时说话 3：只有玩家施放改技能时说话 4：任何人施放该技能时说话）
     public int qSay;
-    
+
     //说话内容
     public string qSayContent;
 

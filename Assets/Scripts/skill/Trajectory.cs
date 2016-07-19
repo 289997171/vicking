@@ -103,11 +103,11 @@ public class Trajectory : MonoBehaviour
 
         this.traj.position = new Vector3(this.transform.position.x, this.transform.position.y + y, this.transform.position.z + z);
 
-#if UNITY_EDITOR
-        GameObject ghost = Instantiate(Resources.Load("Sphere")) as GameObject;
-        ghost.transform.position = this.traj.position;
-        ghost.transform.rotation = this.transform.rotation;
-#endif
+//#if UNITY_EDITOR
+//        GameObject ghost = Instantiate(Resources.Load("Sphere")) as GameObject;
+//        ghost.transform.position = this.traj.position;
+//        ghost.transform.rotation = this.transform.rotation;
+//#endif
 
         if (costTime > lastTime)
         {

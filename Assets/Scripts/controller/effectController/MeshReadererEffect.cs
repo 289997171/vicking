@@ -7,23 +7,26 @@
 [RequireComponent(typeof(EffectItem))]
 public class MeshReadererEffect : MonoBehaviour
 {
-	public Animation animation;
+    // 动画片段
+    public Animation animation;
 
     public MeshRenderer meshRenderer;
 
     public SkinnedMeshRenderer skinnedMeshRenderer;
 
     /// <summary>
-    /// 模型特效持续时间
+    /// 模型特效持续时间,使用动画
     /// </summary>
     public float lastTime = 0f;
 
     /// <summary>
-    /// 是否在Awake/Start后，播放
+    /// 是否在Awake/Start后，播放。（只有在follow = false的情况下）
     /// </summary>
-    [HideInInspector]
     public bool playOnAwake = false;
 
+    /// <summary>
+    /// 已经持续的时间
+    /// </summary>
 #if UNITY_EDITOR
     [SerializeField]
 #endif
@@ -31,13 +34,17 @@ public class MeshReadererEffect : MonoBehaviour
 
     void Start()
     {
-		this.animation = GetComponent<Animation> ();
-		if (this.animation != null) {
-			this.animation.playAutomatically = false;
-		}
-
+        this.animation = GetComponentInChildren<Animation>();
         this.meshRenderer = GetComponentInChildren<MeshRenderer>();
         this.skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+
+        if (this.animation != null)
+        {
+            this.animation.playAutomatically = false;
+
+            // 默认持续时间使用动画片段时间
+            this.lastTime = this.animation.clip.length;
+        }
 
 #if UNITY_EDITOR
         if (this.meshRenderer == null && this.skinnedMeshRenderer == null)
@@ -45,9 +52,14 @@ public class MeshReadererEffect : MonoBehaviour
             Debug.LogError("错误，在无MeshRenderer的组件上挂载MeshReadererEffect：" + this.name);
         }
 #endif
+
         Debug.LogError("playOnAwake :: " + playOnAwake);
 
-        if (!playOnAwake)
+        if (playOnAwake)
+        {
+            playAwake();
+        }
+        else
         {
             if (this.skinnedMeshRenderer != null)
             {
@@ -59,27 +71,21 @@ public class MeshReadererEffect : MonoBehaviour
                 this.meshRenderer.enabled = false;
             }
         }
-        else
-        {
-            play();
-        }
+    }
+
+    private void playAwake()
+    {
+        if (this.skinnedMeshRenderer != null) this.skinnedMeshRenderer.enabled = true;
+
+        if (this.meshRenderer != null) this.meshRenderer.enabled = true;
+
+        if (this.animation != null) this.animation.Play();
     }
 
     public void play()
     {
-		if (this.animation != null) {
-			this.animation.Play ();
-		}
+        playAwake();
 
-        if (this.skinnedMeshRenderer != null)
-        {
-            this.skinnedMeshRenderer.enabled = true;
-        }
-
-        if (this.meshRenderer != null)
-        {
-            this.meshRenderer.enabled = true;
-        }
         this.cost = lastTime;
     }
 
@@ -106,5 +112,5 @@ public class MeshReadererEffect : MonoBehaviour
         }
     }
 
-    
+
 }

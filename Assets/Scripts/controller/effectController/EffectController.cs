@@ -73,10 +73,13 @@ public class EffectController : MonoBehaviour
 
     }
 
+    // Zs_Skill_ZhongTiaoZhan;Player_ Worrior_niutou_dibo_Eeffecst
     public void playEffect(string effectInfo)
     {
-        string[] splits = effectInfo.Split(',');
-        string effectName = splits[0];
+        //string[] splits = effectInfo.Split(',');
+        //string effectName = splits[0];
+
+        string effectName = effectInfo;
 
         EffectGroup effectGroup;
         if (effectGroupMap.TryGetValue(effectName, out effectGroup))
